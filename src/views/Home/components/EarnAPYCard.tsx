@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from 'react'
-import styled from 'styled-components'
+import styled, { ThemeConsumer } from 'styled-components'
 import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Skeleton } from '@pancakeswap-libs/uikit'
 import { NavLink } from 'react-router-dom'
 import useI18n from 'hooks/useI18n'
@@ -9,9 +9,11 @@ import { useFarms, usePriceBnbBusd } from 'state/hooks'
 import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
 
 const StyledFarmStakingCard = styled(Card)`
+  background: linear-gradient(134deg, #093337 0%, #052528 100%, #18D6AD 100%);
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  height: 265px;
 
   ${({ theme }) => theme.mediaQueries.lg} {
     margin: 0;
@@ -20,6 +22,7 @@ const StyledFarmStakingCard = styled(Card)`
 `
 const CardMidContent = styled(Heading).attrs({ size: 'xl' })`
   line-height: 44px;
+  font-weight: 500;
 `
 const EarnAPYCard = () => {
   const TranslateString = useI18n()
@@ -77,10 +80,10 @@ const EarnAPYCard = () => {
   return (
     <StyledFarmStakingCard>
       <CardBody>
-        <Heading color="contrast" size="lg">
+        <Heading size="lg" style={{marginTop: '60px', fontWeight: 'normal'}}>
           Earn up to
         </Heading>
-        <CardMidContent color="#7645d9">
+        <CardMidContent color="#ACE0CD" style={{marginTop: '36px', marginBottom: '10px'}}>
           {getHighestAPY() ? (
             `${getHighestAPY()}% ${TranslateString(736, 'APR')}`
           ) : (
@@ -88,7 +91,7 @@ const EarnAPYCard = () => {
           )}
         </CardMidContent>
         <Flex justifyContent="space-between">
-          <Heading color="contrast" size="lg">
+          <Heading style={{fontSize: '14px', fontWeight: 'normal', color: '#366061'}} size="lg">
             in Farms
           </Heading>
           <NavLink exact activeClassName="active" to="/farms" id="farm-apy-cta">

@@ -1,10 +1,11 @@
 import React, { useEffect, useCallback, useState } from 'react'
+import styled from 'styled-components'
 import { Route, useRouteMatch } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
-import { Image, Heading } from '@pancakeswap-libs/uikit'
+import { Image, Heading, Text } from '@pancakeswap-libs/uikit'
 import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
@@ -17,6 +18,33 @@ import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
 import FarmTabButtons from './components/FarmTabButtons'
 import Divider from './components/Divider'
 
+const Hero = styled.div`
+  align-items: left;
+  background-image: url('/images/home_header_bg.png')
+  // background-image: url('/images/pan-bg-mobile.svg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 100px 0 134px 0;
+  // margin-bottom: 32px;
+  // padding-top: 116px;
+  // text-align: center;
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    // background-image: url('/images/pan-bg2.svg'), url('/images/pan-bg.svg');
+    // background-position: left center, right center;
+    // height: 165px;
+    // padding-top: 0;
+  }
+`
+const CardImage = styled.img`
+  margin-bottom: 16px;
+  position: absolute;
+  right: 0;
+`
 const Farms: React.FC = () => {
   const { path } = useRouteMatch()
   const TranslateString = useI18n()
@@ -96,12 +124,21 @@ const Farms: React.FC = () => {
 
   return (
     <Page>
-      <Heading as="h1" size="lg" color="secondary" mb="50px" style={{ textAlign: 'center' }}>
+      <Hero>
+        <Heading as="h1" size="xl" mb="24px" color="secondary">
         {TranslateString(696, 'Stake LP tokens to earn CAKE')}
-      </Heading>
-      <FarmTabButtons stackedOnly={stackedOnly} setStackedOnly={setStackedOnly} />
+        </Heading>
+        <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} />
+        {/* <Text style={{ color: '#FFFFFF' }}>{TranslateString(578, 'The #1 AMM and yield farm on Binance Smart Chain.')}</Text> */}
+        <FarmTabButtons stackedOnly={stackedOnly} setStackedOnly={setStackedOnly} />
+      </Hero>
+
+      {/* <Heading as="h1" size="lg" color="secondary" mb="50px" style={{ textAlign: 'center' }}>
+        {TranslateString(696, 'Stake LP tokens to earn CAKE')}
+      </Heading> */}
+      
       <div>
-        <Divider />
+        {/* <Divider /> */}
         <FlexLayout>
           <Route exact path={`${path}`}>
             {stackedOnly ? farmsList(stackedOnlyFarms, false) : farmsList(activeFarms, false)}

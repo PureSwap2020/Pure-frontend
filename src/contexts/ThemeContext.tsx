@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { ThemeProvider as SCThemeProvider } from 'styled-components'
 import { light, dark } from '@pancakeswap-libs/uikit'
 
+window.localStorage.setItem('IS_DARK', 'true')
+
 const CACHE_KEY = 'IS_DARK'
 
 const ThemeContext = React.createContext({ isDark: null, toggleTheme: () => null })

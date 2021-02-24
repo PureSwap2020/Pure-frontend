@@ -8,8 +8,12 @@ import { getCakeAddress } from 'utils/addressHelpers'
 import CardValue from './CardValue'
 
 const StyledCakeStats = styled(Card)`
+  height: 355px;
+  width: 414px !important;
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
+  background: linear-gradient(134deg, #093438 0%, #072C30 100%, #18D6AD 100%);
 `
 
 const Row = styled.div`
@@ -29,20 +33,20 @@ const CakeStats = () => {
   return (
     <StyledCakeStats>
       <CardBody>
-        <Heading size="xl" mb="24px">
-          {TranslateString(534, 'Cake Stats')}
+        <Heading size="xl" mb="24px" style={{fontWeight: 'normal'}}>
+          {TranslateString(534, 'Pure Stats')}
         </Heading>
         <Row>
-          <Text fontSize="14px">{TranslateString(536, 'Total CAKE Supply')}</Text>
-          {cakeSupply && <CardValue fontSize="14px" value={cakeSupply} />}
+          <Text color="textSubtle" fontSize="14px">{TranslateString(536, 'Total Pure Supply')}</Text>
+          {cakeSupply && <CardValue bold={false} fontSize="14px" value={cakeSupply} />}
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(538, 'Total CAKE Burned')}</Text>
-          <CardValue fontSize="14px" value={getBalanceNumber(burnedBalance)} />
+          <Text color="textSubtle" fontSize="14px">{TranslateString(538, 'Total Pure Burned')}</Text>
+          <CardValue fontSize="14px" bold={false} value={getBalanceNumber(burnedBalance)} />
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(540, 'New CAKE/block')}</Text>
-          <CardValue fontSize="14px" decimals={0} value={25} />
+          <Text color="textSubtle" fontSize="14px">{TranslateString(540, 'New Pure/block')}</Text>
+          <CardValue fontSize="14px" bold={false} decimals={0} value={25} />
         </Row>
       </CardBody>
     </StyledCakeStats>

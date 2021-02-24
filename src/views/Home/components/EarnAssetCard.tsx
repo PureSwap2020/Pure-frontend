@@ -7,7 +7,9 @@ import pools from 'config/constants/pools'
 import { Pool } from 'state/types'
 
 const StyledFarmStakingCard = styled(Card)`
-  background: linear-gradient(#53dee9, #7645d9);
+  height: 355px;
+  width: 414px !important;
+  background: #00182100 !important;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -15,6 +17,14 @@ const StyledFarmStakingCard = styled(Card)`
     margin: 0;
     max-width: none;
   }
+`
+const StyledHeadingSpan = styled.span`
+  font-size: 80px;
+  color: ${({ theme }) =>  theme.colors.secondary};
+  font-weight: 500;
+`
+const StyledHeadingSmallSpan = styled.span`
+  font-weight: normal;
 `
 const CardMidContent = styled(Heading).attrs({ size: 'xl' })`
   line-height: 44px;
@@ -28,17 +38,18 @@ const EarnAssetCard = () => {
   return (
     <StyledFarmStakingCard>
       <CardBody>
-        <Heading color="contrast" size="lg">
-          Earn
+        <Heading size="lg">
+          <StyledHeadingSpan>Earn Pure</StyledHeadingSpan>
         </Heading>
-        <CardMidContent color="invertedContrast">{assets}</CardMidContent>
+        {/* <CardMidContent color="invertedContrast">{assets}</CardMidContent> */}
         <Flex justifyContent="space-between">
-          <Heading color="contrast" size="lg">
-            in Pools
+          <Heading size="lg">
+            <StyledHeadingSmallSpan>in Pools</StyledHeadingSmallSpan>
+            <NavLink exact activeClassName="active" to="/syrup" id="pool-cta">
+              <ArrowForwardIcon style={{marginTop: '10px', position: 'relative', top: '4px', left: '10px'}} mt={30} color="primary" />
+            </NavLink>
           </Heading>
-          <NavLink exact activeClassName="active" to="/syrup" id="pool-cta">
-            <ArrowForwardIcon mt={30} color="primary" />
-          </NavLink>
+          
         </Flex>
       </CardBody>
     </StyledFarmStakingCard>

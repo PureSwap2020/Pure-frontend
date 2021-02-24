@@ -20,8 +20,14 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
 
   return (
     <Flex mb="8px" justifyContent="space-between" alignItems="center">
-      <Heading color={rawEarningsBalance === 0 ? 'textDisabled' : 'text'}>{displayBalance}</Heading>
+      <Heading style={{fontWeight: 'normal'}} color={rawEarningsBalance === 0 ? 'textDisabled' : 'text'}>{displayBalance}</Heading>
       <Button
+        style={{
+          borderColor: '#355F60',
+          color: '#355F60'
+        }}
+        variant="secondary" 
+        size="sm"
         disabled={rawEarningsBalance === 0 || pendingTx}
         onClick={async () => {
           setPendingTx(true)

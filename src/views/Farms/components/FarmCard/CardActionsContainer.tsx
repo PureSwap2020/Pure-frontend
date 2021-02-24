@@ -36,6 +36,8 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, 
   const lpName = farm.lpSymbol.toUpperCase()
   const isApproved = account && allowance && allowance.isGreaterThan(0)
 
+  // console.log(isApproved)
+
   const lpContract = useMemo(() => {
     return getContract(ethereum as provider, lpAddress)
   }, [ethereum, lpAddress])
@@ -62,7 +64,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, 
         addLiquidityUrl={addLiquidityUrl}
       />
     ) : (
-      <Button mt="8px" fullWidth disabled={requestedApproval} onClick={handleApprove}>
+      <Button variant="secondary" mt="8px" fullWidth disabled={requestedApproval} onClick={handleApprove}>
         {TranslateString(758, 'Approve Contract')}
       </Button>
     )
@@ -71,20 +73,20 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, 
   return (
     <Action>
       <Flex>
-        <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="3px">
+        <Text textTransform="uppercase" color="textSubtle" fontSize="12px" pr="3px">
           {/* TODO: Is there a way to get a dynamic value here from useFarmFromSymbol? */}
           CAKE
         </Text>
-        <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
+        <Text textTransform="uppercase" color="textSubtle" fontSize="12px">
           {TranslateString(1072, 'Earned')}
         </Text>
       </Flex>
       <HarvestAction earnings={earnings} pid={pid} />
       <Flex>
-        <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="3px">
+        <Text textTransform="uppercase" color="textSubtle" fontSize="12px" pr="3px">
           {lpName}
         </Text>
-        <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
+        <Text textTransform="uppercase" color="textSubtle" fontSize="12px">
           {TranslateString(1074, 'Staked')}
         </Text>
       </Flex>

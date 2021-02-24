@@ -9,7 +9,7 @@ const UnlockButton = (props) => {
   const { onPresentConnectModal } = useWalletModal(connect, reset)
 
   return (
-    <Button onClick={onPresentConnectModal} {...props}>
+    <Button variant="secondary" onClick={onPresentConnectModal} {...props}>
       {TranslateString(292, 'Unlock Wallet')}
     </Button>
   )
