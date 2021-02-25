@@ -91,7 +91,7 @@ const Home: React.FC = () => {
     <Page>
       <Hero>
         <Heading as="h1" size="xl" mb="24px" color="secondary">
-          {TranslateString(576, 'PancakeSwap')}
+          {TranslateString(576, 'PureSwap')}
         </Heading>
         <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} />
         <Text style={{ color: '#FFFFFF' }}>{TranslateString(578, 'The #1 AMM and yield farm on Binance Smart Chain.')}</Text>

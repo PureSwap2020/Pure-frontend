@@ -126,7 +126,7 @@ const Farms: React.FC = () => {
     <Page>
       <Hero>
         <Heading as="h1" size="xl" mb="24px" color="secondary">
-        {TranslateString(696, 'Stake LP tokens to earn CAKE')}
+        {TranslateString(696, 'Stake LP tokens to earn PURE')}
         </Heading>
         <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} />
         {/* <Text style={{ color: '#FFFFFF' }}>{TranslateString(578, 'The #1 AMM and yield farm on Binance Smart Chain.')}</Text> */}
@@ -148,7 +148,7 @@ const Farms: React.FC = () => {
           </Route>
         </FlexLayout>
       </div>
-      <Image src="/images/cakecat.png" alt="Pancake illustration" width={949} height={384} responsive />
+      {/* <Image src="/images/cakecat.png" alt="Pancake illustration" width={949} height={384} responsive /> */}
     </Page>
   )
 }

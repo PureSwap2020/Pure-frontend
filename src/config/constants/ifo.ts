@@ -26,7 +26,7 @@ const ifos: Ifo[] = [
     address: '0x9C21123D94b93361a29B2C2EFB3d5CD8B17e0A9e',
     isActive: false,
     name: 'Soteria',
-    subTitle: 'A blockchain based mutual to share the risk of DeFi on Binance Smart Chain',
+    subTitle: 'A blockchain based mutual to share the risk of DeFi on HECO',
     description:
       'Soteria allows users to buy insurance cover to greatly diminish or reduce the financial risk of hacks. It replaces the idea of a traditional insurance company, because it is wholly owned by the members. The model encourages engagement as members receive economic incentives for participating in Risk Assessment, Claims Assessment and Governance.',
     launchDate: 'Jan. 21',
@@ -88,7 +88,7 @@ const ifos: Ifo[] = [
     name: 'Ditto (DITTO)',
     subTitle: 'Next-gen elastic supply token',
     description:
-      'Ditto is the first elastic supply token on the Binance Smart Chain. Its goal is to maintain a stable price of $1, where its supply will adapt to changes in demand. All supply changes will apply equally to every wallet holding Ditto, and holders should always have the same % of the total supply',
+      'Ditto is the first elastic supply token on the HECO. Its goal is to maintain a stable price of $1, where its supply will adapt to changes in demand. All supply changes will apply equally to every wallet holding Ditto, and holders should always have the same % of the total supply',
     launchDate: 'Dec. 23',
     launchTime: '3PM SGT',
     saleAmount: '700,000 DITTO',

@@ -22,14 +22,15 @@ export interface IfoCardProps {
 }
 
 const StyledIfoCard = styled(Card)<{ ifoId: string }>`
-  background-image: ${({ ifoId }) => `url('/images/ifos/${ifoId}-bg.svg')`};
+  // background-image: ${({ ifoId }) => `url('/images/ifos/${ifoId}-bg.svg')`};
   background-repeat: no-repeat;
   background-size: contain;
-  padding-top: 112px;
-  margin-left: auto;
-  margin-right: auto;
+  padding-top: 26px;
+  // margin-left: auto;
+  // margin-right: auto;
   max-width: 437px;
   width: 100%;
+  background: linear-gradient(134deg, #093438 0%, #072C30 100%, #18D6AD 100%);
 `
 
 const getStatus = (currentBlock: number, startBlock: number, endBlock: number): IfoStatus | null => {

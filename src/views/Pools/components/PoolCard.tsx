@@ -117,7 +117,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
         </CardTitle>
         <div style={{ marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
           <div style={{ flex: 1 }}>
-            <Image src={`/images/tokens/${image || tokenName}.png`} width={64} height={64} alt={tokenName} />
+            <Image src={`/images/tokens/${image || tokenName}.png`} width={57} height={57} alt={tokenName} />
           </div>
           {account && harvest && !isOldSyrup && (
             <HarvestButton
@@ -145,19 +145,21 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
         ) : (
           <OldSyrupTitle hasBalance={accountHasStakedBalance} />
         )}
-        <Label isFinished={isFinished && sousId !== 0} text={TranslateString(330, `${tokenName} earned`)} />
+        <OccupyBox />
+        <Label isFinished={isFinished && sousId !== 0} text={TranslateString(330, `${tokenName}-EARNED`)} />
         <StyledCardActions>
           {!account && <UnlockButton />}
           {account &&
             (needsApproval && !isOldSyrup ? (
               <div style={{ flex: 1 }}>
-                <Button disabled={isFinished || requestedApproval} onClick={handleApprove} fullWidth>
+                <Button variant="secondary" disabled={isFinished || requestedApproval} onClick={handleApprove} fullWidth>
                   {`Approve ${stakingTokenName}`}
                 </Button>
               </div>
             ) : (
               <>
                 <Button
+                  variant="secondary"
                   disabled={stakedBalance.eq(new BigNumber(0)) || pendingTx}
                   onClick={
                     isOldSyrup
@@ -181,7 +183,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
             ))}
         </StyledCardActions>
         <StyledDetails>
-          <div style={{ flex: 1 }}>{TranslateString(736, 'APR')}:</div>
+          <div style={{ flex: 1, color: '#366061' }}>{TranslateString(736, 'APR')}:</div>
           {isFinished || isOldSyrup || !apy || apy?.isNaN() || !apy?.isFinite() ? (
             '-'
           ) : (
@@ -189,10 +191,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
           )}
         </StyledDetails>
         <StyledDetails>
-          <div style={{ flex: 1 }}>
-            <span role="img" aria-label={stakingTokenName}>
-              🥞{' '}
-            </span>
+          <div style={{ flex: 1, color: '#366061' }}>
             {TranslateString(384, 'Your Stake')}:
           </div>
           <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(stakedBalance)} />
@@ -244,6 +243,9 @@ const StyledActionSpacer = styled.div`
 const StyledDetails = styled.div`
   display: flex;
   font-size: 14px;
+`
+const OccupyBox = styled.div`
+  height: 30px;
 `
 
 export default PoolCard

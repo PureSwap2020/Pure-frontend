@@ -19,6 +19,34 @@ import PoolCard from './components/PoolCard'
 import PoolTabButtons from './components/PoolTabButtons'
 import Divider from './components/Divider'
 
+// const Hero = styled.div`
+//   align-items: left;
+//   background-image: url('/images/home_header_bg.png')
+//   // background-image: url('/images/pan-bg-mobile.svg');
+//   background-repeat: no-repeat;
+//   background-position: top center;
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   margin: auto;
+//   padding: 100px 0 134px 0;
+//   // margin-bottom: 32px;
+//   // padding-top: 116px;
+//   // text-align: center;
+
+//   ${({ theme }) => theme.mediaQueries.lg} {
+//     // background-image: url('/images/pan-bg2.svg'), url('/images/pan-bg.svg');
+//     // background-position: left center, right center;
+//     // height: 165px;
+//     // padding-top: 0;
+//   }
+// `
+const CardImage = styled.img`
+  margin-bottom: 16px;
+  position: absolute;
+  right: 0;
+`
+
 const Farm: React.FC = () => {
   const { path } = useRouteMatch()
   const TranslateString = useI18n()
@@ -78,21 +106,35 @@ const Farm: React.FC = () => {
 
   return (
     <Page>
+      {/* <Hero>
+        <div>
+          <Heading as="h1" size="xxl" mb="16px">
+            {TranslateString(738, 'Syrup Pool')}
+          </Heading>
+          <ul>
+            <li>{TranslateString(580, 'Stake PURE to earn new tokens.')}</li>
+            <li>{TranslateString(486, 'You can unstake at any time.')}</li>
+            <li>{TranslateString(406, 'Rewards are calculated per block.')}</li>
+          </ul>
+        </div>
+        <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} />
+        <PoolTabButtons stackedOnly={stackedOnly} setStackedOnly={setStackedOnly} />
+      </Hero> */}
       <Hero>
         <div>
           <Heading as="h1" size="xxl" mb="16px">
             {TranslateString(738, 'Syrup Pool')}
           </Heading>
           <ul>
-            <li>{TranslateString(580, 'Stake CAKE to earn new tokens.')}</li>
+            <li>{TranslateString(580, 'Stake PURE to earn new tokens.')}</li>
             <li>{TranslateString(486, 'You can unstake at any time.')}</li>
             <li>{TranslateString(406, 'Rewards are calculated per block.')}</li>
           </ul>
         </div>
-        <img src="/images/syrup.png" alt="SYRUP POOL icon" width={410} height={191} />
+        <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} />
       </Hero>
-      <PoolTabButtons stackedOnly={stackedOnly} setStackedOnly={setStackedOnly} />
-      <Divider />
+      {/* <PoolTabButtons stackedOnly={stackedOnly} setStackedOnly={setStackedOnly} /> */}
+      {/* <Divider /> */}
       <FlexLayout>
         <Route exact path={`${path}`}>
           <>
@@ -121,7 +163,7 @@ const Hero = styled.div`
   margin-left: auto;
   margin-right: auto;
   max-width: 250px;
-  padding: 48px 0;
+  padding: 24px 0;
   ul {
     margin: 0;
     padding: 0;

@@ -5,13 +5,13 @@ interface IfoCardWrapperProps {
 }
 
 const IfoCardWrapper = styled.div<IfoCardWrapperProps>`
-  border-top: 2px solid ${({ theme }) => theme.colors.textSubtle};
+  // border-top: 2px solid ${({ theme }) => theme.colors.textSubtle};
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 32px;
   padding-bottom: 40px;
-  padding-top: 40px;
-
+  display: inline-block;
+  flex: 1;
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: ${({ isSingle }) => `repeat(${isSingle ? 1 : 2}, 1fr)`};
   }

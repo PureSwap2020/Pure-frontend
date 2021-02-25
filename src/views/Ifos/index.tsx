@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, useRouteMatch } from 'react-router-dom'
 import Container from 'components/layout/Container'
-import IfoTabButtons from './components/IfoTabButtons'
+// import IfoTabButtons from './components/IfoTabButtons'
 import Hero from './components/Hero'
 import CurrentIfo from './CurrentIfo'
 import PastIfo from './PastIfo'
@@ -13,7 +13,6 @@ const Ifos = () => {
     <>
       <Hero />
       <Container>
-        <IfoTabButtons />
         <Route exact path={`${path}`}>
           <CurrentIfo />
         </Route>

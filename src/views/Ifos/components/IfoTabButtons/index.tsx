@@ -5,9 +5,10 @@ import { ButtonMenu, ButtonMenuItem } from '@pancakeswap-libs/uikit'
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   margin-bottom: 39px;
+  margin-top: 20px;
 `
 
 const IfoTabButtons = () => {

@@ -49,7 +49,7 @@ const ApproveCakePage: React.FC<ApproveCakePageProps> = ({ goToChange, onDismiss
         <Text>
           {profile.isActive ? TranslateString(999, 'Cost to update:') : TranslateString(999, 'Cost to reactivate:')}
         </Text>
-        <Text>{TranslateString(999, `${getFullDisplayBalance(cost)} CAKE`)}</Text>
+        <Text>{TranslateString(999, `${getFullDisplayBalance(cost)} PURE`)}</Text>
       </Flex>
       <Button
         disabled={isApproving}

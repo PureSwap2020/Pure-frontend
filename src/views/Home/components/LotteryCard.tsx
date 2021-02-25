@@ -71,7 +71,7 @@ const FarmedStakingCard = () => {
     if (!allowance.toNumber()) {
       return (
         <Button fullWidth disabled={requestedApproval} onClick={handleApprove}>
-          {TranslateString(494, 'Approve CAKE')}
+          {TranslateString(494, 'Approve PURE')}
         </Button>
       )
     }
@@ -82,7 +82,7 @@ const FarmedStakingCard = () => {
     )
   }
 
-  const [onPresentBuy] = useModal(<BuyModal max={cakeBalance} tokenName="CAKE" />)
+  const [onPresentBuy] = useModal(<BuyModal max={cakeBalance} tokenName="PURE" />)
 
   return (
     <StyledLotteryCard>
@@ -92,7 +92,7 @@ const FarmedStakingCard = () => {
         </Heading>
         <CardImage src="/images/ticket.svg" alt="cake logo" width={64} height={64} />
         <Block>
-          <Label>{TranslateString(552, 'CAKE to Collect')}:</Label>
+          <Label>{TranslateString(552, 'PURE to Collect')}:</Label>
           <CakeWinnings />
         </Block>
         <Block>

@@ -76,7 +76,7 @@ const Mint: React.FC = () => {
             {TranslateString(794, 'Choose wisely: you can only ever make one starter collectible!')}
           </Text>
           <Text as="p" mb="24px" color="textSubtle">
-            {TranslateString(999, `Cost: ${MINT_COST} CAKE`, { num: MINT_COST })}
+            {TranslateString(999, `Cost: ${MINT_COST} PURE`, { num: MINT_COST })}
           </Text>
           {nfts.map((nft) => {
             const handleChange = (value: string) => setBunnyId(parseInt(value, 10))
@@ -97,7 +97,7 @@ const Mint: React.FC = () => {
           })}
           {!hasMinimumCakeRequired && (
             <Text color="failure" mb="16px">
-              {TranslateString(1098, `A minimum of ${MINT_COST} CAKE is required`)}
+              {TranslateString(1098, `A minimum of ${MINT_COST} PURE is required`)}
             </Text>
           )}
           <ApproveConfirmButtons

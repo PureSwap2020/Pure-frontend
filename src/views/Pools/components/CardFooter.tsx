@@ -24,7 +24,7 @@ interface Props {
 }
 
 const StyledFooter = styled.div<{ isFinished: boolean }>`
-  border-top: 1px solid ${({ theme }) => (theme.isDark ? '#524B63' : '#E9EAEB')};
+  // border-top: 1px solid ${({ theme }) => (theme.isDark ? '#524B63' : '#E9EAEB')};
   color: ${({ isFinished, theme }) => theme.colors[isFinished ? 'textDisabled2' : 'primary2']};
   padding: 24px;
 `
@@ -33,11 +33,11 @@ const StyledDetailsButton = styled.button`
   align-items: center;
   background-color: transparent;
   border: 0;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.textDisabled};
   cursor: pointer;
   display: inline-flex;
   font-size: 16px;
-  font-weight: 600;
+  // font-weight: 600;
   height: 32px;
   justify-content: center;
   outline: 0;
@@ -102,10 +102,7 @@ const CardFooter: React.FC<Props> = ({
           <Row style={{ marginBottom: '4px' }}>
             <FlexFull>
               <Label>
-                <span role="img" aria-label="syrup">
-                  🥞{' '}
-                </span>
-                {TranslateString(408, 'Total')}
+                <span style={{ color: '#366061' }}>{TranslateString(408, 'Total')}</span>
               </Label>
             </FlexFull>
             <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)} />
@@ -127,7 +124,7 @@ const CardFooter: React.FC<Props> = ({
             </Row>
           )}
           <TokenLink href={projectLink} target="_blank">
-            {TranslateString(412, 'View project site')}
+            <p style={{textAlign: 'center', color: '#366061', marginTop: '10px'}}>{TranslateString(412, 'View project site')}</p>
           </TokenLink>
         </Details>
       )}

@@ -28,7 +28,7 @@ const Value = styled.div`
 `
 
 const Footer = styled.div`
-  border-top: 1px solid ${({ theme }) => (theme.isDark ? '#524B63' : '#E9EAEB')};
+  // border-top: 1px solid ${({ theme }) => (theme.isDark ? '#524B63' : '#E9EAEB')};
   padding: 24px;
 `
 const Coming: React.FC = () => {
@@ -67,7 +67,7 @@ const Coming: React.FC = () => {
             </span>
             {TranslateString(384, 'Your Stake')}:
           </div>
-          <Value>??? CAKE</Value>
+          <Value>??? PURE</Value>
         </DetailPlaceholder>
       </div>
       <Footer>

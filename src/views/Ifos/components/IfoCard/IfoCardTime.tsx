@@ -24,7 +24,7 @@ const Details = styled.div`
 const Countdown = styled.div`
   color: ${({ theme }) => theme.colors.secondary};
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
   text-align: center;
 `
 
@@ -41,7 +41,7 @@ const IfoCardTime: React.FC<IfoCardTimeProps> = ({ isLoading, status, secondsUnt
   if (countdownToUse <= 0) {
     return (
       <Details>
-        <Text bold>{TranslateString(388, 'Finished!')}</Text>
+        <Text color="#366061">{TranslateString(388, 'Finished!')}</Text>
       </Details>
     )
   }

@@ -77,16 +77,16 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
         availableSymbol="CAKE"
       />
       <div>
-        <Tips>{TranslateString(999, `1 Ticket = ${LOTTERY_TICKET_PRICE} CAKE`, { num: LOTTERY_TICKET_PRICE })}</Tips>
+        <Tips>{TranslateString(999, `1 Ticket = ${LOTTERY_TICKET_PRICE} PURE`, { num: LOTTERY_TICKET_PRICE })}</Tips>
       </div>
       <div>
         <Announce>
           {TranslateString(
             478,
-            'Ticket purchases are final. Your CAKE cannot be returned to you after buying tickets.',
+            'Ticket purchases are final. Your PURE cannot be returned to you after buying tickets.',
           )}
         </Announce>
-        <Final>{TranslateString(460, `You will spend: ${cakeCosts(val)} CAKE`)}</Final>
+        <Final>{TranslateString(460, `You will spend: ${cakeCosts(val)} PURE`)}</Final>
       </div>
       <ModalActions>
         <Button fullWidth variant="secondary" onClick={onDismiss}>

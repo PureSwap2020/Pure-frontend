@@ -24,10 +24,10 @@ const Divider = styled.div`
 const ToggleButton = styled.button`
   background: transparent;
   border: none;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.textDisabled};
   cursor: pointer;
   display: block;
-  font-weight: 600;
+  // font-weight: 600;
   outline: 0;
   padding: 24px 16px;
   width: 100%;
@@ -35,6 +35,7 @@ const ToggleButton = styled.button`
 
 const Description = styled(Text)<{ isOpen: boolean }>`
   color: ${({ theme }) => theme.colors.textSubtle};
+  font-size: 14px;
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
 `
 
@@ -46,7 +47,7 @@ const IfoCardDescription: React.FC<IfoCardDescriptionProps> = ({ defaultIsOpen =
 
   return (
     <StyledIfoCardDescription>
-      <Divider />
+      {/* <Divider /> */}
       <ToggleButton onClick={handleClick}>
         {isOpen ? TranslateString(1066, 'Hide') : TranslateString(1064, 'Show')}
       </ToggleButton>

@@ -27,6 +27,7 @@ const Item = styled.div`
 
 const Display = styled(Text)`
   flex: 1;
+  color: #366061;
 `
 
 const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({
@@ -46,14 +47,14 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({
       <StyledIfoCardDetails>
         <Item>
           <Display>{TranslateString(582, 'Launch Time')}</Display>
-          <Text>
+          <Text color="#ACE0CD">
             {launchDate},
             <Link
               href="https://www.timeanddate.com/worldclock/singapore/singapore"
               target="blank"
               rel="noopener noreferrer"
               ml="4px"
-              style={{ display: 'inline' }}
+              style={{ display: 'inline', color:"#ACE0CD" }}
             >
               {launchTime}
             </Link>
@@ -61,22 +62,22 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({
         </Item>
         <Item>
           <Display>{TranslateString(584, 'For Sale')}</Display>
-          <Text>{saleAmount}</Text>
+          <Text color="#ACE0CD">{saleAmount}</Text>
         </Item>
         <Item>
           <Display>{TranslateString(999, 'To raise (USD)')}</Display>
-          <Text>{raiseAmount}</Text>
+          <Text color="#ACE0CD">{raiseAmount}</Text>
         </Item>
         <Item>
-          <Display>{TranslateString(586, 'CAKE to burn (USD)')}</Display>
-          <Text>{cakeToBurn}</Text>
+          <Display>{TranslateString(586, 'PURE to burn (USD)')}</Display>
+          <Text color="#ACE0CD">{cakeToBurn}</Text>
         </Item>
         <Item>
           <Display>{TranslateString(999, 'Total raised (% of target)')}</Display>
-          <Text>{`${totalAmount.div(raisingAmount).times(100).toFixed(2)}%`}</Text>
+          <Text color="#ACE0CD">{`${totalAmount.div(raisingAmount).times(100).toFixed(2)}%`}</Text>
         </Item>
       </StyledIfoCardDetails>
-      <LinkExternal href={projectSiteUrl} style={{ margin: 'auto' }}>
+      <LinkExternal href={projectSiteUrl} style={{ margin: 'auto', color: "#ACE0CD", fontWeight: 'normal' }}>
         {TranslateString(412, 'View project site')}
       </LinkExternal>
     </>
