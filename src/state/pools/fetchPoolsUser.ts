@@ -58,7 +58,7 @@ export const fetchUserStakeBalances = async (account) => {
   const calls = nonMasterPools.map((p) => ({
     address: getAddress(p.contractAddress),
     name: 'userInfo',
-    params: [account],
+    params: [p.sousId, account],
   }))
   const userInfo = await multicall(sousChefABI, calls)
   const stakedBalances = nonMasterPools.reduce(
@@ -78,8 +78,8 @@ export const fetchUserStakeBalances = async (account) => {
 export const fetchUserPendingRewards = async (account) => {
   const calls = nonMasterPools.map((p) => ({
     address: getAddress(p.contractAddress),
-    name: 'pendingReward',
-    params: [account],
+    name: 'pendingPureToken',
+    params: [p.sousId, account],
   }))
   const res = await multicall(sousChefABI, calls)
   const pendingRewards = nonMasterPools.reduce(
@@ -91,7 +91,6 @@ export const fetchUserPendingRewards = async (account) => {
   )
 
   // Cake / Cake pool
-  const pendingReward = await masterChefContract.methods.pendingCake('0', account).call()
-
+  const pendingReward = await masterChefContract.methods.pendingPureToken('0', account).call()
   return { ...pendingRewards, 0: new BigNumber(pendingReward).toJSON() }
 }

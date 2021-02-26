@@ -120,7 +120,7 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
       </Description>
       <Flex justifyContent="center">
         <LinkExternal href={addLiquidityUrl}>
-          {TranslateString(999, 'Get')} {lpLabel}
+          <span style={{color: '#366061'}}>{TranslateString(999, 'Get')} {lpLabel}</span>
         </LinkExternal>
       </Flex>
     </Modal>

@@ -5,12 +5,25 @@ import useI18n from 'hooks/useI18n'
 import { useGetStats } from 'hooks/api'
 
 const StyledTotalValueLockedCard = styled(Card)`
-  background: linear-gradient(134deg, #052528 0%, #093337 100%, #18D6AD 100%);
-  display: flex;
-  flex: 1;
-  position: absolute;
-  right: 45px;
+  background: linear-gradient(134deg, #052528 0%, #093337 100%, #18d6ad 100%);
+  // display: flex;
+  // flex: 1;
+  // position: absolute;
+  // right: 0;
   height: 265px;
+  position: relative;
+  right: 38px;
+
+  ${({ theme }) => theme.mediaQueries.xs} {
+    right: 0;
+  }
+  ${({ theme }) => theme.mediaQueries.sm} {
+    right: 0;
+  }
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    right: 38px;
+  }
 `
 
 const TotalValueLockedCard = () => {
@@ -21,12 +34,15 @@ const TotalValueLockedCard = () => {
   return (
     <StyledTotalValueLockedCard>
       <CardBody>
-        <Heading size="lg" mb="24px" style={{marginTop: '60px', fontWeight: 'normal'}}>
+        <Heading size="lg" mb="24px" style={{ marginTop: '28px', fontWeight: 'normal' }}>
           {TranslateString(762, 'Total Value Locked (TVL)')}
         </Heading>
         {data ? (
           <>
-            <Heading size="xl" style={{marginTop: '36px', marginBottom: '10px', fontWeight: 'normal'}}>{`$${tvl}`}</Heading>
+            <Heading
+              size="xl"
+              style={{ marginTop: '36px', marginBottom: '10px', fontWeight: 'normal' }}
+            >{`$${tvl}`}</Heading>
             <Text color="textSubtle">{TranslateString(764, 'Across all LPs and Syrup Pools')}</Text>
           </>
         ) : (

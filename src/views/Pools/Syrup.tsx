@@ -122,16 +122,15 @@ const Farm: React.FC = () => {
       </Hero> */}
       <Hero>
         <div>
-          <Heading as="h1" size="xxl" mb="16px">
+          <Heading as="h1" size="xl" mb="16px">
             {TranslateString(738, 'Syrup Pool')}
           </Heading>
           <ul>
-            <li>{TranslateString(580, 'Stake PURE to earn new tokens.')}</li>
-            <li>{TranslateString(486, 'You can unstake at any time.')}</li>
-            <li>{TranslateString(406, 'Rewards are calculated per block.')}</li>
+            <li style={{ color: '#85898c' }}>{TranslateString(580, 'Stake PURE to earn new tokens.')}{TranslateString(486, 'You can unstake at any time.')}</li>
+            <li style={{ color: '#85898c' }}>{TranslateString(406, 'Rewards are calculated per block.')}</li>
           </ul>
         </div>
-        <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} />
+        {/* <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} /> */}
       </Hero>
       {/* <PoolTabButtons stackedOnly={stackedOnly} setStackedOnly={setStackedOnly} /> */}
       {/* <Divider /> */}
@@ -141,7 +140,7 @@ const Farm: React.FC = () => {
             {stackedOnly
               ? orderBy(stackedOnlyPools, ['sortOrder']).map((pool) => <PoolCard key={pool.sousId} pool={pool} />)
               : orderBy(openPools, ['sortOrder']).map((pool) => <PoolCard key={pool.sousId} pool={pool} />)}
-            <Coming />
+            {/* <Coming /> */}
           </>
         </Route>
         <Route path={`${path}/history`}>

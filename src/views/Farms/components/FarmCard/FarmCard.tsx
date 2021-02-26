@@ -61,7 +61,7 @@ const StyledCardAccent = styled.div`
 const FCard = styled.div`
   align-self: baseline;
   // background: ${(props) => props.theme.card.background};
-  background: linear-gradient(134deg, #093438 0%, #072C30 100%, #18D6AD 100%);
+  background: linear-gradient(134deg, #093438 0%, #072c30 100%, #18d6ad 100%);
   border-radius: 8px;
   box-shadow: 0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05);
   display: flex;
@@ -96,7 +96,6 @@ interface FarmCardProps {
 
 const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice, ethPrice, ethereum, account }) => {
   const TranslateString = useI18n()
-
   const [showExpandableSection, setShowExpandableSection] = useState(false)
 
   const isCommunityFarm = communityFarms.includes(farm.tokenSymbol)

@@ -124,7 +124,9 @@ const CardFooter: React.FC<Props> = ({
             </Row>
           )}
           <TokenLink href={projectLink} target="_blank">
-            <p style={{textAlign: 'center', color: '#366061', marginTop: '10px'}}>{TranslateString(412, 'View project site')}</p>
+            <p style={{ textAlign: 'center', color: '#366061', marginTop: '10px' }}>
+              {TranslateString(412, 'View project site')}
+            </p>
           </TokenLink>
         </Details>
       )}

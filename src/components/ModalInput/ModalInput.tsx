@@ -27,7 +27,7 @@ const StyledTokenInput = styled.div<InputProps>`
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.input};
   border-radius: 16px;
-  box-shadow: ${getBoxShadow};
+  // box-shadow: ${getBoxShadow};
   color: ${({ theme }) => theme.colors.text};
   padding: 8px 16px 8px 0;
   width: 100%;
@@ -74,8 +74,8 @@ const ModalInput: React.FC<ModalInputProps> = ({
     <div style={{ position: 'relative' }}>
       <StyledTokenInput isWarning={isBalanceZero}>
         <Flex justifyContent="space-between" pl="16px">
-          <Text fontSize="14px">{inputTitle}</Text>
-          <Text fontSize="14px">
+          <Text fontSize="14px" color="#ACE0CD">{inputTitle}</Text>
+          <Text fontSize="14px" color="#ACE0CD">
             {TranslateString(1120, 'Balance')}: {displayBalance.toLocaleString()}
           </Text>
         </Flex>
@@ -84,13 +84,13 @@ const ModalInput: React.FC<ModalInputProps> = ({
           <Button size="sm" onClick={onSelectMax} mr="8px">
             {TranslateString(452, 'Max')}
           </Button>
-          <Text fontSize="16px">{symbol}</Text>
+          <Text fontSize="14px" color="#ACE0CD">{symbol}</Text>
         </Flex>
       </StyledTokenInput>
       {isBalanceZero && (
-        <StyledErrorMessage fontSize="14px" color="failure">
+        <StyledErrorMessage fontSize="14px" color="#ACE0CD">
           No tokens to stake:{' '}
-          <Link fontSize="14px" bold={false} href={addLiquidityUrl} external color="failure">
+          <Link fontSize="14px" bold={false} href={addLiquidityUrl} external color="#ACE0CD">
             {TranslateString(999, 'get')} {symbol}
           </Link>
         </StyledErrorMessage>

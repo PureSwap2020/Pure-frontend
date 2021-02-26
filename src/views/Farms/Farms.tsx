@@ -28,7 +28,7 @@ const Hero = styled.div`
   justify-content: center;
   flex-direction: column;
   margin: auto;
-  padding: 100px 0 134px 0;
+  padding: 24px 0 0 0;
   // margin-bottom: 32px;
   // padding-top: 116px;
   // text-align: center;
@@ -126,9 +126,9 @@ const Farms: React.FC = () => {
     <Page>
       <Hero>
         <Heading as="h1" size="xl" mb="24px" color="secondary">
-        {TranslateString(696, 'Stake LP tokens to earn PURE')}
+          {TranslateString(696, 'Stake LP tokens to earn PURE')}
         </Heading>
-        <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} />
+        {/* <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} /> */}
         {/* <Text style={{ color: '#FFFFFF' }}>{TranslateString(578, 'The #1 AMM and yield farm on Binance Smart Chain.')}</Text> */}
         <FarmTabButtons stackedOnly={stackedOnly} setStackedOnly={setStackedOnly} />
       </Hero>
@@ -136,7 +136,7 @@ const Farms: React.FC = () => {
       {/* <Heading as="h1" size="lg" color="secondary" mb="50px" style={{ textAlign: 'center' }}>
         {TranslateString(696, 'Stake LP tokens to earn CAKE')}
       </Heading> */}
-      
+
       <div>
         {/* <Divider /> */}
         <FlexLayout>

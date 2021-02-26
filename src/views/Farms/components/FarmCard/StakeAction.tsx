@@ -19,6 +19,7 @@ interface FarmCardActionsProps {
 
 const IconButtonWrapper = styled.div`
   display: flex;
+  margin-top: 8px;
   svg {
     width: 20px;
   }
@@ -47,7 +48,7 @@ const StakeAction: React.FC<FarmCardActionsProps> = ({
 
   const renderStakingButtons = () => {
     return rawStakedBalance === 0 ? (
-      <Button onClick={onPresentDeposit}>{TranslateString(999, 'Stake LP')}</Button>
+      <Button mt="8px" variant="secondary" onClick={onPresentDeposit}>{TranslateString(999, 'Stake LP')}</Button>
     ) : (
       <IconButtonWrapper>
         <IconButton variant="tertiary" onClick={onPresentWithdraw} mr="6px">

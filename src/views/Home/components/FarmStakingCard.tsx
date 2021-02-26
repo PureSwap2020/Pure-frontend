@@ -10,16 +10,31 @@ import CakeHarvestBalance from './CakeHarvestBalance'
 import CakeWalletBalance from './CakeWalletBalance'
 
 const StyledFarmStakingCard = styled(Card)`
-  background: linear-gradient(
-    134deg
-    ,#093438 0%,#072C30 100%,#18D6AD 100%);
+  background: linear-gradient(134deg, #093438 0%, #072c30 100%, #18d6ad 100%);
   height: 355px;
-  width: 414px !important;
+  width: 40% !important;
   text-align: center;
-  position: absolute;
+  position: relative;
   z-index: 99;
-  left: 308px;
   margin-top: -50px;
+
+  ${({ theme }) => theme.mediaQueries.xs} {
+    width: 100% !important;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    width: 100% !important;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: 40% !important;
+    margin-top: -50px;
+    margin-bottom: 0;
+  }
 `
 
 const Block = styled.div`
@@ -62,7 +77,7 @@ const FarmedStakingCard = () => {
   return (
     <StyledFarmStakingCard>
       <CardBody>
-        <Heading size="xl" mb="24px" style={{fontWeight: 400}}>
+        <Heading size="xl" mb="24px" style={{ fontWeight: 400 }}>
           {TranslateString(542, 'Farms & Staking')}
         </Heading>
         {/* <CardImage src="/images/cake.svg" alt="cake logo" width={64} height={64} /> */}
@@ -87,8 +102,7 @@ const FarmedStakingCard = () => {
                 : TranslateString(532, `Harvest all (${balancesWithValue.length})`)}
             </Button>
           ) : (
-            <UnlockButton 
-            variant="secondary"/>
+            <UnlockButton variant="secondary" />
           )}
         </Actions>
       </CardBody>

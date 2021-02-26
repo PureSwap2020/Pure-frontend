@@ -14,7 +14,7 @@ const LaunchIfoCallout = styled(BaseLayout)`
   margin: 0 auto;
   flex: 1;
   & > div {
-    background: linear-gradient(134deg, #093438 0%, #072C30 100%, #18D6AD 100%);
+    background: linear-gradient(134deg, #093438 0%, #072c30 100%, #18d6ad 100%);
     border-radius: 8px;
     padding: 24px;
   }
@@ -29,6 +29,19 @@ const List = styled.ul`
     margin-bottom: 8px;
   }
 `
+const IfoWrapper = styled.div`
+  display: flex;
+  ${({ theme }) => theme.mediaQueries.xs} {
+    display: block;
+  }
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    display: flex;
+  }
+  > div {
+    margin: 0 20px;
+  }
+`
 
 /**
  * Note: currently there should be only 1 active IFO at a time
@@ -39,37 +52,38 @@ const Ifo = () => {
   const TranslateString = useI18n()
 
   return (
-    <div style={{display: 'flex'}}>
+    <IfoWrapper>
       <IfoCards isSingle>
         <IfoCard ifo={activeIfo} />
       </IfoCards>
       <LaunchIfoCallout>
         <div>
-          <Title as="h2">{TranslateString(592, 'How to take part')}</Title>
-          <Heading mb="16px">{TranslateString(594, 'Before Sale')}:</Heading>
+          <Title as="h2" style={{color: "#ACE0CD", textAlign: "center", fontWeight: 500}}>{TranslateString(592, 'How to take part')}</Title>
+          <Heading mb="16px" style={{color: "#ACE0CD", fontWeight: 400}}>{TranslateString(594, 'Before Sale')}:</Heading>
           <List>
-            <li>{TranslateString(596, 'Buy PURE and BNB tokens')}</li>
-            <li>{TranslateString(598, 'Get PURE-BNB LP tokens by adding PURE and BNB liquidity')}</li>
+            <li style={{color: "#366061"}}>{TranslateString(596, 'Buy PURE and BNB tokens')}</li>
+            <li style={{color: "#366061"}}>{TranslateString(598, 'Get PURE-BNB LP tokens by adding PURE and BNB liquidity')}</li>
           </List>
-          <Flex mb="16px">
-            <LinkExternal href="https://exchange.pureswap.finance/#/swap" mr="16px">
+          <Flex mb="16px" style={{justifyContent: "center"}}>
+            <LinkExternal style={{color: "#ACE0CD"}} href="https://exchange.pureswap.finance/#/swap" mr="16px">
               {TranslateString(1060, 'Buy PURE')}
             </LinkExternal>
-            <LinkExternal href="https://exchange.pureswap.finance/#/add/ETH/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82">
+            <LinkExternal style={{color: "#ACE0CD"}} href="https://exchange.pureswap.finance/#/add/ETH/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82">
               {TranslateString(1062, 'Get LP tokens')}
             </LinkExternal>
           </Flex>
-          <Heading mb="16px">{TranslateString(600, 'During Sale')}:</Heading>
+          <Heading mb="16px" style={{color: "#ACE0CD", fontWeight: 400}}>{TranslateString(600, 'During Sale')}:</Heading>
           <List>
-            <li>{TranslateString(602, 'While the sale is live, commit your PURE-LP tokens to buy the IFO tokens')}</li>
+            <li style={{color: "#366061"}}>{TranslateString(602, 'While the sale is live, commit your PURE-LP tokens to buy the IFO tokens')}</li>
           </List>
-          <Heading mb="16px">{TranslateString(604, 'After Sale')}:</Heading>
+          <Heading mb="16px" style={{color: "#ACE0CD", fontWeight: 400}}>{TranslateString(604, 'After Sale')}:</Heading>
           <List>
-            <li>{TranslateString(606, 'Claim the tokens you bought, along with any unspent funds.')}</li>
-            <li>{TranslateString(608, 'Done!')}</li>
+            <li style={{color: "#366061"}}>{TranslateString(606, 'Claim the tokens you bought, along with any unspent funds.')}</li>
+            <li style={{color: "#366061"}}>{TranslateString(608, 'Done!')}</li>
           </List>
           <Text as="div" pt="16px">
             <Button
+              fullWidth
               as="a"
               variant="secondary"
               href="https://docs.pancakeswap.finance/core-products/ifo-initial-farm-offering"
@@ -81,14 +95,15 @@ const Ifo = () => {
         <div>
           {/* <Image src="/images/ifo-bunny.svg" alt="ifo bunny" width={436} height={406} responsive /> */}
           <div>
-            <Title as="h2">{TranslateString(512, 'Want to launch your own IFO?')}</Title>
-            <Text mb={3}>
+            <Title as="h2" style={{color: "#ACE0CD", textAlign: "center", fontWeight: 500}}>{TranslateString(512, 'Want to launch your own IFO?')}</Title>
+            <Text mb={3} style={{color: "#366061"}}>
               {TranslateString(
                 514,
                 'Launch your project with PureSwap, HECO most-used AMM project and liquidity provider, to bring your token directly to the most active and rapidly growing community on HECO.',
               )}
             </Text>
             <Button
+              fullWidth
               variant="secondary"
               as="a"
               href="https://docs.google.com/forms/d/e/1FAIpQLScGdT5rrVMr4WOWr08pvcroSeuIOtEJf1sVdQGVdcAOqryigQ/viewform"
@@ -99,7 +114,7 @@ const Ifo = () => {
           </div>
         </div>
       </LaunchIfoCallout>
-    </div>
+    </IfoWrapper>
   )
 }
 

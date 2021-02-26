@@ -31,6 +31,9 @@ export enum QuoteToken {
   'UST' = 'UST',
   'ETH' = 'ETH',
   'COMP' = 'COMP',
+  'usdc' = 'usdc',
+  'dai' = 'dai',
+  'snx' = 'snx'
 }
 
 export enum PoolCategory {
@@ -40,8 +43,8 @@ export enum PoolCategory {
 }
 
 export interface Address {
-  97?: string
-  56: string
+  256?: string
+  128: string
 }
 
 export interface FarmConfig {

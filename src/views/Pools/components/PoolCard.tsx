@@ -152,7 +152,12 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
           {account &&
             (needsApproval && !isOldSyrup ? (
               <div style={{ flex: 1 }}>
-                <Button variant="secondary" disabled={isFinished || requestedApproval} onClick={handleApprove} fullWidth>
+                <Button
+                  variant="secondary"
+                  disabled={isFinished || requestedApproval}
+                  onClick={handleApprove}
+                  fullWidth
+                >
                   {`Approve ${stakingTokenName}`}
                 </Button>
               </div>
@@ -191,9 +196,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
           )}
         </StyledDetails>
         <StyledDetails>
-          <div style={{ flex: 1, color: '#366061' }}>
-            {TranslateString(384, 'Your Stake')}:
-          </div>
+          <div style={{ flex: 1, color: '#366061' }}>{TranslateString(384, 'Your Stake')}:</div>
           <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(stakedBalance)} />
         </StyledDetails>
       </div>

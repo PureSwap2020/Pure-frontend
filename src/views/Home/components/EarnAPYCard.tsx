@@ -9,15 +9,24 @@ import { useFarms, usePriceBnbBusd } from 'state/hooks'
 import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
 
 const StyledFarmStakingCard = styled(Card)`
-  background: linear-gradient(134deg, #093337 0%, #052528 100%, #18D6AD 100%);
+  background: linear-gradient(134deg, #093337 0%, #052528 100%, #18d6ad 100%);
   margin-left: auto;
   margin-right: auto;
   width: 100%;
   height: 265px;
+  position: relative;
+  left: 38px;
+
+  ${({ theme }) => theme.mediaQueries.xs} {
+    left: 0;
+  }
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    left: 0;
+  }
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    margin: 0;
-    max-width: none;
+    left: 38px;
   }
 `
 const CardMidContent = styled(Heading).attrs({ size: 'xl' })`
@@ -42,6 +51,8 @@ const EarnAPYCard = () => {
   const calculateAPY = useCallback(
     (farmsToDisplay) => {
       const cakePriceVsBNB = new BigNumber(farmsLP.find((farm) => farm.pid === CAKE_POOL_PID)?.tokenPriceVsQuote || 0)
+
+      console.log(cakePriceVsBNB)
 
       farmsToDisplay.map((farm) => {
         if (!farm.tokenAmount || !farm.lpTotalInQuoteToken || !farm.lpTotalInQuoteToken) {
@@ -80,10 +91,10 @@ const EarnAPYCard = () => {
   return (
     <StyledFarmStakingCard>
       <CardBody>
-        <Heading size="lg" style={{marginTop: '60px', fontWeight: 'normal'}}>
+        <Heading size="lg" style={{ marginTop: '28px', fontWeight: 'normal' }}>
           Earn up to
         </Heading>
-        <CardMidContent color="#ACE0CD" style={{marginTop: '36px', marginBottom: '10px'}}>
+        <CardMidContent color="#ACE0CD" style={{ marginTop: '36px', marginBottom: '10px' }}>
           {getHighestAPY() ? (
             `${getHighestAPY()}% ${TranslateString(736, 'APR')}`
           ) : (
@@ -91,7 +102,7 @@ const EarnAPYCard = () => {
           )}
         </CardMidContent>
         <Flex justifyContent="space-between">
-          <Heading style={{fontSize: '14px', fontWeight: 'normal', color: '#366061'}} size="lg">
+          <Heading style={{ fontSize: '14px', fontWeight: 'normal', color: '#366061' }} size="lg">
             in Farms
           </Heading>
           <NavLink exact activeClassName="active" to="/farms" id="farm-apy-cta">

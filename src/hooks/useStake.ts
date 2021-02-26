@@ -30,17 +30,11 @@ export const useSousStake = (sousId, isUsingBnb = false) => {
 
   const handleStake = useCallback(
     async (amount: string) => {
-      if (sousId === 0) {
-        await stake(masterChefContract, 0, amount, account)
-      } else if (isUsingBnb) {
-        await sousStakeBnb(sousChefContract, amount, account)
-      } else {
-        await sousStake(sousChefContract, amount, account)
-      }
+      await sousStake(sousChefContract, amount, account, sousId)
       dispatch(updateUserStakedBalance(sousId, account))
       dispatch(updateUserBalance(sousId, account))
     },
-    [account, dispatch, isUsingBnb, masterChefContract, sousChefContract, sousId],
+    [account, dispatch, sousChefContract, sousId],
   )
 
   return { onStake: handleStake }

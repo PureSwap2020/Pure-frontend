@@ -14,19 +14,16 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
   const TranslateString = useI18n()
   const [pendingTx, setPendingTx] = useState(false)
   const { onReward } = useHarvest(pid)
-
   const rawEarningsBalance = getBalanceNumber(earnings)
   const displayBalance = rawEarningsBalance.toLocaleString()
-
+  console.log(pendingTx, rawEarningsBalance)
   return (
     <Flex mb="8px" justifyContent="space-between" alignItems="center">
-      <Heading style={{fontWeight: 'normal'}} color={rawEarningsBalance === 0 ? 'textDisabled' : 'text'}>{displayBalance}</Heading>
+      <Heading style={{ fontWeight: 'normal' }} color={rawEarningsBalance === 0 ? 'textDisabled' : 'text'}>
+        {displayBalance}
+      </Heading>
       <Button
-        style={{
-          borderColor: '#355F60',
-          color: '#355F60'
-        }}
-        variant="secondary" 
+        variant="secondary"
         size="sm"
         disabled={rawEarningsBalance === 0 || pendingTx}
         onClick={async () => {

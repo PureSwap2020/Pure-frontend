@@ -25,9 +25,9 @@ export const stake = async (masterChefContract, pid, amount, account) => {
     })
 }
 
-export const sousStake = async (sousChefContract, amount, account) => {
+export const sousStake = async (sousChefContract, amount, account, sousId) => {
   return sousChefContract.methods
-    .deposit(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
+    .deposit(sousId, new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
     .send({ from: account, gas: 200000 })
     .on('transactionHash', (tx) => {
       return tx.transactionHash
@@ -61,11 +61,11 @@ export const unstake = async (masterChefContract, pid, amount, account) => {
     })
 }
 
-export const sousUnstake = async (sousChefContract, amount, account) => {
+export const sousUnstake = async (sousChefContract, amount, account, sousId) => {
   // shit code: hard fix for old CTK and BLK
   if (sousChefContract.options.address === '0x3B9B74f48E89Ebd8b45a53444327013a2308A9BC') {
     return sousChefContract.methods
-      .emergencyWithdraw()
+      .emergencyWithdraw(sousId)
       .send({ from: account })
       .on('transactionHash', (tx) => {
         return tx.transactionHash
@@ -88,9 +88,9 @@ export const sousUnstake = async (sousChefContract, amount, account) => {
     })
 }
 
-export const sousEmegencyUnstake = async (sousChefContract, amount, account) => {
+export const sousEmegencyUnstake = async (sousChefContract, amount, account, sousId) => {
   return sousChefContract.methods
-    .emergencyWithdraw()
+    .emergencyWithdraw(sousId)
     .send({ from: account })
     .on('transactionHash', (tx) => {
       return tx.transactionHash
@@ -115,9 +115,10 @@ export const harvest = async (masterChefContract, pid, account) => {
     })
 }
 
-export const soushHarvest = async (sousChefContract, account) => {
+export const soushHarvest = async (sousChefContract, account, sousId) => {
+  console.log(account, sousId)
   return sousChefContract.methods
-    .deposit('0')
+    .deposit(sousId, '0')
     .send({ from: account, gas: 200000 })
     .on('transactionHash', (tx) => {
       return tx.transactionHash

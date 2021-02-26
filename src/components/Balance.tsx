@@ -38,7 +38,7 @@ Balance.defaultProps = {
   fontSize: '32px',
   isDisabled: false,
   color: 'text',
-  decimals: 3
+  decimals: 3,
 }
 
 export default Balance

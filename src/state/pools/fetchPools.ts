@@ -22,16 +22,18 @@ export const fetchPoolsBlockLimits = async () => {
     }
   })
 
+  // console.log(callsEndBlock)
+
   const starts = await multicall(sousChefABI, callsStartBlock)
-  const ends = await multicall(sousChefABI, callsEndBlock)
+  // const ends = await multicall(sousChefABI, callsEndBlock)
 
   return poolsWithEnd.map((cakePoolConfig, index) => {
     const startBlock = starts[index]
-    const endBlock = ends[index]
+    // const endBlock = ends[index]
     return {
       sousId: cakePoolConfig.sousId,
       startBlock: new BigNumber(startBlock).toJSON(),
-      endBlock: new BigNumber(endBlock).toJSON(),
+      endBlock: new BigNumber(2677834).toJSON(),
     }
   })
 }

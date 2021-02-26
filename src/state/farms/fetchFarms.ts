@@ -44,7 +44,6 @@ const fetchFarms = async () => {
           name: 'decimals',
         },
       ]
-
       const [
         tokenBalanceLP,
         quoteTokenBlanceLP,
@@ -57,18 +56,22 @@ const fetchFarms = async () => {
       // Ratio in % a LP tokens that are in staking, vs the total number in circulation
       const lpTokenRatio = new BigNumber(lpTokenBalanceMC).div(new BigNumber(lpTotalSupply))
 
+      // console.log(lpTokenRatio)
+
       // Total value in staking in quote token value
       const lpTotalInQuoteToken = new BigNumber(quoteTokenBlanceLP)
         .div(new BigNumber(10).pow(18))
         .times(new BigNumber(2))
         .times(lpTokenRatio)
 
+
       // Amount of token in the LP that are considered staking (i.e amount of token * lp ratio)
       const tokenAmount = new BigNumber(tokenBalanceLP).div(new BigNumber(10).pow(tokenDecimals)).times(lpTokenRatio)
+      
+
       const quoteTokenAmount = new BigNumber(quoteTokenBlanceLP)
         .div(new BigNumber(10).pow(quoteTokenDecimals))
         .times(lpTokenRatio)
-
       const [info, totalAllocPoint] = await multicall(masterchefABI, [
         {
           address: getMasterChefAddress(),

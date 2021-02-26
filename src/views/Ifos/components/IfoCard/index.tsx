@@ -28,9 +28,9 @@ const StyledIfoCard = styled(Card)<{ ifoId: string }>`
   padding-top: 26px;
   // margin-left: auto;
   // margin-right: auto;
-  max-width: 437px;
+  // max-width: 437px;
   width: 100%;
-  background: linear-gradient(134deg, #093438 0%, #072C30 100%, #18D6AD 100%);
+  background: linear-gradient(134deg, #093438 0%, #072c30 100%, #18d6ad 100%);
 `
 
 const getStatus = (currentBlock: number, startBlock: number, endBlock: number): IfoStatus | null => {

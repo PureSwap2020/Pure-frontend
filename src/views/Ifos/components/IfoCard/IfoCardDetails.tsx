@@ -54,7 +54,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({
               target="blank"
               rel="noopener noreferrer"
               ml="4px"
-              style={{ display: 'inline', color:"#ACE0CD" }}
+              style={{ display: 'inline', color: '#ACE0CD' }}
             >
               {launchTime}
             </Link>
@@ -77,7 +77,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({
           <Text color="#ACE0CD">{`${totalAmount.div(raisingAmount).times(100).toFixed(2)}%`}</Text>
         </Item>
       </StyledIfoCardDetails>
-      <LinkExternal href={projectSiteUrl} style={{ margin: 'auto', color: "#ACE0CD", fontWeight: 'normal' }}>
+      <LinkExternal href={projectSiteUrl} style={{ margin: 'auto', color: '#ACE0CD', fontWeight: 'normal' }}>
         {TranslateString(412, 'View project site')}
       </LinkExternal>
     </>

@@ -81,7 +81,7 @@ interface StyledButtonProps {
 
 const StyledButton = styled.button<StyledButtonProps>`
   align-items: center;
-  background: transparent;// ${(props) => (!props.disabled ? props.theme.card.background : `#ddd`)};
+  background: transparent; // ${(props) => (!props.disabled ? props.theme.card.background : `#ddd`)};
   border: 0;
   border-radius: 6px;
   color: ${(props) => (!props.disabled ? `#ACE0CD` : `#366061`)};

@@ -15,10 +15,11 @@ const useAllEarnings = () => {
     const fetchAllBalances = async () => {
       const calls = farmsConfig.map((farm) => ({
         address: getMasterChefAddress(),
-        name: 'pendingCake',
+        name: 'pendingPureToken',
         params: [farm.pid, account],
       }))
-
+      // console.log(masterChefABI)
+      // console.log(calls)
       const res = await multicall(masterChefABI, calls)
 
       setBalance(res)

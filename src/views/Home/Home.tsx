@@ -21,7 +21,7 @@ const Hero = styled.div`
   justify-content: center;
   flex-direction: column;
   margin: auto;
-  padding: 100px 0 134px 0;
+  padding: 24px 0 134px 0;
   // margin-bottom: 32px;
   // padding-top: 116px;
   // text-align: center;
@@ -35,25 +35,60 @@ const Hero = styled.div`
 `
 
 const Cards = styled(BaseLayout)`
-  // align-items: stretch;
-  // justify-content: stretch;
+  display: flex;
   margin-bottom: 32px;
-
   & > div {
-    // grid-column: span 6;
-    // width: 100%;
-    width: 270px;
+    width: 30%;
+  }
+  ${({ theme }) => theme.mediaQueries.xs} {
+    display: block;
+    & > div {
+      width: 100%;
+    }
   }
 
   ${({ theme }) => theme.mediaQueries.sm} {
+    display: block;
     & > div {
-      // grid-column: span 8;
+      width: 100%;
     }
   }
 
   ${({ theme }) => theme.mediaQueries.lg} {
+    display: flex;
     & > div {
-      // grid-column: span 6;
+      width: 30%;
+    }
+  }
+`
+const CardsB = styled(BaseLayout)`
+  display: flex;
+  margin-bottom: 32px;
+  margin-left: 38px;
+  & > div {
+    width: 50%;
+  }
+  ${({ theme }) => theme.mediaQueries.xs} {
+    display: block;
+    margin-left: 0;
+    & > div {
+      width: 100%;
+    }
+  }
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    display: block;
+    margin-left: 0;
+    & > div {
+      width: 100%;
+    }
+  }
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    display: flex;
+    margin-left: 38px;
+    & > div {
+      width: 50%;
     }
   }
 `
@@ -93,8 +128,10 @@ const Home: React.FC = () => {
         <Heading as="h1" size="xl" mb="24px" color="secondary">
           {TranslateString(576, 'PureSwap')}
         </Heading>
-        <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} />
-        <Text style={{ color: '#FFFFFF' }}>{TranslateString(578, 'The #1 AMM and yield farm on Binance Smart Chain.')}</Text>
+        {/* <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} /> */}
+        <Text style={{ color: '#85898c' }}>
+          {TranslateString(578, 'The #1 AMM and yield farm on Binance Smart Chain.')}
+        </Text>
       </Hero>
       <div>
         <Cards>
@@ -103,15 +140,11 @@ const Home: React.FC = () => {
           <TotalValueLockedCard />
           {/* <LotteryCard /> */}
         </Cards>
-        <Cards>
+        <CardsB>
           <CakeStats />
           <EarnAssetCard />
-        </Cards>
-        <CTACards>
-          
-          {/* <WinCard /> */}
-        </CTACards>
-        
+        </CardsB>
+        {/* <CTACards><WinCard /></CTACards> */}
       </div>
     </Page>
   )
