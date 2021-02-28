@@ -8,14 +8,14 @@ export const approve = async (lpContract, masterChefContract, account) => {
 }
 
 export const stake = async (masterChefContract, pid, amount, account) => {
-  if (pid === 0) {
-    return masterChefContract.methods
-      .enterStaking(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
-      .send({ from: account, gas: 200000 })
-      .on('transactionHash', (tx) => {
-        return tx.transactionHash
-      })
-  }
+  // if (pid === 0) {
+  //   return masterChefContract.methods
+  //     .enterStaking(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
+  //     .send({ from: account, gas: 200000 })
+  //     .on('transactionHash', (tx) => {
+  //       return tx.transactionHash
+  //     })
+  // }
 
   return masterChefContract.methods
     .deposit(pid, new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
@@ -116,7 +116,7 @@ export const harvest = async (masterChefContract, pid, account) => {
 }
 
 export const soushHarvest = async (sousChefContract, account, sousId) => {
-  console.log(account, sousId)
+  // console.log(account, sousId)
   return sousChefContract.methods
     .deposit(sousId, '0')
     .send({ from: account, gas: 200000 })

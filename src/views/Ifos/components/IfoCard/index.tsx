@@ -107,14 +107,13 @@ const IfoCard: React.FC<IfoCardProps> = ({ ifo }) => {
         contract.methods.raisingAmount().call,
         contract.methods.totalAmount().call,
       ])
-
       const startBlockNum = parseInt(startBlock as string, 10)
       const endBlockNum = parseInt(endBlock as string, 10)
 
       const status = getStatus(currentBlock, startBlockNum, endBlockNum)
       const totalBlocks = endBlockNum - startBlockNum
       const blocksRemaining = endBlockNum - currentBlock
-
+      // console.log(status)
       // Calculate the total progress until finished or until start
       const progress =
         currentBlock > startBlockNum

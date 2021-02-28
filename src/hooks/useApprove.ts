@@ -35,11 +35,11 @@ export const useSousApprove = (lpContract: Contract, sousId) => {
 
   const handleApprove = useCallback(async () => {
     try {
-      console.log(lpContract)
-      console.log(sousChefContract)
-      console.log(account)
+      // console.log(lpContract)
+      // console.log(sousChefContract)
+      // console.log(account)
       const tx = await approve(lpContract, sousChefContract, account)
-      console.log(tx)
+      // console.log(tx)
       dispatch(updateUserAllowance(sousId, account))
       return tx
     } catch (e) {

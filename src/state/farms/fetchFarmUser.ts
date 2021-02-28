@@ -7,7 +7,7 @@ import { getAddress, getMasterChefAddress } from 'utils/addressHelpers'
 
 export const fetchFarmUserAllowances = async (account: string) => {
   const masterChefAdress = getMasterChefAddress()
-  console.log(masterChefAdress)
+  // console.log(masterChefAdress)
   const calls = farmsConfig.map((farm) => {
     const lpContractAddress = getAddress(farm.lpAddresses)
     return { address: lpContractAddress, name: 'allowance', params: [account, masterChefAdress] }

@@ -123,7 +123,7 @@ const Farm: React.FC = () => {
       <Hero>
         <div>
           <Heading as="h1" size="xl" mb="16px">
-            {TranslateString(738, 'Syrup Pool')}
+            {TranslateString(738, 'Pool')}
           </Heading>
           <ul>
             <li style={{ color: '#85898c' }}>{TranslateString(580, 'Stake PURE to earn new tokens.')}{TranslateString(486, 'You can unstake at any time.')}</li>

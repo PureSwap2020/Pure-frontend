@@ -18,16 +18,31 @@ const farms: FarmConfig[] = [
   //   quoteTokenAdresses: contracts.wbnb,
   // },
   {
-    pid: 1,
+    pid: 0,
     lpSymbol: 'dai-snx LP',
     lpAddresses: {
       256: '0xDD9DD3873A56F3105aa8a8DaF2c922A158EB1108',
       128: '0xDD9DD3873A56F3105aa8a8DaF2c922A158EB1108',
     },
-    tokenSymbol: 'CAKE',
+    tokenSymbol: 'dai-snx',
     tokenAddresses: {
       256: '0xDD9DD3873A56F3105aa8a8DaF2c922A158EB1108',
       128: '0xDD9DD3873A56F3105aa8a8DaF2c922A158EB1108',
+    },
+    quoteTokenSymbol: QuoteToken.BNB,
+    quoteTokenAdresses: contracts.wbnb,
+  },
+  {
+    pid: 1,
+    lpSymbol: 'dai-link LP',
+    lpAddresses: {
+      256: '0xb803d0946b8Af9841F7F5D46D7929A07F256748b',
+      128: '0xb803d0946b8Af9841F7F5D46D7929A07F256748b',
+    },
+    tokenSymbol: 'dai-link',
+    tokenAddresses: {
+      256: '0xb803d0946b8Af9841F7F5D46D7929A07F256748b',
+      128: '0xb803d0946b8Af9841F7F5D46D7929A07F256748b',
     },
     quoteTokenSymbol: QuoteToken.BNB,
     quoteTokenAdresses: contracts.wbnb,

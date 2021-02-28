@@ -52,7 +52,7 @@ const EarnAPYCard = () => {
     (farmsToDisplay) => {
       const cakePriceVsBNB = new BigNumber(farmsLP.find((farm) => farm.pid === CAKE_POOL_PID)?.tokenPriceVsQuote || 0)
 
-      console.log(cakePriceVsBNB)
+      // console.log(cakePriceVsBNB)
 
       farmsToDisplay.map((farm) => {
         if (!farm.tokenAmount || !farm.lpTotalInQuoteToken || !farm.lpTotalInQuoteToken) {

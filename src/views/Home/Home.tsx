@@ -124,11 +124,11 @@ const Home: React.FC = () => {
 
   return (
     <Page>
+      {/* <CardImage src="/images/babg/home_header_bg.png" alt="cake logo" width={800} /> */}
       <Hero>
         <Heading as="h1" size="xl" mb="24px" color="secondary">
           {TranslateString(576, 'PureSwap')}
         </Heading>
-        {/* <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} /> */}
         <Text style={{ color: '#85898c' }}>
           {TranslateString(578, 'The #1 AMM and yield farm on Binance Smart Chain.')}
         </Text>

@@ -16,7 +16,7 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
   const { onReward } = useHarvest(pid)
   const rawEarningsBalance = getBalanceNumber(earnings)
   const displayBalance = rawEarningsBalance.toLocaleString()
-  console.log(pendingTx, rawEarningsBalance)
+  // console.log(pendingTx, rawEarningsBalance)
   return (
     <Flex mb="8px" justifyContent="space-between" alignItems="center">
       <Heading style={{ fontWeight: 'normal' }} color={rawEarningsBalance === 0 ? 'textDisabled' : 'text'}>

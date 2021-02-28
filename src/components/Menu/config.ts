@@ -12,11 +12,11 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'https://exchange.pancakeswap.finance',
+        href: 'https://exchange.pureswap.finance',
       },
       {
         label: 'Liquidity',
-        href: 'https://exchange.pancakeswap.finance/#/pool',
+        href: 'https://exchange.pureswap.finance/#/pool',
       },
     ],
   },
@@ -91,21 +91,9 @@ const config: MenuEntry[] = [
     icon: 'MoreIcon',
     items: [
       {
-        label: 'Voting',
-        href: 'https://voting.pancakeswap.finance',
-      },
-      {
         label: 'Github',
-        href: 'https://github.com/pancakeswap',
-      },
-      {
-        label: 'Docs',
-        href: 'https://docs.pancakeswap.finance',
-      },
-      {
-        label: 'Blog',
-        href: 'https://pancakeswap.medium.com',
-      },
+        href: 'https://github.com/PureSwap2020',
+      }
     ],
   },
 ]
