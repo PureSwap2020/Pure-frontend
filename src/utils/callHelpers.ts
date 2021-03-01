@@ -119,7 +119,7 @@ export const harvest = async (masterChefContract, pid, account) => {
 }
 
 export const soushHarvest = async (sousChefContract, account, sousId) => {
-  // console.log(account, sousId)
+  console.log(sousChefContract)
   return sousChefContract.methods
     .deposit(sousId, '0')
     .send({ from: account, gas: 200000 })

@@ -14,6 +14,16 @@ const IfoCardWrapper = styled.div<IfoCardWrapperProps>`
   flex: 1;
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: ${({ isSingle }) => `repeat(${isSingle ? 1 : 2}, 1fr)`};
+    width: 100%;
+    margin: 0;
+  }
+  ${({ theme }) => theme.mediaQueries.sm} {
+    width: 100%;
+    margin: 0 !important;
+  }
+  ${({ theme }) => theme.mediaQueries.xs} {
+    width: 100%;
+    margin: 0 !important;
   }
 `
 

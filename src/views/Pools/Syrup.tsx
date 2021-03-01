@@ -37,8 +37,6 @@ const Farm: React.FC = () => {
   const ethPriceBnb = usePriceEthBnb()
   const block = useBlock()
   const [stackedOnly, setStackedOnly] = useState(false)
-  const [iPool, setIPool] = useState([])
-
   
   const cakePriceUsd = usePriceCakeBusd()
 
@@ -53,43 +51,32 @@ const Farm: React.FC = () => {
     }
     return tokenPriceBN
   }
-  if (iPool.length <= 0) {
-    const poolsApy = pools.map(async(pool) => {
-      const apy = await fetchPoolApy(pool, cakePriceUsd)
-      return {
-        ...pool,
-        apy,
-      }
-    })
-    Promise.all(poolsApy).then(res => {
-      setIPool(res)
+  const getApy = (pool) => {
+    fetchPoolApy(pool, cakePriceUsd).then(res => {
+      window.localStorage.setItem(`poolApy${pool.sousId}`, res)
     })
   }
-  
-  // console.log(111)
-  // console.log(iPool)
-  const poolsWithApy = iPool.map((pool, i) => {
-    const isBnbPool = pool.poolCategory === PoolCategory.BINANCE
-    const rewardTokenFarm = farms.find((f) => f.tokenSymbol === pool.tokenName)
-    const stakingTokenFarm = farms.find((s) => s.tokenSymbol === pool.stakingTokenName)
+  const poolsWithApy = pools.map((pool, i) => {
+    // const isBnbPool = pool.poolCategory === PoolCategory.BINANCE
+    // const rewardTokenFarm = farms.find((f) => f.tokenSymbol === pool.tokenName)
+    // const stakingTokenFarm = farms.find((s) => s.tokenSymbol === pool.stakingTokenName)
     // /!\ Assume that the farm quote price is BNB
-    const stakingTokenPriceInBNB = isBnbPool
-      ? new BigNumber(1)
-      : new BigNumber(stakingTokenFarm?.tokenPriceVsQuote).times(1)
-    const rewardTokenPriceInBNB = priceToBnb(
-      pool.tokenName,
-      rewardTokenFarm?.tokenPriceVsQuote,
-      rewardTokenFarm?.quoteTokenSymbol,
-    )
-    const totalRewardPricePerYear = rewardTokenPriceInBNB.times(pool.tokenPerBlock).times(BLOCKS_PER_YEAR)
-    const totalStakingTokenInPool = stakingTokenPriceInBNB.times(getBalanceNumber(pool.totalStaked))
-   
-    
-    // const apy = totalRewardPricePerYear.div(totalStakingTokenInPool).times(100)
+    // const stakingTokenPriceInBNB = isBnbPool
+    //   ? new BigNumber(1)
+    //   : new BigNumber(stakingTokenFarm?.tokenPriceVsQuote).times(1)
+    // const rewardTokenPriceInBNB = priceToBnb(
+    //   pool.tokenName,
+    //   rewardTokenFarm?.tokenPriceVsQuote,
+    //   rewardTokenFarm?.quoteTokenSymbol,
+    // )
+    // const totalRewardPricePerYear = rewardTokenPriceInBNB.times(pool.tokenPerBlock).times(BLOCKS_PER_YEAR)
+    // const totalStakingTokenInPool = stakingTokenPriceInBNB.times(getBalanceNumber(pool.totalStaked))
+    getApy(pool)
+    const apy = new BigNumber(window.localStorage.getItem(`poolApy${pool.sousId}`))// totalRewardPricePerYear.div(totalStakingTokenInPool).times(100)
     return {
       ...pool,
       isFinished: pool.sousId === 0 ? false : pool.isFinished || block > pool.endBlock,
-      // apy,
+      apy,
     }
   })
   // console.log(pool)
