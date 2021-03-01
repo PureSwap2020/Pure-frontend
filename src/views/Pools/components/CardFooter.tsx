@@ -24,7 +24,7 @@ interface Props {
 }
 
 const StyledFooter = styled.div<{ isFinished: boolean }>`
-  // border-top: 1px solid ${({ theme }) => (theme.isDark ? '#524B63' : '#E9EAEB')};
+  // border-top: 1px solid ${({ theme }) => (theme.isDark ? '#1bd6ad' : '#E9EAEB')};
   color: ${({ isFinished, theme }) => theme.colors[isFinished ? 'textDisabled2' : 'primary2']};
   padding: 24px;
 `
@@ -110,7 +110,7 @@ const CardFooter: React.FC<Props> = ({
           {blocksUntilStart > 0 && (
             <Row>
               <FlexFull>
-                <Label>{TranslateString(410, 'Start')}:</Label>
+                <Label><span style={{ color: '#366061' }}>{TranslateString(410, 'Start')}</span></Label>
               </FlexFull>
               <Balance fontSize="14px" isDisabled={isFinished} value={blocksUntilStart} decimals={0} />
             </Row>
@@ -118,7 +118,7 @@ const CardFooter: React.FC<Props> = ({
           {blocksUntilStart === 0 && blocksRemaining > 0 && (
             <Row>
               <FlexFull>
-                <Label>{TranslateString(410, 'End')}:</Label>
+                <Label><span style={{ color: '#366061' }}>{TranslateString(410, 'End')}</span></Label>
               </FlexFull>
               <Balance fontSize="14px" isDisabled={isFinished} value={blocksRemaining} decimals={0} />
             </Row>

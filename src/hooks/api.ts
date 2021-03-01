@@ -35,7 +35,7 @@ export const useGetStats = () => {
       try {
         const response = await fetch(`${baseUrl}/stat`)
         const responsedata: ApiStatResponse = await response.json()
-
+        console.log(responsedata)
         setData(responsedata)
       } catch (error) {
         console.error('Unable to fetch data:', error)
@@ -47,3 +47,17 @@ export const useGetStats = () => {
 
   return data
 }
+// export const useSingleTokenPrive = (tokenName) => {
+//   const [price, setPrice] = useState(null)
+//   useEffect(() => {
+//     const fetchPrice = async () => {
+//       const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${tokenName}&vs_currencies=usd`)
+//       const _priceData = await res.json()
+//       const _price = _priceData[tokenName].usd
+//       setPrice(_price)
+//     }
+//     fetchPrice()
+//   })
+//   // console.log(price)
+//   return price
+// }

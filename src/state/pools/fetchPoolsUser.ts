@@ -13,7 +13,8 @@ import BigNumber from 'bignumber.js'
 // BNB pools use the native BNB token (wrapping ? unwrapping is done at the contract level)
 const nonBnbPools = poolsConfig.filter((p) => p.stakingTokenName !== QuoteToken.BNB)
 const bnbPools = poolsConfig.filter((p) => p.stakingTokenName === QuoteToken.BNB)
-const nonMasterPools = poolsConfig.filter((p) => p.sousId !== 0)
+// const nonMasterPools = poolsConfig.filter((p) => p.sousId !== 0)
+const nonMasterPools = poolsConfig
 const web3 = getWeb3()
 const masterChefContract = new web3.eth.Contract((masterChefABI as unknown) as AbiItem, getMasterChefAddress())
 
@@ -69,10 +70,11 @@ export const fetchUserStakeBalances = async (account) => {
     {},
   )
 
+  // console.log(stakedBalances)
   // Cake / Cake pool
-  const { amount: masterPoolAmount } = await masterChefContract.methods.userInfo('0', account).call()
-
-  return { ...stakedBalances, 0: new BigNumber(masterPoolAmount).toJSON() }
+  // const { amount: masterPoolAmount } = await masterChefContract.methods.userInfo('0', account).call()
+  // , 0: new BigNumber(masterPoolAmount).toJSON()  
+  return { ...stakedBalances }
 }
 
 export const fetchUserPendingRewards = async (account) => {
@@ -91,6 +93,6 @@ export const fetchUserPendingRewards = async (account) => {
   )
 
   // Cake / Cake pool
-  const pendingReward = await masterChefContract.methods.pendingPureToken('0', account).call()
-  return { ...pendingRewards, 0: new BigNumber(pendingReward).toJSON() }
+  // const pendingReward = await masterChefContract.methods.pendingPureToken('0', account).call()
+  return { ...pendingRewards }
 }

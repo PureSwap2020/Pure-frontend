@@ -10,24 +10,24 @@ import { Campaign } from './types'
  */
 
 const campaigns: Campaign[] = [
-  {
-    id: '511060000',
-    type: 'ifo',
-    title: 'Berry',
-    badge: 'ifo-bry.svg',
-  },
-  {
-    id: '511050000',
-    type: 'ifo',
-    title: 'Soteria',
-    badge: 'ifo-wsote.svg',
-  },
-  {
-    id: '511040000',
-    type: 'ifo',
-    title: 'Helmet',
-    badge: 'ifo-helmet.svg',
-  },
+  // {
+  //   id: '511060000',
+  //   type: 'ifo',
+  //   title: 'Berry',
+  //   badge: 'ifo-bry.svg',
+  // },
+  // {
+  //   id: '511050000',
+  //   type: 'ifo',
+  //   title: 'Soteria',
+  //   badge: 'ifo-wsote.svg',
+  // },
+  // {
+  //   id: '511040000',
+  //   type: 'ifo',
+  //   title: 'Helmet',
+  //   badge: 'ifo-helmet.svg',
+  // },
   {
     id: '511030000',
     type: 'ifo',

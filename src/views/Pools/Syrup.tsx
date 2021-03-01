@@ -10,8 +10,10 @@ import partition from 'lodash/partition'
 import useI18n from 'hooks/useI18n'
 import useBlock from 'hooks/useBlock'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { useFarms, usePriceBnbBusd, usePools, usePriceEthBnb } from 'state/hooks'
+import { useFarms, usePriceBnbBusd, usePools, usePriceEthBnb, usePriceCakeBusd } from 'state/hooks'
 import { QuoteToken, PoolCategory } from 'config/constants/types'
+import { fetchTotalPoolsPoint, fetchSinglePoolsPoint, fetchPoolApy } from 'state/pools/fetchPools';
+// import { useSingleTokenPrive } from 'hooks/api'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
 import Coming from './components/Coming'
@@ -19,28 +21,6 @@ import PoolCard from './components/PoolCard'
 import PoolTabButtons from './components/PoolTabButtons'
 import Divider from './components/Divider'
 
-// const Hero = styled.div`
-//   align-items: left;
-//   background-image: url('/images/home_header_bg.png')
-//   // background-image: url('/images/pan-bg-mobile.svg');
-//   background-repeat: no-repeat;
-//   background-position: top center;
-//   display: flex;
-//   justify-content: center;
-//   flex-direction: column;
-//   margin: auto;
-//   padding: 100px 0 134px 0;
-//   // margin-bottom: 32px;
-//   // padding-top: 116px;
-//   // text-align: center;
-
-//   ${({ theme }) => theme.mediaQueries.lg} {
-//     // background-image: url('/images/pan-bg2.svg'), url('/images/pan-bg.svg');
-//     // background-position: left center, right center;
-//     // height: 165px;
-//     // padding-top: 0;
-//   }
-// `
 const CardImage = styled.img`
   margin-bottom: 16px;
   position: absolute;
@@ -57,7 +37,12 @@ const Farm: React.FC = () => {
   const ethPriceBnb = usePriceEthBnb()
   const block = useBlock()
   const [stackedOnly, setStackedOnly] = useState(false)
+  const [iPool, setIPool] = useState([])
 
+  
+  const cakePriceUsd = usePriceCakeBusd()
+
+  // const totalPoolsPoint = fetchTotalPoolsPoint()
   const priceToBnb = (tokenName: string, tokenPrice: BigNumber, quoteToken: QuoteToken): BigNumber => {
     const tokenPriceBN = new BigNumber(tokenPrice)
     if (tokenName === 'BNB') {
@@ -68,42 +53,51 @@ const Farm: React.FC = () => {
     }
     return tokenPriceBN
   }
-
-  const poolsWithApy = pools.map((pool) => {
+  if (iPool.length <= 0) {
+    const poolsApy = pools.map(async(pool) => {
+      const apy = await fetchPoolApy(pool, cakePriceUsd)
+      return {
+        ...pool,
+        apy,
+      }
+    })
+    Promise.all(poolsApy).then(res => {
+      setIPool(res)
+    })
+  }
+  
+  // console.log(111)
+  // console.log(iPool)
+  const poolsWithApy = iPool.map((pool, i) => {
     const isBnbPool = pool.poolCategory === PoolCategory.BINANCE
     const rewardTokenFarm = farms.find((f) => f.tokenSymbol === pool.tokenName)
     const stakingTokenFarm = farms.find((s) => s.tokenSymbol === pool.stakingTokenName)
-
-    // tmp mulitplier to support ETH farms
-    // Will be removed after the price api
-    const tempMultiplier = stakingTokenFarm?.quoteTokenSymbol === 'ETH' ? ethPriceBnb : 1
-
     // /!\ Assume that the farm quote price is BNB
     const stakingTokenPriceInBNB = isBnbPool
       ? new BigNumber(1)
-      : new BigNumber(stakingTokenFarm?.tokenPriceVsQuote).times(tempMultiplier)
+      : new BigNumber(stakingTokenFarm?.tokenPriceVsQuote).times(1)
     const rewardTokenPriceInBNB = priceToBnb(
       pool.tokenName,
       rewardTokenFarm?.tokenPriceVsQuote,
       rewardTokenFarm?.quoteTokenSymbol,
     )
-
     const totalRewardPricePerYear = rewardTokenPriceInBNB.times(pool.tokenPerBlock).times(BLOCKS_PER_YEAR)
     const totalStakingTokenInPool = stakingTokenPriceInBNB.times(getBalanceNumber(pool.totalStaked))
-    const apy = totalRewardPricePerYear.div(totalStakingTokenInPool).times(100)
-
+   
+    
+    // const apy = totalRewardPricePerYear.div(totalStakingTokenInPool).times(100)
     return {
       ...pool,
       isFinished: pool.sousId === 0 ? false : pool.isFinished || block > pool.endBlock,
-      apy,
+      // apy,
     }
   })
-
+  // console.log(pool)
   const [finishedPools, openPools] = partition(poolsWithApy, (pool) => pool.isFinished)
   const stackedOnlyPools = openPools.filter(
     (pool) => pool.userData && new BigNumber(pool.userData.stakedBalance).isGreaterThan(0),
   )
-
+  // console.log(openPools)
   return (
     <Page>
       {/* <Hero>
@@ -140,7 +134,6 @@ const Farm: React.FC = () => {
             {stackedOnly
               ? orderBy(stackedOnlyPools, ['sortOrder']).map((pool) => <PoolCard key={pool.sousId} pool={pool} />)
               : orderBy(openPools, ['sortOrder']).map((pool) => <PoolCard key={pool.sousId} pool={pool} />)}
-            {/* <Coming /> */}
           </>
         </Route>
         <Route path={`${path}/history`}>
@@ -182,5 +175,25 @@ const Hero = styled.div`
     max-width: none;
   }
 `
+// console.log(useSingleTokenPrive)
+// console.log(farms)
+// const poolsD = pools.map(async (pool) => {
+//   // console.log(pool)
+//   let tokenPrice
+//   if (pool.tokenName === 'MX') {
+//     const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=mx-token&vs_currencies=usd`)
+//     const _priceData = await res.json()
+//     tokenPrice = _priceData['mx-token'].usd
+//   } else if (pool.tokenName === 'HT') {
+//     const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=huobi-token&vs_currencies=usd`)
+//     const _priceData = await res.json()
+//     tokenPrice = _priceData['huobi-token'].usd
+//   } else if (pool.tokenName === 'PURE') {
+//     tokenPrice = cakePriceUsd.toNumber()
+//     // tokenPrice = useSingleTokenPrive('PURE-token')
+//   }
+//   // console.log(tokenPrice)
+//   return tokenPrice
+// })
 
 export default Farm

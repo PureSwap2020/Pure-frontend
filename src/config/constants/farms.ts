@@ -2,6 +2,82 @@ import contracts from './contracts'
 import { FarmConfig, QuoteToken } from './types'
 
 const farms: FarmConfig[] = [
+  {
+    pid: 0,
+    lpSymbol: 'PURE-HBTC LP',
+    lpAddresses: {
+      256: '0xfC0824bad68AA0A5E5e4b4c3736719261f8a43E2',
+      128: '0xfC0824bad68AA0A5E5e4b4c3736719261f8a43E2',
+    },
+    tokenSymbol: 'PURE',
+    tokenAddresses: {
+      256: '0x941bA89b5b06cfC1a6e3f378C392E2b72B598089',
+      128: '0x941bA89b5b06cfC1a6e3f378C392E2b72B598089',
+    },
+    quoteTokenSymbol: QuoteToken.BNB,
+    quoteTokenAdresses: contracts.wbnb,
+  },
+  {
+    pid: 1,
+    lpSymbol: 'PURE-USDT LP',
+    lpAddresses: {
+      256: '0x3abdF262E3100A2612d5276A985107DB087B879c',
+      128: '0x3abdF262E3100A2612d5276A985107DB087B879c',
+    },
+    tokenSymbol: 'PURE',
+    tokenAddresses: {
+      256: '0x941bA89b5b06cfC1a6e3f378C392E2b72B598089',
+      128: '0x941bA89b5b06cfC1a6e3f378C392E2b72B598089',
+    },
+    quoteTokenSymbol: QuoteToken.BNB,
+    quoteTokenAdresses: contracts.wbnb,
+  },
+  {
+    pid: 2,
+    lpSymbol: 'PURE-HUSD LP',
+    lpAddresses: {
+      256: '0x93F7f9f2D81eDf77449981aE3dEb122BA6DecC39',
+      128: '0x93F7f9f2D81eDf77449981aE3dEb122BA6DecC39',
+    },
+    tokenSymbol: 'PURE',
+    tokenAddresses: {
+      256: '0x941bA89b5b06cfC1a6e3f378C392E2b72B598089',
+      128: '0x941bA89b5b06cfC1a6e3f378C392E2b72B598089',
+    },
+    quoteTokenSymbol: QuoteToken.BNB,
+    quoteTokenAdresses: contracts.wbnb,
+  },
+  {
+    pid: 3,
+    lpSymbol: 'PURE-HT LP',
+    lpAddresses: {
+      256: '0x441186d715d845ae8aDb031457EC9B3D26D94459',
+      128: '0x441186d715d845ae8aDb031457EC9B3D26D94459',
+    },
+    tokenSymbol: 'PURE',
+    tokenAddresses: {
+      256: '0x941bA89b5b06cfC1a6e3f378C392E2b72B598089',
+      128: '0x941bA89b5b06cfC1a6e3f378C392E2b72B598089',
+    },
+    quoteTokenSymbol: QuoteToken.BNB,
+    quoteTokenAdresses: contracts.wbnb,
+  },
+  {
+    pid: 4,
+    lpSymbol: 'HT-HUSD LP',
+    lpAddresses: {
+      256: '0xaD90469F43150293134cB1d5Fea69Cf3571CBD80',
+      128: '0xaD90469F43150293134cB1d5Fea69Cf3571CBD80',
+    },
+    tokenSymbol: 'HT',
+    tokenAddresses: {
+      256: '0x7af326b6351c8a9b8fb8cd205cbe11d4ac5fa836',
+      128: '0x7af326b6351c8a9b8fb8cd205cbe11d4ac5fa836',
+    },
+    quoteTokenSymbol: QuoteToken.BNB,
+    quoteTokenAdresses: contracts.wbnb,
+  }
+
   // {
   //   pid: 0,
   //   lpSymbol: 'Pure',
@@ -17,51 +93,6 @@ const farms: FarmConfig[] = [
   //   quoteTokenSymbol: QuoteToken.BNB,
   //   quoteTokenAdresses: contracts.wbnb,
   // },
-  {
-    pid: 0,
-    lpSymbol: 'dai-snx LP',
-    lpAddresses: {
-      256: '0xDD9DD3873A56F3105aa8a8DaF2c922A158EB1108',
-      128: '0xDD9DD3873A56F3105aa8a8DaF2c922A158EB1108',
-    },
-    tokenSymbol: 'dai-snx',
-    tokenAddresses: {
-      256: '0xDD9DD3873A56F3105aa8a8DaF2c922A158EB1108',
-      128: '0xDD9DD3873A56F3105aa8a8DaF2c922A158EB1108',
-    },
-    quoteTokenSymbol: QuoteToken.BNB,
-    quoteTokenAdresses: contracts.wbnb,
-  },
-  {
-    pid: 1,
-    lpSymbol: 'dai-link LP',
-    lpAddresses: {
-      256: '0xb803d0946b8Af9841F7F5D46D7929A07F256748b',
-      128: '0xb803d0946b8Af9841F7F5D46D7929A07F256748b',
-    },
-    tokenSymbol: 'dai-link',
-    tokenAddresses: {
-      256: '0xb803d0946b8Af9841F7F5D46D7929A07F256748b',
-      128: '0xb803d0946b8Af9841F7F5D46D7929A07F256748b',
-    },
-    quoteTokenSymbol: QuoteToken.BNB,
-    quoteTokenAdresses: contracts.wbnb,
-  },
-  {
-    pid: 2,
-    lpSymbol: 'dai-heth LP',
-    lpAddresses: {
-      256: '0x46a32F4066Bf926806B56f7f38f3051Cc80e2Be2',
-      128: '0x46a32F4066Bf926806B56f7f38f3051Cc80e2Be2',
-    },
-    tokenSymbol: 'BUSD',
-    tokenAddresses: {
-      256: '0x46a32F4066Bf926806B56f7f38f3051Cc80e2Be2',
-      128: '0x46a32F4066Bf926806B56f7f38f3051Cc80e2Be2',
-    },
-    quoteTokenSymbol: QuoteToken.BNB,
-    quoteTokenAdresses: contracts.wbnb,
-  }
 ]
 
 export default farms

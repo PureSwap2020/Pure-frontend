@@ -41,10 +41,8 @@ const EarnAPYCard = () => {
   const maxAPY = useRef(Number.MIN_VALUE)
 
   const getHighestAPY = () => {
-    const activeFarms = farmsLP.filter((farm) => farm.pid !== 0 && farm.multiplier !== '0X')
-
+    const activeFarms = farmsLP.filter((farm) => farm.multiplier !== '0X')
     calculateAPY(activeFarms)
-
     return (maxAPY.current * 100).toLocaleString('en-US').slice(0, -1)
   }
 
@@ -52,17 +50,14 @@ const EarnAPYCard = () => {
     (farmsToDisplay) => {
       const cakePriceVsBNB = new BigNumber(farmsLP.find((farm) => farm.pid === CAKE_POOL_PID)?.tokenPriceVsQuote || 0)
 
-      // console.log(cakePriceVsBNB)
-
       farmsToDisplay.map((farm) => {
         if (!farm.tokenAmount || !farm.lpTotalInQuoteToken || !farm.lpTotalInQuoteToken) {
           return farm
         }
         const cakeRewardPerBlock = CAKE_PER_BLOCK.times(farm.poolWeight)
         const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
-
         let apy = cakePriceVsBNB.times(cakeRewardPerYear).div(farm.lpTotalInQuoteToken)
-
+        
         if (farm.quoteTokenSymbol === QuoteToken.BUSD) {
           apy = cakePriceVsBNB.times(cakeRewardPerYear).div(farm.lpTotalInQuoteToken).times(bnbPrice)
         } else if (farm.quoteTokenSymbol === QuoteToken.CAKE) {
@@ -79,8 +74,7 @@ const EarnAPYCard = () => {
 
           apy = cakeApy && dualApy && cakeApy.plus(dualApy)
         }
-
-        if (maxAPY.current < apy.toNumber()) maxAPY.current = apy.toNumber()
+        if (maxAPY.current <= apy.toNumber()) maxAPY.current = apy.toNumber()
 
         return apy
       })

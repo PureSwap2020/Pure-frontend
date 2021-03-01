@@ -28,7 +28,7 @@ const Value = styled.div`
 `
 
 const Footer = styled.div`
-  // border-top: 1px solid ${({ theme }) => (theme.isDark ? '#524B63' : '#E9EAEB')};
+  // border-top: 1px solid ${({ theme }) => (theme.isDark ? '#1bd6ad' : '#E9EAEB')};
   padding: 24px;
 `
 const Coming: React.FC = () => {

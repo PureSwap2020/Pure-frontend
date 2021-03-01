@@ -33,7 +33,10 @@ export enum QuoteToken {
   'COMP' = 'COMP',
   'usdc' = 'usdc',
   'dai' = 'dai',
-  'snx' = 'snx'
+  'snx' = 'snx',
+  'PURE' = 'PURE',
+  'HT' = 'HT',
+  'MX' = 'MX'
 }
 
 export enum PoolCategory {

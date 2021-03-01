@@ -53,31 +53,23 @@ const fetchFarms = async () => {
         quoteTokenDecimals,
       ] = await multicall(erc20, calls)
 
-      // console.log(tokenBalanceLP)
-      // console.log(quoteTokenBlanceLP)
-      // console.log(lpTokenBalanceMC)
-      // console.log(lpTotalSupply)
-      // console.log(tokenDecimals)
-      // console.log(quoteTokenDecimals)
-      // Ratio in % a LP tokens that are in staking, vs the total number in circulation
+      // 以%a个Lp代币为单位的比率，与流通总数之比
       const lpTokenRatio = new BigNumber(lpTokenBalanceMC).div(new BigNumber(lpTotalSupply))
 
-      // console.log(lpTokenRatio)
-
-      // Total value in staking in quote token value
+      // 在报价令牌值中下注的总价值
       const lpTotalInQuoteToken = new BigNumber(quoteTokenBlanceLP)
         .div(new BigNumber(10).pow(18))
         .times(new BigNumber(2))
         .times(lpTokenRatio)
 
 
-      // Amount of token in the LP that are considered staking (i.e amount of token * lp ratio)
+      // LP中被视为下注的令牌数量(即令牌数量*LP比率)
       const tokenAmount = new BigNumber(tokenBalanceLP).div(new BigNumber(10).pow(tokenDecimals)).times(lpTokenRatio)
       
-
       const quoteTokenAmount = new BigNumber(quoteTokenBlanceLP)
         .div(new BigNumber(10).pow(quoteTokenDecimals))
         .times(lpTokenRatio)
+
       const [info, totalAllocPoint] = await multicall(masterchefABI, [
         {
           address: getMasterChefAddress(),
@@ -89,6 +81,8 @@ const fetchFarms = async () => {
           name: 'totalAllocPoint',
         },
       ])
+
+      // console.log(info)
 
       const allocPoint = new BigNumber(info.allocPoint._hex)
       const poolWeight = allocPoint.div(new BigNumber(totalAllocPoint))

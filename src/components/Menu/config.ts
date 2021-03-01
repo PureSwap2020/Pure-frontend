@@ -12,11 +12,11 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'https://exchange.pureswap.finance',
+        href: 'http://exchange.pureswap.finance',
       },
       {
         label: 'Liquidity',
-        href: 'https://exchange.pureswap.finance/#/pool',
+        href: 'http://exchange.pureswap.finance/#/pool',
       },
     ],
   },

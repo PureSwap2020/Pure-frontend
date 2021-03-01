@@ -33,22 +33,18 @@ export const useSousUnstake = (sousId) => {
   const dispatch = useDispatch()
   const { account } = useWallet()
   const sousChefContract = useSousChef(sousId)
-  const isOldSyrup = SYRUPIDS.includes(sousId)
+  // const isOldSyrup = SYRUPIDS.includes(sousId)
 
   const handleUnstake = useCallback(
     async (amount: string) => {
-      if (isOldSyrup) {
-        const txHash = await sousEmegencyUnstake(sousChefContract, amount, account, sousId)
-        console.info(txHash)
-      } else {
-        const txHash = await sousUnstake(sousChefContract, amount, account, sousId)
-        console.info(txHash)
-      }
+      console.log(amount)
+      const txHash = await sousUnstake(sousChefContract, amount, account, sousId)
+      console.info(txHash)
       dispatch(updateUserStakedBalance(sousId, account))
       dispatch(updateUserBalance(sousId, account))
       dispatch(updateUserPendingReward(sousId, account))
     },
-    [account, dispatch, isOldSyrup, sousChefContract, sousId],
+    [account, dispatch, sousChefContract, sousId],
   )
 
   return { onUnstake: handleUnstake }
