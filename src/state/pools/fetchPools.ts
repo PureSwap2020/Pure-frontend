@@ -121,7 +121,7 @@ export const fetchPoolApy = async(pool, cakePriceUsd) => {
   
   if (pool.sousId === 0) {
     apr = new BigNumber(poolOutput / poolTvl * 100)
-  } else if (pool.sousId === 1) {
+  } else if (pool.sousId) {
     console.log((poolTvl * tokenPrice))
     if (!Number.isNaN(poolTvl * tokenPrice)) {
       apr = new BigNumber((poolOutput * cakePriceUsd) / (poolTvl * tokenPrice) * 100)
