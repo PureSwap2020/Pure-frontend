@@ -46,8 +46,8 @@ export enum PoolCategory {
 }
 
 export interface Address {
-  256?: string
-  128: string
+  56?: string
+  97: string
 }
 
 export interface FarmConfig {
@@ -82,6 +82,7 @@ export interface PoolConfig {
   harvest?: boolean
   isFinished?: boolean
   tokenDecimals: number
+  getPriceTokenSymbol?: string
 }
 
 export type Images = {

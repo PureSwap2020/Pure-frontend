@@ -130,7 +130,7 @@ const Farms: React.FC = () => {
 
   return (
     <Page>
-      {/* <CardImage src="/images/babg/farm_banner.png" alt="cake logo" width={800} /> */}
+      <CardImage src="/images/babg/farm_banner.png" width={200} />
       <Hero>
         <Heading as="h1" size="xl" mb="24px" color="secondary">
           {TranslateString(696, 'Stake LP tokens to earn PURE')}

@@ -84,7 +84,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   background: transparent; // ${(props) => (!props.disabled ? props.theme.card.background : `#ddd`)};
   border: 0;
   border-radius: 6px;
-  color: ${(props) => (!props.disabled ? `#ACE0CD` : `#366061`)};
+  color: ${(props) => (!props.disabled ? `#19d6ad` : `#366061`)};
   cursor: pointer;
   display: flex;
   font-size: ${(props) => props.fontSize}px;
@@ -96,7 +96,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   padding-right: ${(props) => props.padding}px;
   pointer-events: ${(props) => (!props.disabled ? undefined : 'none')};
   width: 100%;
-  border: 1px solid ${(props) => (!props.disabled ? `#ACE0CD` : `#366061`)};
+  border: 1px solid ${(props) => (!props.disabled ? `#19d6ad` : `#366061`)};
   width: 100px;
   height: 30px;
   font-size: 14px;

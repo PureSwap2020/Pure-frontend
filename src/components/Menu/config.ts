@@ -12,11 +12,11 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'http://exchange.pureswap.finance',
+        href: 'https://exchange.pureswap.finance',
       },
       {
         label: 'Liquidity',
-        href: 'http://exchange.pureswap.finance/#/pool',
+        href: 'https://exchange.pureswap.finance/#/pool',
       },
     ],
   },
@@ -81,11 +81,11 @@ const config: MenuEntry[] = [
   //     },
   //   ],
   // },
-  {
-    label: 'IFO',
-    icon: 'IfoIcon',
-    href: '/ifo',
-  },
+  // {
+  //   label: 'IFO',
+  //   icon: 'IfoIcon',
+  //   href: '/ifo',
+  // },
   {
     label: 'More',
     icon: 'MoreIcon',

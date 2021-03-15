@@ -68,7 +68,7 @@ const Ifo = () => {
             <LinkExternal style={{color: "#ACE0CD"}} href="https://exchange.pureswap.finance/#/swap" mr="16px">
               {TranslateString(1060, 'Buy PURE')}
             </LinkExternal>
-            <LinkExternal style={{color: "#ACE0CD"}} href="https://exchange.pureswap.finance/#/add/ETH/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82">
+            <LinkExternal style={{color: "#ACE0CD"}} href="https://exchange.pureswap.finance">
               {TranslateString(1062, 'Get LP tokens')}
             </LinkExternal>
           </Flex>
@@ -99,7 +99,7 @@ const Ifo = () => {
             <Text mb={3} style={{color: "#366061"}}>
               {TranslateString(
                 514,
-                'Launch your project with PureSwap, HECO most-used AMM project and liquidity provider, to bring your token directly to the most active and rapidly growing community on HECO.',
+                'Launch your project with PureSwap, BSC most-used AMM project and liquidity provider, to bring your token directly to the most active and rapidly growing community on BSC.',
               )}
             </Text>
             <Button

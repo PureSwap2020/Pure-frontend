@@ -53,7 +53,7 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
       )}
       <Flex style={{marginTop: '10px'}} justifyContent="center">
         <Link style={{color: '#366061'}} external href={bscScanAddress} bold={false}>
-          {TranslateString(356, 'View on HecoScan')}
+          {TranslateString(356, 'View on BscScan')}
         </Link>
       </Flex>
     </Wrapper>

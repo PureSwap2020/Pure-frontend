@@ -53,6 +53,8 @@ const fetchFarms = async () => {
         quoteTokenDecimals,
       ] = await multicall(erc20, calls)
 
+      
+
       // 以%a个Lp代币为单位的比率，与流通总数之比
       const lpTokenRatio = new BigNumber(lpTokenBalanceMC).div(new BigNumber(lpTotalSupply))
 
@@ -69,7 +71,7 @@ const fetchFarms = async () => {
       const quoteTokenAmount = new BigNumber(quoteTokenBlanceLP)
         .div(new BigNumber(10).pow(quoteTokenDecimals))
         .times(lpTokenRatio)
-
+      
       const [info, totalAllocPoint] = await multicall(masterchefABI, [
         {
           address: getMasterChefAddress(),

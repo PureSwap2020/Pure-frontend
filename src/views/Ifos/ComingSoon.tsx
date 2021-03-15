@@ -63,7 +63,7 @@ const ComingSoon = () => {
               )}
             </Text>
             <Text mb={3}>
-              <LiquidityLink href="https://exchange.pureswap.finance/#/add/ETH/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82">
+              <LiquidityLink href="https://exchange.pureswap.finance">
                 {TranslateString(506, 'Get PURE-HT LP >')}
               </LiquidityLink>
             </Text>
@@ -79,7 +79,7 @@ const ComingSoon = () => {
             <Text mb={3}>
               {TranslateString(
                 514,
-                'Launch your project with PureSwap, HECO most-used AMM project and liquidity provider, to bring your token directly to the most active and rapidly growing community on HECO.',
+                'Launch your project with PureSwap, BSC most-used AMM project and liquidity provider, to bring your token directly to the most active and rapidly growing community on BSC.',
               )}
             </Text>
             <Button

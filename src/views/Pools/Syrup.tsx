@@ -31,29 +31,30 @@ const Farm: React.FC = () => {
   const { path } = useRouteMatch()
   const TranslateString = useI18n()
   const { account } = useWallet()
-  const farms = useFarms()
+  // const farms = useFarms()
   const pools = usePools(account)
-  const bnbPriceUSD = usePriceBnbBusd()
-  const ethPriceBnb = usePriceEthBnb()
+  // const bnbPriceUSD = usePriceBnbBusd()
+  // const ethPriceBnb = usePriceEthBnb()
   const block = useBlock()
-  const [stackedOnly, setStackedOnly] = useState(false)
-  
+  // const [stackedOnly, setStackedOnly] = useState(false)
+  const [stackedOnly] = useState(false)
   const cakePriceUsd = usePriceCakeBusd()
-
+  const bnbPriceUSD = usePriceBnbBusd()
   // const totalPoolsPoint = fetchTotalPoolsPoint()
-  const priceToBnb = (tokenName: string, tokenPrice: BigNumber, quoteToken: QuoteToken): BigNumber => {
-    const tokenPriceBN = new BigNumber(tokenPrice)
-    if (tokenName === 'BNB') {
-      return new BigNumber(1)
-    }
-    if (tokenPrice && quoteToken === QuoteToken.BUSD) {
-      return tokenPriceBN.div(bnbPriceUSD)
-    }
-    return tokenPriceBN
-  }
+  // const priceToBnb = (tokenName: string, tokenPrice: BigNumber, quoteToken: QuoteToken): BigNumber => {
+  //   const tokenPriceBN = new BigNumber(tokenPrice)
+  //   if (tokenName === 'BNB') {
+  //     return new BigNumber(1)
+  //   }
+  //   if (tokenPrice && quoteToken === QuoteToken.BUSD) {
+  //     return tokenPriceBN.div(bnbPriceUSD)
+  //   }
+  //   return tokenPriceBN
+  // }
   const getApy = (pool) => {
-    fetchPoolApy(pool, cakePriceUsd).then(res => {
-      window.localStorage.setItem(`poolApy${pool.sousId}`, res)
+    fetchPoolApy(pool, cakePriceUsd, bnbPriceUSD).then(res => {
+      window.localStorage.setItem(`poolApy${pool.sousId}`, res.apr)
+      window.localStorage.setItem(`poolApy${pool.sousId}Price`, res.tvlPrice.toString())
     })
   }
   const poolsWithApy = pools.map((pool, i) => {
@@ -75,11 +76,11 @@ const Farm: React.FC = () => {
     const apy = new BigNumber(window.localStorage.getItem(`poolApy${pool.sousId}`))// totalRewardPricePerYear.div(totalStakingTokenInPool).times(100)
     return {
       ...pool,
-      isFinished: pool.sousId === 0 ? false : pool.isFinished || block > pool.endBlock,
+      // isFinished: pool.sousId === 0 ? false : pool.isFinished || block > pool.endBlock,
       apy,
     }
   })
-  // console.log(pool)
+
   const [finishedPools, openPools] = partition(poolsWithApy, (pool) => pool.isFinished)
   const stackedOnlyPools = openPools.filter(
     (pool) => pool.userData && new BigNumber(pool.userData.stakedBalance).isGreaterThan(0),
@@ -102,13 +103,14 @@ const Farm: React.FC = () => {
         <PoolTabButtons stackedOnly={stackedOnly} setStackedOnly={setStackedOnly} />
       </Hero> */}
       <Hero>
+        <CardImage src="/images/babg/pool_banner.png" width={200} />
         <div>
           <Heading as="h1" size="xl" mb="16px">
             {TranslateString(738, 'Pool')}
           </Heading>
           <ul>
-            <li style={{ color: '#85898c' }}>{TranslateString(580, 'Stake PURE to earn new tokens.')}{TranslateString(486, 'You can unstake at any time.')}</li>
-            <li style={{ color: '#85898c' }}>{TranslateString(406, 'Rewards are calculated per block.')}</li>
+            <li style={{ color: '#85898c' }}>{TranslateString(580, 'Stake PURE to earn more tokens without Impermanence loss')}{TranslateString(486, 'You can unstake at any time.')}</li>
+            {/* <li style={{ color: '#85898c' }}>{TranslateString(406, 'Rewards are calculated per block.')}</li> */}
           </ul>
         </div>
         {/* <CardImage src="/images//home_header_bg.png" alt="cake logo" width={800} /> */}
@@ -162,25 +164,5 @@ const Hero = styled.div`
     max-width: none;
   }
 `
-// console.log(useSingleTokenPrive)
-// console.log(farms)
-// const poolsD = pools.map(async (pool) => {
-//   // console.log(pool)
-//   let tokenPrice
-//   if (pool.tokenName === 'MX') {
-//     const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=mx-token&vs_currencies=usd`)
-//     const _priceData = await res.json()
-//     tokenPrice = _priceData['mx-token'].usd
-//   } else if (pool.tokenName === 'HT') {
-//     const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=huobi-token&vs_currencies=usd`)
-//     const _priceData = await res.json()
-//     tokenPrice = _priceData['huobi-token'].usd
-//   } else if (pool.tokenName === 'PURE') {
-//     tokenPrice = cakePriceUsd.toNumber()
-//     // tokenPrice = useSingleTokenPrive('PURE-token')
-//   }
-//   // console.log(tokenPrice)
-//   return tokenPrice
-// })
 
 export default Farm

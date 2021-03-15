@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Team } from 'config/constants/types'
 import useRefresh from 'hooks/useRefresh'
 import {
+  fetchTvlPublicDataAsync,
   fetchFarmsPublicDataAsync,
   fetchPoolsPublicDataAsync,
   fetchPoolsUserDataAsync,
@@ -14,7 +15,7 @@ import {
   remove as removeToast,
   clear as clearToast,
 } from './actions'
-import { State, Farm, Pool, ProfileState, TeamsState, AchievementState } from './types'
+import { State, Tvl, Farm, Pool, ProfileState, TeamsState, AchievementState } from './types'
 import { fetchProfile } from './profile'
 import { fetchTeam, fetchTeams } from './teams'
 import { fetchAchievements } from './achievements'
@@ -25,11 +26,16 @@ export const useFetchPublicData = () => {
   const dispatch = useDispatch()
   const { slowRefresh } = useRefresh()
   useEffect(() => {
+    dispatch(fetchTvlPublicDataAsync())
     dispatch(fetchFarmsPublicDataAsync())
     dispatch(fetchPoolsPublicDataAsync())
   }, [dispatch, slowRefresh])
 }
-
+// tvl
+export const useTvl = (): Tvl[] => {
+  const tvl = useSelector((state: State) => state.tvl.data)
+  return tvl
+}
 // Farms
 
 export const useFarms = (): Farm[] => {
@@ -81,18 +87,16 @@ export const usePoolFromPid = (sousId): Pool => {
 // Prices
 
 export const usePriceBnbBusd = (): BigNumber => {
-  const pid = 4 // HUSD-HT LP
+  const pid = 4 // BUSD-BNB LP
   const farm = useFarmFromPid(pid)
-  // console.log(farm)
   // console.log(farm.tokenPriceVsQuote)
   return farm.tokenPriceVsQuote ? new BigNumber(1).div(farm.tokenPriceVsQuote) : ZERO
 }
 
 export const usePriceCakeBusd = (): BigNumber => {
-  const pid = 3 // Pure-HT LP
+  const pid = 3 // Pure-BNB LP
   const bnbPriceUSD = usePriceBnbBusd()
   const farm = useFarmFromPid(pid)
-  // console.log(bnbPriceUSD.times(farm.tokenPriceVsQuote).toNumber())
   return farm.tokenPriceVsQuote ? bnbPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
 }
 // 用不到

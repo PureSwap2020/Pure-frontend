@@ -28,26 +28,28 @@ export interface ApiStatResponse {
 }
 
 export const useGetStats = () => {
-  const [data, setData] = useState<ApiStatResponse | null>(null)
+  const [data, setData] = useState(null)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${baseUrl}/stat`)
-        const responsedata: ApiStatResponse = await response.json()
-        console.log(responsedata)
-        setData(responsedata)
-      } catch (error) {
-        console.error('Unable to fetch data:', error)
-      }
-    }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(`${baseUrl}/stat`)
+  //       const responsedata: ApiStatResponse = await response.json()
+  //       // console.log(responsedata)
+  //       setData(responsedata)
+  //     } catch (error) {
+  //       console.error('Unable to fetch data:', error)
+  //     }
+  //   }
 
-    fetchData()
-  }, [setData])
-
+  //   fetchData()
+  // }, [setData])
+  setTimeout(() => {
+    setData(true)
+  }, 3000)
   return data
 }
-// export const useSingleTokenPrive = (tokenName) => {
+// export const useSingleTokenPrice = (tokenName) => {
 //   const [price, setPrice] = useState(null)
 //   useEffect(() => {
 //     const fetchPrice = async () => {

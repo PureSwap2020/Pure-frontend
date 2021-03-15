@@ -1,3 +1,4 @@
+export { fetchTvlPublicDataAsync } from './tvl'
 export { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync } from './farms'
 export { clear, remove, push } from './toasts'
 export {

@@ -31,7 +31,7 @@ const Hero = () => {
     <StyledHero>
       <Container>
         <Title>{TranslateString(500, 'IFO: Initial Farm Offerings')}</Title>
-        <Blurb>{TranslateString(502, 'Buy new tokens with a brand new token sale model.')}</Blurb>
+        <Blurb>{TranslateString(502, 'Use your LP Token to unlock the future asset')}</Blurb>
         <IfoTabButtons />
       </Container>
     </StyledHero>

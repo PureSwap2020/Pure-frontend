@@ -12,6 +12,11 @@ export type TranslatableText =
       }
     }
 
+export interface Tvl {
+  Number?: BigNumber
+  tokenAmount?: string
+}
+
 export interface Farm extends FarmConfig {
   tokenAmount?: BigNumber
   quoteTokenAmount?: BigNumber
@@ -55,6 +60,10 @@ export interface Profile {
 
 export interface ToastsState {
   data: Toast[]
+}
+
+export interface TvlState {
+  data: Tvl[]
 }
 
 export interface FarmsState {
@@ -107,6 +116,7 @@ export interface AchievementState {
 // Global state
 
 export interface State {
+  tvl: TvlState
   farms: FarmsState
   toasts: ToastsState
   pools: PoolsState

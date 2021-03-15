@@ -5,7 +5,6 @@ import wbnbABI from 'config/abi/weth.json'
 import { QuoteToken } from 'config/constants/types'
 import multicall from 'utils/multicall'
 import { getAddress, getWbnbAddress, getSousChefAddress } from 'utils/addressHelpers'
-import { usePriceCakeBusd } from 'state/hooks'
 import BigNumber from 'bignumber.js'
 
 export const fetchPoolsBlockLimits = async () => {
@@ -96,35 +95,43 @@ export const fetchSinglePoolsPoint = async(sousId) => {
   const point = new BigNumber(res[0].allocPoint._hex)
   return point
 }
-export const fetchPoolApy = async(pool, cakePriceUsd) => {
+export const fetchPoolApy = async(pool, cakePriceUsd, bnbPriceUSD) => {
   const singleChefTotalAmount = 24 * 3600 / 3 * 0.6
   const singlePoolsPoint = await fetchSinglePoolsPoint(pool.sousId)
   const totalPoolsPoint = await fetchTotalPoolsPoint()
+  
   let tokenPrice
-  if (pool.tokenName === 'MX') {
-    const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=mx-token&vs_currencies=usd`)
-    const _priceData = await res.json()
-    tokenPrice = _priceData['mx-token'].usd
-  } else if (pool.tokenName === 'HT') {
-    const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=huobi-token&vs_currencies=usd`)
-    const _priceData = await res.json()
-    tokenPrice = _priceData['huobi-token'].usd
-  } else if (pool.tokenName === 'PURE') {
+  if (pool.tokenName === 'PURE') {
     tokenPrice = cakePriceUsd.toNumber()
-    // tokenPrice = useSingleTokenPrive('PURE-token')
+  } else if (pool.tokenName === 'BNB') {
+    tokenPrice = bnbPriceUSD.toNumber()
+  } else if (pool.tokenName === 'BUSD') {
+    tokenPrice = 1
+  } else {
+    const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${pool.getPriceTokenSymbol}&vs_currencies=usd`)
+    const _priceData = await res.json()
+    tokenPrice = _priceData[pool.getPriceTokenSymbol].usd
   }
-  let apr
+  // console.log(tokenPrice)
+  let _apr
   // 池子每日产出
   const poolOutput = singlePoolsPoint.toNumber() / totalPoolsPoint.toNumber() * singleChefTotalAmount
   // 质押量
-  const poolTvl = new BigNumber(pool.totalStaked).div(new BigNumber(10).pow(18)).toNumber()
+  const poolTvl = pool.totalStaked ? new BigNumber(pool.totalStaked).div(new BigNumber(10).pow(18)).toNumber() : 0
+  // console.log(poolTvl * tokenPrice)
+  // const poolTvlPrice = poolTvl * tokenPrice
+  // localStorage.setItem('poolTvlPrice', poolTvlPrice.toString())
+
   
   if (pool.sousId === 0) {
-    apr = new BigNumber(poolOutput / poolTvl * 100)
+    _apr = new BigNumber(poolOutput / poolTvl * 365 * 100)
   } else if (pool.sousId) {
     if (!Number.isNaN(poolTvl * tokenPrice)) {
-      apr = new BigNumber((poolOutput * cakePriceUsd) / (poolTvl * tokenPrice) * 100)
+      _apr = new BigNumber((poolOutput * cakePriceUsd) / (poolTvl * tokenPrice) * 365 * 100)
     }
   }
-  return apr
+  return {
+    apr: _apr,
+    tvlPrice: poolTvl * tokenPrice
+  }
 }
