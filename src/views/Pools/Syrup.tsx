@@ -109,7 +109,7 @@ const Farm: React.FC = () => {
             {TranslateString(738, 'Pool')}
           </Heading>
           <ul>
-            <li style={{ color: '#85898c' }}>{TranslateString(580, 'Stake PURE to earn more tokens without Impermanence loss')}{TranslateString(486, 'You can unstake at any time.')}</li>
+            <li style={{ color: '#85898c' }}>{TranslateString(580, 'Stake PURE to earn more tokens without Impermanence loss')}{TranslateString(486, ' You can unstake at any time.')}</li>
             {/* <li style={{ color: '#85898c' }}>{TranslateString(406, 'Rewards are calculated per block.')}</li> */}
           </ul>
         </div>
