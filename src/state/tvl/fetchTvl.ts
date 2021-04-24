@@ -13,20 +13,37 @@ const fetchPrice = async(tokenName: string) => {
 		coingeckoTokenName = 'binance-usd'
 	} else if (tokenName === 'WBNB') {
 		coingeckoTokenName = 'binancecoin'
-	}
+	} else if (tokenName === 'MX') {
+    coingeckoTokenName = 'mx-token'
+  } else if (tokenName === 'XVS') {
+    coingeckoTokenName = 'venus'
+  } else if (tokenName === 'USDT') {
+    coingeckoTokenName = 'tether'
+  } else if (tokenName === 'AUTO') {
+    coingeckoTokenName = 'auto'
+  } else if (tokenName === 'USDC') {
+    coingeckoTokenName = 'usd-coin'
+  } else if (tokenName === 'DAI') {
+    coingeckoTokenName = 'dai'
+  } else if (tokenName === 'ETH') {
+    coingeckoTokenName = 'ethereum'
+  } else if (tokenName === 'BTCB') {
+    coingeckoTokenName = 'binance-bitcoin'
+  }
   const _price = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coingeckoTokenName}&vs_currencies=usd`)
   const _priceJson = await _price.json()
-  window.localStorage.setItem(tokenName, JSON.stringify(_priceJson[coingeckoTokenName].usd))
-  // console.log(_priceJson)
+  if (_priceJson[coingeckoTokenName] !== undefined) {
+    window.localStorage.setItem(tokenName, JSON.stringify(_priceJson[coingeckoTokenName].usd))
+  }
   return 0 // new BigNumber(_priceJson[coingeckoTokenName].usd)
 }
 
 // import farmsConfig from 'config/constants/farms'
 const fetchTvl = async () => {
-  const chainId = 97
+  const chainId = 56
   // const data = {}
   const calls = [{
-    address: '0x8e0b57fD526d3540322d29dE060B21d43b857699', // factory address
+    address: '0x94b4188D143b9dD6bd7083aE38A461FcC6AAd07E', // factory address
     name: 'allPairsLength',
   }]
   const factory = await multicall(factoryABI, calls)
@@ -34,7 +51,7 @@ const fetchTvl = async () => {
   
   for (let i = 0; i < Number(factory); i ++) {
     arrPairCall.push({
-      address: '0x8e0b57fD526d3540322d29dE060B21d43b857699', // factory address
+      address: '0x94b4188D143b9dD6bd7083aE38A461FcC6AAd07E', // factory address
       name: 'allPairs',
       params: [i]
     })

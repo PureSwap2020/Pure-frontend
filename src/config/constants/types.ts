@@ -36,7 +36,9 @@ export enum QuoteToken {
   'snx' = 'snx',
   'PURE' = 'PURE',
   'HT' = 'HT',
-  'MX' = 'MX'
+  'MX' = 'MX',
+  'BTCB' = 'BTCB',
+  'WBNB' = 'WBNB'
 }
 
 export enum PoolCategory {

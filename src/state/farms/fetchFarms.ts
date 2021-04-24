@@ -53,8 +53,6 @@ const fetchFarms = async () => {
         quoteTokenDecimals,
       ] = await multicall(erc20, calls)
 
-      
-
       // 以%a个Lp代币为单位的比率，与流通总数之比
       const lpTokenRatio = new BigNumber(lpTokenBalanceMC).div(new BigNumber(lpTotalSupply))
 
@@ -63,7 +61,6 @@ const fetchFarms = async () => {
         .div(new BigNumber(10).pow(18))
         .times(new BigNumber(2))
         .times(lpTokenRatio)
-
 
       // LP中被视为下注的令牌数量(即令牌数量*LP比率)
       const tokenAmount = new BigNumber(tokenBalanceLP).div(new BigNumber(10).pow(tokenDecimals)).times(lpTokenRatio)
@@ -83,8 +80,6 @@ const fetchFarms = async () => {
           name: 'totalAllocPoint',
         },
       ])
-
-      // console.log(info)
 
       const allocPoint = new BigNumber(info.allocPoint._hex)
       const poolWeight = allocPoint.div(new BigNumber(totalAllocPoint))

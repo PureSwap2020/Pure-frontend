@@ -96,7 +96,7 @@ export const fetchSinglePoolsPoint = async(sousId) => {
   return point
 }
 export const fetchPoolApy = async(pool, cakePriceUsd, bnbPriceUSD) => {
-  const singleChefTotalAmount = 24 * 3600 / 3 * 0.6
+  const singleChefTotalAmount = 24 * 3600 / 3 * 0.5
   const singlePoolsPoint = await fetchSinglePoolsPoint(pool.sousId)
   const totalPoolsPoint = await fetchTotalPoolsPoint()
   
@@ -118,7 +118,7 @@ export const fetchPoolApy = async(pool, cakePriceUsd, bnbPriceUSD) => {
   const poolOutput = singlePoolsPoint.toNumber() / totalPoolsPoint.toNumber() * singleChefTotalAmount
   // 质押量
   const poolTvl = pool.totalStaked ? new BigNumber(pool.totalStaked).div(new BigNumber(10).pow(18)).toNumber() : 0
-  // console.log(poolTvl * tokenPrice)
+  
   // const poolTvlPrice = poolTvl * tokenPrice
   // localStorage.setItem('poolTvlPrice', poolTvlPrice.toString())
 

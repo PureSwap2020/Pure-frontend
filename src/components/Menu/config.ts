@@ -93,6 +93,10 @@ const config: MenuEntry[] = [
       {
         label: 'Github',
         href: 'https://github.com/PureSwap2020',
+      },
+      {
+        label: 'Docs',
+        href: 'https://pureswap.gitbook.io/introduction/',
       }
     ],
   },

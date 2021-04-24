@@ -64,6 +64,7 @@ const Farms: React.FC = () => {
 
   const [stackedOnly, setStackedOnly] = useState(false)
 
+  // console.log(cakePrice.toNumber())
   // const activeFarms = farmsLP.filter((farm) => farm.pid !== 0 && farm.multiplier !== '0X')
   // const inactiveFarms = farmsLP.filter((farm) => farm.pid !== 0 && farm.multiplier === '0X')
 
@@ -88,8 +89,6 @@ const Farms: React.FC = () => {
         const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
         // cakePriceInQuote * cakeRewardPerYear / lpTotalInQuoteToken
         let apy = cakePriceVsBNB.times(cakeRewardPerYear).div(farm.lpTotalInQuoteToken)
-
-        // console.log(apy.toNumber())
 
         if (farm.quoteTokenSymbol === QuoteToken.BUSD || farm.quoteTokenSymbol === QuoteToken.UST) {
           apy = cakePriceVsBNB.times(cakeRewardPerYear).div(farm.lpTotalInQuoteToken).times(bnbPrice)

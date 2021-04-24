@@ -85,16 +85,33 @@ export const usePoolFromPid = (sousId): Pool => {
 }
 
 // Prices
+const fetchPrice = async(tokenName: string) => {
+  if (tokenName === undefined) {
+    return new BigNumber(0)
+  }
+	let coingeckoTokenName: string
+	if (tokenName === 'BUSD') {
+		coingeckoTokenName = 'binance-usd'
+	} else if (tokenName === 'WBNB') {
+		coingeckoTokenName = 'binancecoin'
+	}
+  const _price = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coingeckoTokenName}&vs_currencies=usd`)
+  const _priceJson = await _price.json()
+  window.localStorage.setItem(tokenName, JSON.stringify(_priceJson[coingeckoTokenName].usd))
+  // console.log(_priceJson)
+  return 0 // new BigNumber(_priceJson[coingeckoTokenName].usd)
+}
 
 export const usePriceBnbBusd = (): BigNumber => {
-  const pid = 4 // BUSD-BNB LP
+  const pid = 5 // BUSD-BNB LP
   const farm = useFarmFromPid(pid)
-  // console.log(farm.tokenPriceVsQuote)
+  // fetchPrice('WBNB')
+  // return new BigNumber(localStorage.getItem('WBNB'))
   return farm.tokenPriceVsQuote ? new BigNumber(1).div(farm.tokenPriceVsQuote) : ZERO
 }
 
 export const usePriceCakeBusd = (): BigNumber => {
-  const pid = 3 // Pure-BNB LP
+  const pid = 0 // Pure-BNB LP
   const bnbPriceUSD = usePriceBnbBusd()
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? bnbPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
