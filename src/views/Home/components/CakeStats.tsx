@@ -50,7 +50,7 @@ const CakeStats = () => {
           <Text color="textSubtle" fontSize="14px">
             {TranslateString(540, 'New Pure/block')}
           </Text>
-          <p>6.5</p>
+          <p>3.25</p>
           {/* <CardValue fontSize="14px" bold={false} decimals={0} value={6.5} /> */}
         </Row>
       </CardBody>
