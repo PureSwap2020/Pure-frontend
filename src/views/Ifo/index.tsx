@@ -5,7 +5,7 @@ const IFO = () => {
   return (
     <div>
       <div className="test-less">
-        hello
+        IFO
       </div>
     </div>
   )
