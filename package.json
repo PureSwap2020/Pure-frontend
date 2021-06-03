@@ -46,6 +46,7 @@
     "date-fns": "^2.17.0",
     "lodash": "^4.17.20",
     "node-fetch": "^2.6.1",
+    "node-sass": "4.14.1",
     "react": "^17.0.1",
     "react-chartjs-2": "^2.11.1",
     "react-countup": "^4.3.3",
@@ -66,8 +67,8 @@
     "@types/react-redux": "^7.1.16",
     "eslint": "^7.20.0",
     "husky": "4.3.5",
-    "node-sass": "^6.0.0",
     "prettier": "^2.1.2",
+    "sass-loader": "^12.0.0",
     "source-map-explorer": "^2.5.2",
     "ts-node": "^9.1.1"
   }

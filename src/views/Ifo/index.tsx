@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './assets/less/index.scss'
+import './assets/scss/index.scss'
 
 const IFO = () => {
   return (
