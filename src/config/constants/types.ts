@@ -3,6 +3,7 @@ import { TranslatableText } from 'state/types'
 export type IfoStatus = 'coming_soon' | 'live' | 'finished'
 
 export interface Currency {
+  isToken: boolean,
   address: string,
   decimal: number,
   symbol: string
@@ -23,6 +24,7 @@ export interface Ifo {
   abi: Array<any>,
   startAt: string,
   time: string,
+  timeClose: string,
   currency: Currency,
   underlying: Underlying,
   ratio: string,

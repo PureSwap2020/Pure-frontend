@@ -1,3 +1,4 @@
+import { toWei } from 'web3-utils'
 import { Ifo } from './types'
 import SrarterV3 from '../abi/StarterV3.json'
 
@@ -9,7 +10,9 @@ const ifos: Ifo[] = [
     type: 0,
     startAt: '1614690000',
     time: '1614693600',
+    timeClose: '0',
     currency: {
+      isToken: true,
       address: '0xa71edc38d189767582c38a3145b5873052c3e47a', // 如果是0x0则是ht
       decimal: 18,
       symbol: 'USDT',
@@ -25,7 +28,7 @@ const ifos: Ifo[] = [
     progress: 1038.92,
     amount: '166667',
     purchasedCurrencyOf: '0',
-    totalPurchasedAmount: '50000000000000000000000',
+    totalPurchasedAmount: toWei('50000'),
     totalPurchasedUnderlying: '0',
     totalPurchasedCurrency: '0',
     status: 3,
