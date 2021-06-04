@@ -10,18 +10,18 @@ const IFO = () => {
   const { onPresentConnectModal } = useWalletModal(connect, reset)
   return (
     <div>
-      <div className="test-less">
+      {/* <div className="test-less">
         {
           !account ? (
             <Button onClick={onPresentConnectModal}>连接钱包</Button>
           ):
             `连接成功：${account}`
         }
-      </div>
-      {
-        ifos.map(ifo => <IFOCard key={ifo.address} ifo={ifo}/>)
-      }
+      </div> */}
 
+      {ifos.map((ifo) => (
+        <IFOCard key={ifo.address} ifo />
+      ))}
     </div>
   )
 }

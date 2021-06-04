@@ -1,6 +1,1895 @@
-.info {
-  color: white;
-  .item{
-    font-size: 24px;
+.ant-btn-primary {
+  padding: 0 16px;
+  width: 100%;
+  font-size: 14px;
+  font-family: HelveticaNeue-Medium, HelveticaNeue;
+  font-weight: 500;
+  height: 44px;
+  border-radius: 8px;
+  background: transparent !important;
+  color: #19D6AD;
+  border: 1px solid #19D6AD !important;
+  box-shadow: none;
+  text-shadow: none;
+  cursor: pointer;
+  &:hover {
+    color: #ACE0CD !important;
+    border-color: #ACE0CD !important;
+  }
+}
+.ant-btn > .ant-btn-loading-icon {
+  svg {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+    fill: #ACE0CD !important;
+    top: 4px;
+  }
+}
+
+@media (min-width: 1892px) {
+  .IFO_info {
+    padding: 38px 17px;
+    background: url('../../assets/icon/ill@2x.png') no-repeat;
+    background-size: 248px 268px;
+    background-position: top right;
+    &_title {
+      font-size: 36px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #17d7ad;
+      line-height: 50px;
+    }
+    &_tip {
+      margin-top: 12px;
+      font-size: 16px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #85898c;
+      line-height: 22px;
+    }
+    &_card {
+      margin-top: 64px;
+      width: 100%;
+      height: 528px;
+      background: #042a2e;
+      border-radius: 8px;
+    }
+    &_card_countdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 122px;
+      background: #062f33;
+      border-radius: 8px 8px 0 0;
+    }
+    &_card_countdown_box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_card_countdown_timer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .day {
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #366061;
+        line-height: 12px;
+      }
+      .timer {
+        display: inline-block;
+        width: 44px;
+        height: 40px;
+        font-size: 24px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #ace0cd;
+        line-height: 40px;
+        text-align: center;
+        background: #062f33;
+        border-radius: 4px;
+        border: 2px solid #195056;
+        background: url('../../assets/icon/time_kuang@2x.png') no-repeat;
+        background-size: 100% 100%;
+        &:last-child {
+          margin-left: 4px;
+        }
+      }
+    }
+
+    .delimiter {
+      display: inline-block;
+      margin: 14px 8px 0;
+      font-size: 26px;
+      color: #0e636b;
+    }
+    .timer_text {
+      margin: 20px 0 0 16px;
+      font-size: 16px;
+      font-family: Kanit-Regular, Kanit;
+      font-weight: 400;
+      color: #ACE0CD;
+      line-height: 24px;
+    }
+    &_card_content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 406px;
+      .pureswap_link {
+        padding-top: 32px;
+        width: 282px;
+        height: 358px;
+      }
+      .pureswap_title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          display: inline-block;
+          width: 80px;
+          height: 80px;
+        }
+        p {
+          margin-left: 16px;
+          font-size: 24px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #19D6AD;
+          line-height: 34px;
+        }
+      }
+      .pure_address {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 14px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #ACE0CD;
+        line-height: 20px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+        &:first-child {
+          margin-top: 24px;
+        }
+        svg {
+          margin-left: 2px;
+          fill: #19D6AD;
+          vertical-align: middle;
+        }
+        .metaMask_logo {
+          display: inline-block;
+          margin-left: 8px;
+          width: 16px;
+          height: 16px;
+          background: url('../../assets/icon/MetaMask_logo@2x.png') no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+      ul {
+        margin-top: 12px;
+        li {
+          display: inline-block;
+          margin-right: 12px;
+          font-style: normal;
+          svg {
+            fill: #2f5556;
+            vertical-align: text-top;
+          }
+        }
+      }
+    }
+    &_card_stake {
+      margin-left: 16px;
+      padding: 24px;
+      width: 42%;
+      height: 358px;
+      background: #052427;
+      border-radius: 8px;
+      h2 {
+        margin-bottom: 24px;
+        font-size: 24px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #19D6AD;
+        line-height: 24px;
+      }
+      .stake_content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        span {
+          font-size: 14px;
+          font-family: Kanit-Regular, Kanit;
+          font-weight: 400;
+          color: #366061;
+          line-height: 20px;
+        }
+        .stake_value {
+          color: #ACE0CD;
+        }
+        .claim_btn {
+          display: inline-block;
+          margin-left: 8px;
+          padding: 0 10px;
+          height: 24px;
+          color: #19D6AD;
+          border-radius: 8px;
+          border: 1px solid #19D6AD;
+          cursor: pointer;
+          &:hover {
+            color: #ACE0CD;
+            border-color: #ACE0CD;
+          }
+        }
+      }
+      .get_lp_token {
+        text-decoration: underline;
+        text-decoration-color: #366061;
+        &:hover {
+          color: #ACE0CD !important;
+          text-decoration-color: #ACE0CD;
+        }
+      }
+      .progress {
+        position: relative;
+        margin-bottom: 14px;
+        width: 100%;
+        height: 6px;
+        background: #00111A;
+        border-radius: 4px;
+        .complete_schedule {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 6px;
+          background: linear-gradient(270deg, #10BDA5 0%, #1E6B73 100%);
+          border-radius: 4px 0 0 4px;
+        }
+        .complete_schedule_point {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 6px;
+          height: 14px;
+          background: #21FDDE;
+          border-radius: 50%;
+        }
+      }
+      .dividing_line {
+        margin-bottom: 14px;
+        width: 100%;
+        height: 1px;
+        background: #1C4347;
+      }
+      .stake_input {
+        padding: 0 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        font-size: 16px;
+        color: #ACE0CD;
+        border-radius: 8px;
+        border: 1px solid #366061;
+        background: transparent;
+        &:focus {
+          outline: none;
+          border: 1px solid #ACE0CD;
+        }
+      }
+      .claim_box {
+        margin-bottom: 62px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1628px) and (max-width: 1892px) {
+  .IFO_info {
+    padding: 38px 17px;
+    background: url('../../assets/icon/ill@2x.png') no-repeat;
+    background-size: 248px 268px;
+    background-position: top right;
+    &_title {
+      font-size: 36px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #17d7ad;
+      line-height: 50px;
+    }
+    &_tip {
+      margin-top: 12px;
+      font-size: 16px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #85898c;
+      line-height: 22px;
+    }
+    &_card {
+      margin-top: 64px;
+      width: 100%;
+      height: 528px;
+      background: #042a2e;
+      border-radius: 8px;
+    }
+    &_card_countdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 122px;
+      background: #062f33;
+      border-radius: 8px 8px 0 0;
+    }
+    &_card_countdown_box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_card_countdown_timer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .day {
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #366061;
+        line-height: 12px;
+      }
+      .timer {
+        display: inline-block;
+        width: 44px;
+        height: 40px;
+        font-size: 24px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #ace0cd;
+        line-height: 40px;
+        text-align: center;
+        background: #062f33;
+        border-radius: 4px;
+        border: 2px solid #195056;
+        background: url('../../assets/icon/time_kuang@2x.png') no-repeat;
+        background-size: 100% 100%;
+        &:last-child {
+          margin-left: 4px;
+        }
+      }
+    }
+
+    .delimiter {
+      display: inline-block;
+      margin: 14px 8px 0;
+      font-size: 26px;
+      color: #0e636b;
+    }
+    .timer_text {
+      margin: 20px 0 0 16px;
+      font-size: 16px;
+      font-family: Kanit-Regular, Kanit;
+      font-weight: 400;
+      color: #ACE0CD;
+      line-height: 24px;
+    }
+    &_card_content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 406px;
+      .pureswap_link {
+        padding-top: 32px;
+        width: 282px;
+        height: 358px;
+      }
+      .pureswap_title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          display: inline-block;
+          width: 80px;
+          height: 80px;
+        }
+        p {
+          margin-left: 16px;
+          font-size: 24px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #19D6AD;
+          line-height: 34px;
+        }
+      }
+      .pure_address {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 14px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #ACE0CD;
+        line-height: 20px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+        &:first-child {
+          margin-top: 24px;
+        }
+        svg {
+          margin-left: 2px;
+          fill: #19D6AD;
+          vertical-align: middle;
+        }
+        .metaMask_logo {
+          display: inline-block;
+          margin-left: 8px;
+          width: 16px;
+          height: 16px;
+          background: url('../../assets/icon/MetaMask_logo@2x.png') no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+      ul {
+        margin-top: 12px;
+        li {
+          display: inline-block;
+          margin-right: 12px;
+          font-style: normal;
+          svg {
+            fill: #2f5556;
+            vertical-align: text-top;
+          }
+        }
+      }
+    }
+    &_card_stake {
+      margin-left: 16px;
+      padding: 24px;
+      width: 40%;
+      height: 358px;
+      background: #052427;
+      border-radius: 8px;
+      h2 {
+        margin-bottom: 24px;
+        font-size: 24px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #19D6AD;
+        line-height: 24px;
+      }
+      .stake_content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        span {
+          font-size: 14px;
+          font-family: Kanit-Regular, Kanit;
+          font-weight: 400;
+          color: #366061;
+          line-height: 20px;
+        }
+        .stake_value {
+          color: #ACE0CD;
+        }
+        .claim_btn {
+          display: inline-block;
+          margin-left: 8px;
+          padding: 0 10px;
+          height: 24px;
+          color: #19D6AD;
+          border-radius: 8px;
+          border: 1px solid #19D6AD;
+          cursor: pointer;
+          &:hover {
+            color: #ACE0CD;
+            border-color: #ACE0CD;
+          }
+        }
+      }
+      .get_lp_token {
+        text-decoration: underline;
+        text-decoration-color: #366061;
+        &:hover {
+          color: #ACE0CD !important;
+          text-decoration-color: #ACE0CD;
+        }
+      }
+      .progress {
+        position: relative;
+        margin-bottom: 14px;
+        width: 100%;
+        height: 6px;
+        background: #00111A;
+        border-radius: 4px;
+        .complete_schedule {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 6px;
+          background: linear-gradient(270deg, #10BDA5 0%, #1E6B73 100%);
+          border-radius: 4px 0 0 4px;
+        }
+        .complete_schedule_point {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 6px;
+          height: 14px;
+          background: #21FDDE;
+          border-radius: 50%;
+        }
+      }
+      .dividing_line {
+        margin-bottom: 14px;
+        width: 100%;
+        height: 1px;
+        background: #1C4347;
+      }
+      .stake_input {
+        padding: 0 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        font-size: 16px;
+        color: #ACE0CD;
+        border-radius: 8px;
+        border: 1px solid #366061;
+        background: transparent;
+        &:focus {
+          outline: none;
+          border: 1px solid #ACE0CD;
+        }
+      }
+      .claim_box {
+        margin-bottom: 62px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1368px) and (max-width: 1627px) {
+  .IFO_info {
+    padding: 38px 17px;
+    background: url('../../assets/icon/ill@2x.png') no-repeat;
+    background-size: 248px 268px;
+    background-position: top right;
+    &_title {
+      font-size: 36px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #17d7ad;
+      line-height: 50px;
+    }
+    &_tip {
+      margin-top: 12px;
+      font-size: 16px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #85898c;
+      line-height: 22px;
+    }
+    &_card {
+      margin-top: 64px;
+      width: 100%;
+      height: 528px;
+      background: #042a2e;
+      border-radius: 8px;
+    }
+    &_card_countdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 122px;
+      background: #062f33;
+      border-radius: 8px 8px 0 0;
+    }
+    &_card_countdown_box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_card_countdown_timer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .day {
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #366061;
+        line-height: 12px;
+      }
+      .timer {
+        display: inline-block;
+        width: 44px;
+        height: 40px;
+        font-size: 24px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #ace0cd;
+        line-height: 40px;
+        text-align: center;
+        background: #062f33;
+        border-radius: 4px;
+        border: 2px solid #195056;
+        background: url('../../assets/icon/time_kuang@2x.png') no-repeat;
+        background-size: 100% 100%;
+        &:last-child {
+          margin-left: 4px;
+        }
+      }
+    }
+
+    .delimiter {
+      display: inline-block;
+      margin: 14px 8px 0;
+      font-size: 26px;
+      color: #0e636b;
+    }
+    .timer_text {
+      margin: 20px 0 0 16px;
+      font-size: 16px;
+      font-family: Kanit-Regular, Kanit;
+      font-weight: 400;
+      color: #ACE0CD;
+      line-height: 24px;
+    }
+    &_card_content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 406px;
+      .pureswap_link {
+        padding-top: 32px;
+        width: 282px;
+        height: 358px;
+      }
+      .pureswap_title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          display: inline-block;
+          width: 80px;
+          height: 80px;
+        }
+        p {
+          margin-left: 16px;
+          font-size: 24px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #19D6AD;
+          line-height: 34px;
+        }
+      }
+      .pure_address {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 14px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #ACE0CD;
+        line-height: 20px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+        &:first-child {
+          margin-top: 24px;
+        }
+        svg {
+          margin-left: 2px;
+          fill: #19D6AD;
+          vertical-align: middle;
+        }
+        .metaMask_logo {
+          display: inline-block;
+          margin-left: 8px;
+          width: 16px;
+          height: 16px;
+          background: url('../../assets/icon/MetaMask_logo@2x.png') no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+      ul {
+        margin-top: 12px;
+        li {
+          display: inline-block;
+          margin-right: 12px;
+          font-style: normal;
+          svg {
+            fill: #2f5556;
+            vertical-align: text-top;
+          }
+        }
+      }
+    }
+    &_card_stake {
+      margin-left: 16px;
+      padding: 24px;
+      width: 37%;
+      height: 358px;
+      background: #052427;
+      border-radius: 8px;
+      h2 {
+        margin-bottom: 24px;
+        font-size: 24px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #19D6AD;
+        line-height: 24px;
+      }
+      .stake_content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        span {
+          font-size: 14px;
+          font-family: Kanit-Regular, Kanit;
+          font-weight: 400;
+          color: #366061;
+          line-height: 20px;
+        }
+        .stake_value {
+          color: #ACE0CD;
+        }
+        .claim_btn {
+          display: inline-block;
+          margin-left: 8px;
+          padding: 0 10px;
+          height: 24px;
+          color: #19D6AD;
+          border-radius: 8px;
+          border: 1px solid #19D6AD;
+          cursor: pointer;
+          &:hover {
+            color: #ACE0CD;
+            border-color: #ACE0CD;
+          }
+        }
+      }
+      .get_lp_token {
+        text-decoration: underline;
+        text-decoration-color: #366061;
+        &:hover {
+          color: #ACE0CD !important;
+          text-decoration-color: #ACE0CD;
+        }
+      }
+      .progress {
+        position: relative;
+        margin-bottom: 14px;
+        width: 100%;
+        height: 6px;
+        background: #00111A;
+        border-radius: 4px;
+        .complete_schedule {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 6px;
+          background: linear-gradient(270deg, #10BDA5 0%, #1E6B73 100%);
+          border-radius: 4px 0 0 4px;
+        }
+        .complete_schedule_point {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 6px;
+          height: 14px;
+          background: #21FDDE;
+          border-radius: 50%;
+        }
+      }
+      .dividing_line {
+        margin-bottom: 14px;
+        width: 100%;
+        height: 1px;
+        background: #1C4347;
+      }
+      .stake_input {
+        padding: 0 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        font-size: 16px;
+        color: #ACE0CD;
+        border-radius: 8px;
+        border: 1px solid #366061;
+        background: transparent;
+        &:focus {
+          outline: none;
+          border: 1px solid #ACE0CD;
+        }
+      }
+      .claim_box {
+        margin-bottom: 62px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1160px) and (max-width: 1367px) {
+  .IFO_info {
+    padding: 38px 17px;
+    background: url('../../assets/icon/ill@2x.png') no-repeat;
+    background-size: 248px 268px;
+    background-position: top right;
+    &_title {
+      font-size: 36px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #17d7ad;
+      line-height: 50px;
+    }
+    &_tip {
+      margin-top: 12px;
+      font-size: 16px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #85898c;
+      line-height: 22px;
+    }
+    &_card {
+      margin-top: 64px;
+      width: 100%;
+      height: 528px;
+      background: #042a2e;
+      border-radius: 8px;
+    }
+    &_card_countdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 122px;
+      background: #062f33;
+      border-radius: 8px 8px 0 0;
+    }
+    &_card_countdown_box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_card_countdown_timer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .day {
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #366061;
+        line-height: 12px;
+      }
+      .timer {
+        display: inline-block;
+        width: 44px;
+        height: 40px;
+        font-size: 24px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #ace0cd;
+        line-height: 40px;
+        text-align: center;
+        background: #062f33;
+        border-radius: 4px;
+        border: 2px solid #195056;
+        background: url('../../assets/icon/time_kuang@2x.png') no-repeat;
+        background-size: 100% 100%;
+        &:last-child {
+          margin-left: 4px;
+        }
+      }
+    }
+
+    .delimiter {
+      display: inline-block;
+      margin: 14px 8px 0;
+      font-size: 26px;
+      color: #0e636b;
+    }
+    .timer_text {
+      margin: 20px 0 0 16px;
+      font-size: 16px;
+      font-family: Kanit-Regular, Kanit;
+      font-weight: 400;
+      color: #ACE0CD;
+      line-height: 24px;
+    }
+    &_card_content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 406px;
+      .pureswap_link {
+        padding-top: 32px;
+        width: 282px;
+        height: 358px;
+      }
+      .pureswap_title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          display: inline-block;
+          width: 80px;
+          height: 80px;
+        }
+        p {
+          margin-left: 16px;
+          font-size: 24px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #19D6AD;
+          line-height: 34px;
+        }
+      }
+      .pure_address {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 14px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #ACE0CD;
+        line-height: 20px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+        &:first-child {
+          margin-top: 24px;
+        }
+        svg {
+          margin-left: 2px;
+          fill: #19D6AD;
+          vertical-align: middle;
+        }
+        .metaMask_logo {
+          display: inline-block;
+          margin-left: 8px;
+          width: 16px;
+          height: 16px;
+          background: url('../../assets/icon/MetaMask_logo@2x.png') no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+      ul {
+        margin-top: 12px;
+        li {
+          display: inline-block;
+          margin-right: 12px;
+          font-style: normal;
+          svg {
+            fill: #2f5556;
+            vertical-align: text-top;
+          }
+        }
+      }
+    }
+    &_card_stake {
+      margin-left: 16px;
+      padding: 24px;
+      width: 36%;
+      height: 358px;
+      background: #052427;
+      border-radius: 8px;
+      h2 {
+        margin-bottom: 24px;
+        font-size: 24px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #19D6AD;
+        line-height: 24px;
+      }
+      .stake_content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        span {
+          font-size: 14px;
+          font-family: Kanit-Regular, Kanit;
+          font-weight: 400;
+          color: #366061;
+          line-height: 20px;
+        }
+        .stake_value {
+          color: #ACE0CD;
+        }
+        .claim_btn {
+          display: inline-block;
+          margin-left: 8px;
+          padding: 0 10px;
+          height: 24px;
+          color: #19D6AD;
+          border-radius: 8px;
+          border: 1px solid #19D6AD;
+          cursor: pointer;
+          &:hover {
+            color: #ACE0CD;
+            border-color: #ACE0CD;
+          }
+        }
+      }
+      .get_lp_token {
+        text-decoration: underline;
+        text-decoration-color: #366061;
+        &:hover {
+          color: #ACE0CD !important;
+          text-decoration-color: #ACE0CD;
+        }
+      }
+      .progress {
+        position: relative;
+        margin-bottom: 14px;
+        width: 100%;
+        height: 6px;
+        background: #00111A;
+        border-radius: 4px;
+        .complete_schedule {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 6px;
+          background: linear-gradient(270deg, #10BDA5 0%, #1E6B73 100%);
+          border-radius: 4px 0 0 4px;
+        }
+        .complete_schedule_point {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 6px;
+          height: 14px;
+          background: #21FDDE;
+          border-radius: 50%;
+        }
+      }
+      .dividing_line {
+        margin-bottom: 14px;
+        width: 100%;
+        height: 1px;
+        background: #1C4347;
+      }
+      .stake_input {
+        padding: 0 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        font-size: 16px;
+        color: #ACE0CD;
+        border-radius: 8px;
+        border: 1px solid #366061;
+        background: transparent;
+        &:focus {
+          outline: none;
+          border: 1px solid #ACE0CD;
+        }
+      }
+      .claim_box {
+        margin-bottom: 62px;
+      }
+    }
+  }
+}
+
+@media (min-width: 747px) and (max-width: 1159px) {
+  .IFO_info {
+    padding: 38px 17px;
+    background: url('../../assets/icon/ill@2x.png') no-repeat;
+    background-size: 248px 268px;
+    background-position: top right;
+    &_title {
+      font-size: 36px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #17d7ad;
+      line-height: 50px;
+    }
+    &_tip {
+      margin-top: 12px;
+      font-size: 16px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #85898c;
+      line-height: 22px;
+    }
+    &_card {
+      margin-top: 64px;
+      width: 1078px;
+      height: 528px;
+      background: #042a2e;
+      border-radius: 8px;
+    }
+    &_card_countdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 122px;
+      background: #062f33;
+      border-radius: 8px 8px 0 0;
+    }
+    &_card_countdown_box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_card_countdown_timer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .day {
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #366061;
+        line-height: 12px;
+      }
+      .timer {
+        display: inline-block;
+        width: 44px;
+        height: 40px;
+        font-size: 24px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #ace0cd;
+        line-height: 40px;
+        text-align: center;
+        background: #062f33;
+        border-radius: 4px;
+        border: 2px solid #195056;
+        background: url('../../assets/icon/time_kuang@2x.png') no-repeat;
+        background-size: 100% 100%;
+        &:last-child {
+          margin-left: 4px;
+        }
+      }
+    }
+
+    .delimiter {
+      display: inline-block;
+      margin: 14px 8px 0;
+      font-size: 26px;
+      color: #0e636b;
+    }
+    .timer_text {
+      margin: 20px 0 0 16px;
+      font-size: 16px;
+      font-family: Kanit-Regular, Kanit;
+      font-weight: 400;
+      color: #ACE0CD;
+      line-height: 24px;
+    }
+    &_card_content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 406px;
+      .pureswap_link {
+        padding-top: 32px;
+        width: 282px;
+        height: 358px;
+      }
+      .pureswap_title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          display: inline-block;
+          width: 80px;
+          height: 80px;
+        }
+        p {
+          margin-left: 16px;
+          font-size: 24px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #19D6AD;
+          line-height: 34px;
+        }
+      }
+      .pure_address {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 14px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #ACE0CD;
+        line-height: 20px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+        &:first-child {
+          margin-top: 24px;
+        }
+        svg {
+          margin-left: 2px;
+          fill: #19D6AD;
+          vertical-align: middle;
+        }
+        .metaMask_logo {
+          display: inline-block;
+          margin-left: 8px;
+          width: 16px;
+          height: 16px;
+          background: url('../../assets/icon/MetaMask_logo@2x.png') no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+      ul {
+        margin-top: 12px;
+        li {
+          display: inline-block;
+          margin-right: 12px;
+          font-style: normal;
+          svg {
+            fill: #2f5556;
+            vertical-align: text-top;
+          }
+        }
+      }
+    }
+    &_card_stake {
+      margin-left: 16px;
+      padding: 24px;
+      width: 360px;
+      height: 358px;
+      background: #052427;
+      border-radius: 8px;
+      h2 {
+        margin-bottom: 24px;
+        font-size: 24px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #19D6AD;
+        line-height: 24px;
+      }
+      .stake_content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        span {
+          font-size: 14px;
+          font-family: Kanit-Regular, Kanit;
+          font-weight: 400;
+          color: #366061;
+          line-height: 20px;
+        }
+        .stake_value {
+          color: #ACE0CD;
+        }
+        .claim_btn {
+          display: inline-block;
+          margin-left: 8px;
+          padding: 0 10px;
+          height: 24px;
+          color: #19D6AD;
+          border-radius: 8px;
+          border: 1px solid #19D6AD;
+          cursor: pointer;
+          &:hover {
+            color: #ACE0CD;
+            border-color: #ACE0CD;
+          }
+        }
+      }
+      .get_lp_token {
+        text-decoration: underline;
+        text-decoration-color: #366061;
+        &:hover {
+          color: #ACE0CD !important;
+          text-decoration-color: #ACE0CD;
+        }
+      }
+      .progress {
+        position: relative;
+        margin-bottom: 14px;
+        width: 100%;
+        height: 6px;
+        background: #00111A;
+        border-radius: 4px;
+        .complete_schedule {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 6px;
+          background: linear-gradient(270deg, #10BDA5 0%, #1E6B73 100%);
+          border-radius: 4px 0 0 4px;
+        }
+        .complete_schedule_point {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 6px;
+          height: 14px;
+          background: #21FDDE;
+          border-radius: 50%;
+        }
+      }
+      .dividing_line {
+        margin-bottom: 14px;
+        width: 100%;
+        height: 1px;
+        background: #1C4347;
+      }
+      .stake_input {
+        padding: 0 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        font-size: 16px;
+        color: #ACE0CD;
+        border-radius: 8px;
+        border: 1px solid #366061;
+        background: transparent;
+        &:focus {
+          outline: none;
+          border: 1px solid #ACE0CD;
+        }
+      }
+      .claim_box {
+        margin-bottom: 62px;
+      }
+    }
+  }
+}
+
+@media (min-width: 359px) and (max-width: 747px) {
+  .IFO_info {
+    padding: 38px 17px;
+    background: url('../../assets/icon/ill@2x.png') no-repeat;
+    background-size: 248px 268px;
+    background-position: top;
+    &_title {
+      font-size: 26px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #17d7ad;
+      line-height: 36px;
+    }
+    &_tip {
+      margin-top: 10px;
+      font-size: 16px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #85898c;
+      line-height: 22px;
+    }
+    &_card {
+      margin-top: 64px;
+      width: 100%;
+      background: #042a2e;
+      border-radius: 8px;
+    }
+    &_card_countdown {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 14px;
+      height: 130px;
+      background: #062f33;
+      border-radius: 8px 8px 0 0;
+    }
+    &_card_countdown_box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_card_countdown_timer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .day {
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #366061;
+        line-height: 12px;
+      }
+      .timer {
+        display: inline-block;
+        width: 44px;
+        height: 40px;
+        font-size: 24px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #ace0cd;
+        line-height: 40px;
+        text-align: center;
+        background: #062f33;
+        border-radius: 4px;
+        border: 2px solid #195056;
+        background: url('../../assets/icon/time_kuang@2x.png') no-repeat;
+        background-size: 100% 100%;
+        &:last-child {
+          margin-left: 4px;
+        }
+      }
+    }
+
+    .delimiter {
+      display: inline-block;
+      margin: 14px 8px 0;
+      font-size: 26px;
+      color: #0e636b;
+    }
+    .timer_text {
+      margin-top: 4px;
+      font-size: 16px;
+      font-family: Kanit-Regular, Kanit;
+      font-weight: 400;
+      color: #ACE0CD;
+      line-height: 24px;
+    }
+    &_card_content {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .pureswap_link {
+        padding-top: 32px;
+        width: 282px;
+        height: 342px;
+      }
+      .pureswap_title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          display: inline-block;
+          width: 80px;
+          height: 80px;
+        }
+        p {
+          margin-left: 16px;
+          font-size: 24px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #19D6AD;
+          line-height: 34px;
+        }
+      }
+      .pure_address {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 14px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #ACE0CD;
+        line-height: 20px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+        &:first-child {
+          margin-top: 24px;
+        }
+        svg {
+          margin-left: 2px;
+          fill: #19D6AD;
+          vertical-align: middle;
+        }
+        .metaMask_logo {
+          display: inline-block;
+          margin-left: 8px;
+          width: 16px;
+          height: 16px;
+          background: url('../../assets/icon/MetaMask_logo@2x.png') no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+      ul {
+        margin-top: 12px;
+        li {
+          display: inline-block;
+          margin-right: 12px;
+          font-style: normal;
+          svg {
+            fill: #2f5556;
+            vertical-align: text-top;
+          }
+        }
+      }
+    }
+    &_card_stake {
+      padding: 24px;
+      width: 100%;
+      height: 358px;
+      background: #052427;
+      h2 {
+        margin-bottom: 24px;
+        font-size: 24px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #19D6AD;
+        line-height: 24px;
+      }
+      .stake_content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        span {
+          font-size: 14px;
+          font-family: Kanit-Regular, Kanit;
+          font-weight: 400;
+          color: #366061;
+          line-height: 20px;
+        }
+        .stake_value {
+          color: #ACE0CD;
+        }
+        .claim_btn {
+          display: inline-block;
+          margin-left: 8px;
+          padding: 0 10px;
+          height: 24px;
+          color: #19D6AD;
+          border-radius: 8px;
+          border: 1px solid #19D6AD;
+          cursor: pointer;
+          &:hover {
+            color: #ACE0CD;
+            border-color: #ACE0CD;
+          }
+        }
+      }
+      .get_lp_token {
+        text-decoration: underline;
+        text-decoration-color: #366061;
+        &:hover {
+          color: #ACE0CD !important;
+          text-decoration-color: #ACE0CD;
+        }
+      }
+      .progress {
+        position: relative;
+        margin-bottom: 14px;
+        width: 100%;
+        height: 6px;
+        background: #00111A;
+        border-radius: 4px;
+        .complete_schedule {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 6px;
+          background: linear-gradient(270deg, #10BDA5 0%, #1E6B73 100%);
+          border-radius: 4px 0 0 4px;
+        }
+        .complete_schedule_point {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 6px;
+          height: 14px;
+          background: #21FDDE;
+          border-radius: 50%;
+        }
+      }
+      .dividing_line {
+        margin-bottom: 14px;
+        width: 100%;
+        height: 1px;
+        background: #1C4347;
+      }
+      .stake_input {
+        padding: 0 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        font-size: 16px;
+        color: #ACE0CD;
+        border-radius: 8px;
+        border: 1px solid #366061;
+        background: transparent;
+        &:focus {
+          outline: none;
+          border: 1px solid #ACE0CD;
+        }
+      }
+      .claim_box {
+        margin-bottom: 62px;
+      }
+    }
+  }
+}
+@media (max-width: 359px) {
+  .IFO_info {
+    padding: 38px 17px;
+    background: url('../../assets/icon/ill@2x.png') no-repeat;
+    background-size: 248px 268px;
+    background-position: top;
+    &_title {
+      font-size: 22px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #17d7ad;
+      line-height: 32px;
+    }
+    &_tip {
+      margin-top: 10px;
+      font-size: 14px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #85898c;
+      line-height: 20px;
+    }
+    &_card {
+      margin-top: 64px;
+      width: 100%;
+      background: #042a2e;
+      border-radius: 8px;
+    }
+    &_card_countdown {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 14px;
+      height: 120px;
+      background: #062f33;
+      border-radius: 8px 8px 0 0;
+    }
+    &_card_countdown_box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_card_countdown_timer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .day {
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #366061;
+        line-height: 12px;
+      }
+      .timer {
+        display: inline-block;
+        width: 34px;
+        height: 30px;
+        font-size: 16px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #ace0cd;
+        line-height: 26px;
+        text-align: center;
+        background: #062f33;
+        border-radius: 4px;
+        border: 2px solid #195056;
+        background: url('../../assets/icon/time_kuang@2x.png') no-repeat;
+        background-size: 100% 100%;
+        &:last-child {
+          margin-left: 4px;
+        }
+      }
+    }
+
+    .delimiter {
+      display: inline-block;
+      margin: 14px 8px 0;
+      font-size: 26px;
+      color: #0e636b;
+    }
+    .timer_text {
+      margin-top: 4px;
+      font-size: 16px;
+      font-family: Kanit-Regular, Kanit;
+      font-weight: 400;
+      color: #ACE0CD;
+      line-height: 24px;
+    }
+    &_card_content {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .pureswap_link {
+        padding: 28px 10px 0;
+        width: 282px;
+        height: 302px;
+      }
+      .pureswap_title {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        img {
+          display: inline-block;
+          width: 60px;
+          height: 60px;
+        }
+        p {
+          margin-left: 12px;
+          font-size: 20px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #19D6AD;
+          line-height: 34px;
+        }
+      }
+      .pure_address {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 12px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #ACE0CD;
+        line-height: 16px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+        &:first-child {
+          margin-top: 24px;
+        }
+        svg {
+          margin-left: 2px;
+          fill: #19D6AD;
+          vertical-align: middle;
+        }
+        .metaMask_logo {
+          display: inline-block;
+          margin-left: 8px;
+          width: 16px;
+          height: 16px;
+          background: url('../../assets/icon/MetaMask_logo@2x.png') no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+      ul {
+        margin-top: 12px;
+        li {
+          display: inline-block;
+          margin-right: 12px;
+          font-style: normal;
+          svg {
+            fill: #2f5556;
+            vertical-align: text-top;
+          }
+        }
+      }
+    }
+    &_card_stake {
+      padding: 24px;
+      width: 100%;
+      height: 358px;
+      background: #052427;
+      h2 {
+        margin-bottom: 24px;
+        font-size: 22px;
+        font-family: Kanit-Medium, Kanit;
+        font-weight: 500;
+        color: #19D6AD;
+        line-height: 22px;
+      }
+      .stake_content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        span {
+          font-size: 12px;
+          font-family: Kanit-Regular, Kanit;
+          font-weight: 400;
+          color: #366061;
+          line-height: 20px;
+        }
+        .stake_value {
+          color: #ACE0CD;
+        }
+        .claim_btn {
+          display: inline-block;
+          margin-left: 2px;
+          padding: 0 6px;
+          height: 24px;
+          color: #19D6AD;
+          border-radius: 8px;
+          border: 1px solid #19D6AD;
+          cursor: pointer;
+          &:hover {
+            color: #ACE0CD;
+            border-color: #ACE0CD;
+          }
+        }
+      }
+      .get_lp_token {
+        text-decoration: underline;
+        text-decoration-color: #366061;
+        &:hover {
+          color: #ACE0CD !important;
+          text-decoration-color: #ACE0CD;
+        }
+      }
+      .progress {
+        position: relative;
+        margin-bottom: 14px;
+        width: 100%;
+        height: 6px;
+        background: #00111A;
+        border-radius: 4px;
+        .complete_schedule {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 6px;
+          background: linear-gradient(270deg, #10BDA5 0%, #1E6B73 100%);
+          border-radius: 4px 0 0 4px;
+        }
+        .complete_schedule_point {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 6px;
+          height: 14px;
+          background: #21FDDE;
+          border-radius: 50%;
+        }
+      }
+      .dividing_line {
+        margin-bottom: 14px;
+        width: 100%;
+        height: 1px;
+        background: #1C4347;
+      }
+      .stake_input {
+        padding: 0 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+        color: #ACE0CD;
+        border-radius: 8px;
+        border: 1px solid #366061;
+        background: transparent;
+        &:focus {
+          outline: none;
+          border: 1px solid #ACE0CD;
+        }
+      }
+      .claim_box {
+        margin-bottom: 60px;
+      }
+    }
   }
 }
