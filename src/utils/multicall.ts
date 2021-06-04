@@ -37,7 +37,7 @@ export function getMultiCallProvider(provider, chainId) {
 /**
  * 递归toString
  */
-export function processResult(data:any) {
+export function processResult(data:any):any {
   // eslint-disable-next-line no-param-reassign
   data = cloneDeep(data)
   if (Array.isArray(data)){

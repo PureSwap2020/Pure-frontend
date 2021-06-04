@@ -19,7 +19,7 @@ const IFO = () => {
         }
       </div>
       {
-        ifos.map(ifo => <IFOCard key={ifo.address} ifo/>)
+        ifos.map(ifo => <IFOCard key={ifo.address} ifo={ifo}/>)
       }
 
     </div>
