@@ -20,13 +20,13 @@ const ClaimPointsCallout = () => {
 
   useEffect(() => {
     const fetchIfoClaims = async () => {
-      const ifoData = await getClaimableIfoData(account)
-      setClaimableAchievement(ifoData)
+      // const ifoData = await getClaimableIfoData(account)
+      // setClaimableAchievement({})
     }
 
-    if (account) {
-      fetchIfoClaims()
-    }
+    // if (account) {
+    //   fetchIfoClaims()
+    // }
   }, [account, dispatch, setClaimableAchievement])
 
   const handleCollectSuccess = (achievement: Achievement) => {

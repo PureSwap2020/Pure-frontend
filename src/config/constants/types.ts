@@ -2,24 +2,44 @@ import { TranslatableText } from 'state/types'
 
 export type IfoStatus = 'coming_soon' | 'live' | 'finished'
 
+export interface Currency {
+  address: string,
+  decimal: number,
+  symbol: string
+}
+
+export interface Underlying {
+  name: string,
+  address: string,
+  decimal: number,
+  symbol: string,
+  totalSupply: string,
+}
+
 export interface Ifo {
-  id: string
-  isActive: boolean
-  address: string
   name: string
-  subTitle?: string
-  description?: string
-  launchDate: string
-  launchTime: string
-  saleAmount: string
-  raiseAmount: string
-  cakeToBurn: string
-  projectSiteUrl: string
-  currency: string
-  currencyAddress: string
-  tokenDecimals: number
-  releaseBlockNumber: number
-  campaignId?: string
+  address: string,
+  type: number
+  abi: Array<any>,
+  startAt: string,
+  time: string,
+  currency: Currency,
+  underlying: Underlying,
+  ratio: string,
+  progress: number,
+  amount: string,
+  purchasedCurrencyOf: string,
+  totalPurchasedAmount: string,
+  totalPurchasedUnderlying: string,
+  totalPurchasedCurrency: string,
+  status: number,
+  website: string,
+  whitePaper: string,
+  twitter: string,
+  telegram: string,
+  github: string,
+  yuque: string,
+  linkUrl: string,
 }
 
 export enum QuoteToken {
