@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from 'react'
 import { Button } from 'antd'
 import './index.scss'
+// @ts-ignore
 import { useIFO } from '../../hook'
 import Pureswap from '../../assets/icon/Pureswap@2x.png'
 
