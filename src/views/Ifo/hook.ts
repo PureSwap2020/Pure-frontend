@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useWallet, UseWalletProvider } from '@binance-chain/bsc-use-wallet'
 import { toWei, fromWei } from 'web3-utils'
 import { providers } from 'ethers'
@@ -11,14 +11,20 @@ import { getMultiCallProvider, processResult } from '../../utils/multicall'
 import { getWeb3 } from '../../utils/web3'
 import { formatAmount } from '../../utils/formatBalance'
 import useWeb3 from '../../hooks/useWeb3'
+import useContract from '../../hooks/useContract'
+import { MAX_NUMBER } from '../../config'
+
 
 export const useIFO = (ifo) => {
   const blockNumber = useBlock()
   const { account, status, chainId } = useWallet()
   const web3 = useWeb3()
   const now: number = parseInt(String(Date.now() / 1000))
+  const contract = useContract(ifo.abi, ifo.address)
+  // @ts-ignore
+  const currencyContract = useContract(ERC20, ifo.currency.address)
 
-  const [info, setInfo] = useState()
+  const [info, setInfo] = useState(ifo)
 
   if (ifo.status === 0) {
     if (now < ifo.startAt) {
@@ -152,5 +158,51 @@ export const useIFO = (ifo) => {
     return () => {}
   }, [account, blockNumber, status])
 
-  return [info]
+  const onApprove = useCallback(() => {
+    if(!account){
+      // eslint-disable-next-line prefer-promise-reject-errors
+      return Promise.reject('not connect wallet ')
+    }
+
+    if(!info.currency.isToken){
+      return Promise.resolve('ok');
+    }
+
+    return currencyContract.methods.approve(
+      info.address,
+      MAX_NUMBER,
+    ).send({
+      from: account,
+    })
+  }, [account,info])
+
+  const onStake = useCallback((amount) => {
+    if(!account){
+      // eslint-disable-next-line prefer-promise-reject-errors
+      return Promise.reject('not connect wallet ')
+    }
+
+    if(info.currency.isToken){
+      return contract.methods.purchase(amount).send({
+        from: account,
+      })
+    }
+
+    return contract.methods.purchaseHT().send({
+      from: account,
+      value: amount,
+    })
+  }, [account,info])
+
+  const onClaim = useCallback((amount) => {
+    if(!account){
+      // eslint-disable-next-line prefer-promise-reject-errors
+      return Promise.reject('not connect wallet ')
+    }
+    return contract.methods.settle().send({
+      from: account,
+    })
+  }, [account,info])
+
+  return [info, onApprove, onStake, onClaim]
 }

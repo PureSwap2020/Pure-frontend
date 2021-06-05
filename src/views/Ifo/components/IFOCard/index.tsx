@@ -2,12 +2,13 @@ import React, { Component, useState, useEffect } from 'react'
 import { Button } from 'antd'
 import './index.scss'
 // @ts-ignore
+import { toWei } from 'web3-utils'
 import { useIFO } from '../../hook'
 import Pureswap from '../../assets/icon/Pureswap@2x.png'
 
 const IFOCard = (props) => {
   const { ifo } = props
-  const [info] = useIFO(ifo)
+  const [info, approve, stake, claim] = useIFO(ifo)
 
   useEffect(() => {
     console.log(info)
@@ -23,7 +24,17 @@ const IFOCard = (props) => {
     }
   }
 
-  const onConfirm = () => {}
+  const onApprove = () => {
+    approve()
+  }
+
+  const onConfirm = () => {
+    stake(toWei('0.001'))
+  }
+
+  const onClaim = () => {
+    claim()
+  }
 
   return (
     <div className="IFO_info">
@@ -232,7 +243,7 @@ const IFOCard = (props) => {
               <span className="stake_title">Pure</span>
               <span className="stake_value">100,000,00</span>
             </p>
-            <Button type="primary" onClick={onConfirm} loading={loadFlag}>
+            <Button type="primary" onClick={onClaim} loading={loadFlag}>
               Claim
             </Button>
           </div>
