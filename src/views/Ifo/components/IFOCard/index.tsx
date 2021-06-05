@@ -1,20 +1,55 @@
 import React, { Component, useState, useEffect } from 'react'
-import { Button } from 'antd'
+import { Button, message } from 'antd'
 import './index.scss'
 // @ts-ignore
 import { toWei } from 'web3-utils'
+import BigNumber from 'bignumber.js'
+import { useWallet } from '@binance-chain/bsc-use-wallet'
+import Web3 from 'web3'
+import Timer from 'react-compound-timer'
 import { useIFO } from '../../hook'
+import { formatAmount, fromWei } from '../../../../utils/format'
 import Pureswap from '../../assets/icon/Pureswap@2x.png'
 
 const IFOCard = (props) => {
   const { ifo } = props
   const [info, approve, stake, claim] = useIFO(ifo)
+  const { account, connect, reset, status } = useWallet()
+  const [now, setNow] = useState(parseInt((Date.now() / 1000).toString()))
+  const [amount, setAmount] = useState('')
+  // const [leftTime, setLeftTime] = useState(0)
+  const [isApprove, setIsApprove] = useState(false)
+  const [approveLoadFlag, setApproveLoadFlag] = useState(false)
+  const [loadFlag, setLoadFlag] = useState(false)
 
   useEffect(() => {
     console.log(info)
   }, [info])
-  const [amount, setAmount] = useState('')
-  const [loadFlag, setLoadFlag] = useState(false)
+
+  useEffect(() => {
+    if (info && info.allowance > 0) {
+      setIsApprove(false)
+    }
+  }, [info])
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      const now = parseInt((Date.now() / 1000).toString())
+      setNow(now)
+    }, 1000)
+    return () => {
+      clearTimeout(timerId)
+    }
+  }, [now])
+
+  let leftTime = 0
+  if (info && info.startAt > now) {
+    leftTime = (info.startAt - now) * 1000
+  } else if (info && info.timeClose > now) {
+    leftTime = (info.timeClose - now) * 1000
+  } else if (info && info.time > now) {
+    leftTime = (info.time - now) * 1000
+  }
 
   const onChange = (e) => {
     const { value } = e.target
@@ -25,15 +60,75 @@ const IFOCard = (props) => {
   }
 
   const onApprove = () => {
+    if (!account) {
+      return
+    }
+
+    if (approveLoadFlag) return
+    setApproveLoadFlag(true)
     approve()
+      .on('receipt', (_, receipt) => {
+        console.log('approve success')
+        setApproveLoadFlag(false)
+        setIsApprove(false)
+        message.success('approve success')
+      })
+      .on('error', (err, receipt) => {
+        console.log('approve error', err)
+        setApproveLoadFlag(false)
+      })
   }
 
   const onConfirm = () => {
-    stake(toWei('0.001'))
+    if (!account) {
+      return
+    }
+
+    if (!amount) {
+      return
+    }
+
+    if (Number.isNaN(parseInt(amount))) {
+      return
+    }
+
+    if (approveLoadFlag) return
+    setApproveLoadFlag(true)
+    stake(toWei(amount.toString()))
+      .on('receipt', (_, receipt) => {
+        console.log('stake success')
+        setApproveLoadFlag(false)
+        message.success('success')
+      })
+      .on('error', (err, receipt) => {
+        console.log('stake error', err)
+        setApproveLoadFlag(false)
+      })
+
   }
 
-  const onClaim = () => {
+  const onClaim = (e, btnFlag) => {
+    if (!account) {
+      return
+    }
+    // 未中签 claim
+    if (!(btnFlag && btnFlag.settleable && btnFlag.settleable.amount > 0 && now >= btnFlag.timeClose && now < btnFlag.time)) return
+
+    // 奖励 claim
+    if (!(btnFlag && btnFlag.settleable && btnFlag.settleable.volume > 0 && btnFlag.status >= 2 && now > btnFlag.timeClose && now >= btnFlag.time)) return
+
+    if (loadFlag) return
+    setLoadFlag(true)
     claim()
+      .on('receipt', (_, receipt) => {
+        console.log('claim success')
+        setLoadFlag(false)
+        message.success('claim success')
+      })
+      .on('error', (err, receipt) => {
+        console.log('claim error', err)
+        setLoadFlag(false)
+      })
   }
 
   return (
@@ -43,31 +138,83 @@ const IFOCard = (props) => {
       <div className="IFO_info_card">
         <div className="IFO_info_card_countdown">
           <div className="IFO_info_card_countdown_box">
+            <Timer
+              initialTime={leftTime}
+              key={leftTime}
+              direction='backward'
+            >
+
             <div className="IFO_info_card_countdown_timer">
               <p className="day">DAYS</p>
               <p>
-                <span className="timer">0</span>
-                <span className="timer">3</span>
+                <span className="timer">
+                   <Timer.Consumer>
+                    {({ h, d }) =>
+                      parseInt((d / 10).toString()) * 1 > 0 ? parseInt((d / 10).toString()) : '0'
+                    }
+                  </Timer.Consumer>
+                </span>
+                <span className="timer">
+                   <Timer.Consumer>
+                    {({ h, d }) =>
+                      (d / 10).toString().split('.')[1]
+                        ? (d / 10).toString().split('.')[1]
+                        : '0'
+                    }
+                  </Timer.Consumer>
+                </span>
               </p>
             </div>
             <span className="delimiter">:</span>
             <div className="IFO_info_card_countdown_timer">
               <p className="day">HOURS</p>
               <p>
-                <span className="timer">0</span>
-                <span className="timer">3</span>
+                <span className="timer">
+                   <Timer.Consumer>
+                    {({ h, d }) =>
+                      parseInt((h / 10).toString()) * 1 > 0 ? parseInt((h / 10).toString()) : '0'
+                    }
+                  </Timer.Consumer>
+                </span>
+                <span className="timer">
+                   <Timer.Consumer>
+                    {({ h, d }) =>
+                      (h / 10).toString().split('.')[1]
+                        ? (h / 10).toString().split('.')[1]
+                        : '0'
+                    }
+                  </Timer.Consumer>
+                </span>
               </p>
             </div>
             <span className="delimiter">:</span>
             <div className="IFO_info_card_countdown_timer">
               <p className="day">MINUTES</p>
               <p>
-                <span className="timer">0</span>
-                <span className="timer">3</span>
+                <span className="timer">
+                   <Timer.Consumer>
+                    {({ m, h }) =>
+                      parseInt((m / 10).toString()) * 1 > 0 ? parseInt((m / 10).toString()) : '0'
+                    }
+                  </Timer.Consumer>
+                </span>
+                <span className="timer">
+                  <Timer.Consumer>
+                    {({ m, h }) =>
+                      (m / 10).toString().split('.')[1]
+                        ? (m / 10).toString().split('.')[1]
+                        : '0'
+                    }
+                  </Timer.Consumer>
+                </span>
               </p>
             </div>
+              </Timer>
           </div>
-          <p className="timer_text">后开始…</p>
+          {info && info.startAt > now &&  <p className="timer_text">后开始…</p>}
+          {info && info.startAt < now && info && info.time > now &&  <p className="timer_text">后结束…</p>}
+          {info && info.time < now &&  <p className="timer_text">已结束</p>}
+
         </div>
         <div className="IFO_info_card_content">
           <div className="pureswap_link">
@@ -191,19 +338,19 @@ const IFOCard = (props) => {
             <h2>Unlimited Sale</h2>
             <p className="stake_content">
               <span className="stake_title">Total Releases:</span>
-              <span className="stake_value">1,000,000.00</span>
+              <span className="stake_value">{info && formatAmount(info.totalPurchasedAmount, info.currency.decimal, 2)}</span>
             </p>
             <p className="stake_content">
               <span className="stake_title">Ratio</span>
-              <span className="stake_value">1 Pure = 0.1 LPT(≈ $10)</span>
+              <span className="stake_value">{info && info.ratio}(≈ $10)</span>
             </p>
             <p className="stake_content">
               <span className="stake_title">progress</span>
-              <span className="stake_value">1002.89%</span>
+              <span className="stake_value">{info && (info.progress * 100).toFixed(0)}%</span>
             </p>
             <p className="progress">
-              <span className="complete_schedule" style={{ width: '10%' }} />
-              <span className="complete_schedule_point" style={{ left: '10%' }} />
+              <span className="complete_schedule" style={{ width: `${info && info.progress > 1 ? 100 : info.progress * 100}%` }} />
+              <span className="complete_schedule_point" style={{ left: `${info && info.progress > 1 ? 100 : info.progress * 100}%` }} />
             </p>
             <p className="stake_content">
               <span className="stake_title">Available (LP Token)</span>
@@ -214,36 +361,81 @@ const IFOCard = (props) => {
               <span className="stake_title get_lp_token">Get more LP Token</span>
               <span />
             </a>
-            <Button type="primary" onClick={onConfirm} loading={loadFlag}>
-              Approve & Stake Confirm
-            </Button>
+            {!isApprove && (<Button type="primary" onClick={onApprove} loading={approveLoadFlag}>
+              Approve
+            </Button>)
+            }
+            {isApprove && (<Button type="primary" onClick={onConfirm} loading={approveLoadFlag}>
+              Confirm
+            </Button>)
+            }
           </div>
           <div className="IFO_info_card_stake">
             <h2>Claim</h2>
             <p className="stake_content">
               <span className="stake_title">抵押 LP Token</span>
-              <span className="stake_value">1,000,000.00</span>
+              {
+                info && info.purchasedCurrencyOf.toString() > 0 && (<span className="stake_value">{fromWei(info.purchasedCurrencyOf).toFixed(6, 1)} {info.currency.symbol}</span>)
+              }
+              {
+                info && !(info.purchasedCurrencyOf.toString() > 0) && (<span className="stake_value">-</span>)
+              }
             </p>
             <p className="stake_content">
               <span className="stake_title">预计中签率</span>
-              <span className="stake_value">0.12%</span>
+
+              {info && info.settleable && info.purchasedCurrencyOf.toString() > 0 &&
+              <span className="stake_value">{fromWei(info.settleable.rate).multipliedBy(new BigNumber(100)).toFixed(2, 1).toString() }%</span>}
+
+              {info && !info.settleable && !(info.purchasedCurrencyOf.toString() > 0) && (<span className="stake_value">-</span>)}
             </p>
             <p className="stake_content">
               <span className="stake_title">预计中签量</span>
-              <span className="stake_value">120.00</span>
+              {
+                (info && info.purchasedCurrencyOf.toString() > 0 &&  (
+                  <span className="stake_value">{ new BigNumber(Web3.utils.fromWei(info.purchasedCurrencyOf, 'ether'))
+                  .multipliedBy(
+                    new BigNumber(
+                      Web3.utils.fromWei(info.settleable.rate, 'ether')
+                    )
+                  )
+                  .dividedBy(new BigNumber(info.price))
+                  .toFixed(6, 1)
+                  .toString()}</span>))
+              }
+              {
+                (info && !(info.purchasedCurrencyOf.toString() > 0) &&  (
+                  <span className="stake_value">-</span>))
+              }
+
             </p>
             <p className="dividing_line" />
             <p className="stake_content">
               <span className="stake_title">未中签 LP Token</span>
-              <span className="stake_value">
-                100,000,00 <span className="claim_btn">claim</span>
-              </span>
+              {
+                info && info.purchasedCurrencyOf.toString() > 0 && (
+                  <span className="stake_value">
+                    {info.settleable && formatAmount(info.settleable.amount)}&nbsp;
+                    {
+                      info.settleable && info.settleable.amount > 0 && now >= info.timeClose && now < info.time && (
+                        <Button className="claim_btn" onClick={(e) => onClaim(e, info)}>claim</Button>
+                      )
+                    }
+
+                 </span>)
+              }
+              {
+                info && !(info.purchasedCurrencyOf.toString() > 0) && (
+                  <span className="stake_value">-</span>
+                )
+              }
+
             </p>
             <p className="stake_content claim_box">
               <span className="stake_title">Pure</span>
-              <span className="stake_value">100,000,00</span>
+              <span className="stake_value">{info && info.underlying.totalSupply}</span>
             </p>
-            <Button type="primary" onClick={onClaim} loading={loadFlag}>
+            <Button type="primary" onClick={(e) => onClaim(e, info)} loading={loadFlag}>
               Claim
             </Button>
           </div>

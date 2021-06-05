@@ -20,10 +20,10 @@
 .ant-btn > .ant-btn-loading-icon {
   svg {
     margin-right: 8px;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     fill: #ACE0CD !important;
-    top: 4px;
+    top: 6px;
   }
 }
 
@@ -225,10 +225,12 @@
           color: #19D6AD;
           border-radius: 8px;
           border: 1px solid #19D6AD;
+          background: transparent;
           cursor: pointer;
           &:hover {
             color: #ACE0CD;
             border-color: #ACE0CD;
+            background: transparent;
           }
         }
       }
@@ -493,10 +495,12 @@
           color: #19D6AD;
           border-radius: 8px;
           border: 1px solid #19D6AD;
+          background: transparent;
           cursor: pointer;
           &:hover {
             color: #ACE0CD;
             border-color: #ACE0CD;
+            background: transparent;
           }
         }
       }
@@ -761,10 +765,12 @@
           color: #19D6AD;
           border-radius: 8px;
           border: 1px solid #19D6AD;
+          background: transparent;
           cursor: pointer;
           &:hover {
             color: #ACE0CD;
             border-color: #ACE0CD;
+            background: transparent;
           }
         }
       }
@@ -1029,10 +1035,12 @@
           color: #19D6AD;
           border-radius: 8px;
           border: 1px solid #19D6AD;
+          background: transparent;
           cursor: pointer;
           &:hover {
             color: #ACE0CD;
             border-color: #ACE0CD;
+            background: transparent;
           }
         }
       }
@@ -1297,10 +1305,12 @@
           color: #19D6AD;
           border-radius: 8px;
           border: 1px solid #19D6AD;
+          background: transparent;
           cursor: pointer;
           &:hover {
             color: #ACE0CD;
             border-color: #ACE0CD;
+            background: transparent;
           }
         }
       }
@@ -1562,8 +1572,10 @@
           border-radius: 8px;
           border: 1px solid #19D6AD;
           cursor: pointer;
+          background: transparent;
           &:hover {
             color: #ACE0CD;
+            background: transparent;
             border-color: #ACE0CD;
           }
         }
@@ -1824,10 +1836,12 @@
           color: #19D6AD;
           border-radius: 8px;
           border: 1px solid #19D6AD;
+          background: transparent;
           cursor: pointer;
           &:hover {
             color: #ACE0CD;
             border-color: #ACE0CD;
+            background: transparent;
           }
         }
       }
