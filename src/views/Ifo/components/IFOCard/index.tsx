@@ -33,8 +33,8 @@ const IFOCard = (props) => {
   }, [balance])
 
   useEffect(() => {
-    if (info && info.allowance > 0) {
-      setIsApprove(false)
+    if (info && info.currency.allowance > 0) {
+      setIsApprove(true)
     }
   }, [info])
 
@@ -76,7 +76,7 @@ const IFOCard = (props) => {
       .on('receipt', (_, receipt) => {
         console.log('approve success')
         setApproveLoadFlag(false)
-        setIsApprove(false)
+        setIsApprove(true)
         message.success('approve success')
       })
       .on('error', (err, receipt) => {
