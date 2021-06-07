@@ -10,6 +10,7 @@ import Timer from 'react-compound-timer'
 import { useIFO } from '../../hook'
 import { formatAmount, fromWei } from '../../../../utils/format'
 import Pureswap from '../../assets/icon/Pureswap@2x.png'
+import { useBalance } from '../../../../hooks/useContract'
 
 const IFOCard = (props) => {
   const { ifo } = props
@@ -21,10 +22,15 @@ const IFOCard = (props) => {
   const [isApprove, setIsApprove] = useState(false)
   const [approveLoadFlag, setApproveLoadFlag] = useState(false)
   const [loadFlag, setLoadFlag] = useState(false)
+  const balance = useBalance(ifo.currency.address)
 
   useEffect(() => {
     console.log(info)
   }, [info])
+
+  useEffect(() => {
+    console.log('balance', balance)
+  }, [balance])
 
   useEffect(() => {
     if (info && info.allowance > 0) {
