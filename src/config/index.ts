@@ -15,3 +15,4 @@ export const BASE_LIQUIDITY_POOL_URL = `${BASE_EXCHANGE_URL}/#/pool`
 export const LOTTERY_MAX_NUMBER_OF_TICKETS = 50
 export const LOTTERY_TICKET_PRICE = 1
 export const MAX_NUMBER = "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+export const ADDRESS_NONE = "0x0"

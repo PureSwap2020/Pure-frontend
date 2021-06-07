@@ -8,8 +8,8 @@ const ifos: Ifo[] = [
     abi: SrarterV3,
     address: '0x389cEf08D83E72C574cb91E9E16b84C71169B57A',
     type: 0,
-    startAt: '1623060000',
-    time: '1623319200',
+    startAt: '1623052800',
+    time: '1623072600',
     timeClose: '0',
     currency: {
       isToken: true,
@@ -20,8 +20,8 @@ const ifos: Ifo[] = [
     underlying: {
       address: '0x55d398326f99059fF775485246999027B3197955', // usdt
       decimal: 18,
-      symbol: 'DFT',
-      name: 'dFuture',
+      symbol: 'USDT',
+      name: 'USDT',
       totalSupply: '400,000,000.00',
     },
     ratio: '1USDT=0.02PURE-BNB',

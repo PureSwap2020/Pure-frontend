@@ -14,7 +14,6 @@ import useWeb3 from '../../hooks/useWeb3'
 import useContract from '../../hooks/useContract'
 import { MAX_NUMBER } from '../../config'
 
-
 export const useIFO = (ifo) => {
   const blockNumber = useBlock()
   const { account, status, chainId } = useWallet()
