@@ -360,7 +360,7 @@ const IFOCard = (props) => {
             </p>
             <p className="stake_content">
               <span className="stake_title">Available (LP Token)</span>
-              <span className="stake_value">34.556565</span>
+              <span className="stake_value">{formatAmount(balance)}</span>
             </p>
             <input value={amount} onChange={onChange} className="stake_input" />
             <a className="stake_content" href="www.baidu.com">
