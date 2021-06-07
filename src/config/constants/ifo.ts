@@ -15,7 +15,7 @@ const ifos: Ifo[] = [
       isToken: true,
       address: '0xE079424a4Fef5c547478a85802B462E4699b0fa9', // pure-bnb
       decimal: 18,
-      symbol: 'PURE-BNB',
+      symbol: 'LPT',
     },
     underlying: {
       address: '0x55d398326f99059fF775485246999027B3197955', // usdt
@@ -24,7 +24,7 @@ const ifos: Ifo[] = [
       name: 'USDT',
       totalSupply: '400,000,000.00',
     },
-    ratio: '1USDT=0.02PURE-BNB',
+    ratio: '1USDT=0.02LPT',
     progress: 0,
     amount: '1',
     purchasedCurrencyOf: '0',

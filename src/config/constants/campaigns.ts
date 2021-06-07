@@ -12,39 +12,39 @@ import { Campaign } from './types'
 const campaigns: Campaign[] = [
   // {
   //   id: '511060000',
-  //   type: 'ifo',
+  //   type: 'IFO',
   //   title: 'Berry',
-  //   badge: 'ifo-bry.svg',
+  //   badge: 'IFO-bry.svg',
   // },
   // {
   //   id: '511050000',
-  //   type: 'ifo',
+  //   type: 'IFO',
   //   title: 'Soteria',
-  //   badge: 'ifo-wsote.svg',
+  //   badge: 'IFO-wsote.svg',
   // },
   // {
   //   id: '511040000',
-  //   type: 'ifo',
+  //   type: 'IFO',
   //   title: 'Helmet',
-  //   badge: 'ifo-helmet.svg',
+  //   badge: 'IFO-helmet.svg',
   // },
   {
     id: '511030000',
     type: 'ifo',
     title: 'Tenet',
-    badge: 'ifo-ten.svg',
+    badge: 'IFO-ten.svg',
   },
   {
     id: '511020000',
     type: 'ifo',
     title: 'Ditto',
-    badge: 'ifo-ditto.svg',
+    badge: 'IFO-ditto.svg',
   },
   {
     id: '511010000',
     type: 'ifo',
     title: 'Blink',
-    badge: 'ifo-blk.svg',
+    badge: 'IFO-blk.svg',
   },
 ]
 

@@ -33,7 +33,7 @@ const config: MenuEntry[] = [
   {
     label: 'IFO',
     icon: 'NewIFOIcon',
-    href: '/ifo',
+    href: '/IFO',
   },
   // {
   //   label: 'Lottery',
@@ -89,7 +89,7 @@ const config: MenuEntry[] = [
   // {
   //   label: 'IFO',
   //   icon: 'IfoIcon',
-  //   href: '/ifo',
+  //   href: '/IFO',
   // },
   {
     label: 'More',

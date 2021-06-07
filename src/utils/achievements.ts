@@ -85,7 +85,7 @@ export const getClaimableIfoData = async (account: string): Promise<string> => {
   //     {
   //       address,
   //       id: claimableIfoDataItem.campaignId,
-  //       type: 'ifo',
+  //       type: 'IFO',
   //       title: getAchievementTitle(campaignMeta),
   //       description: getAchievementDescription(campaignMeta),
   //       badge: campaignMeta.badge,

@@ -21,6 +21,8 @@ const IFOCard = (props) => {
   // const [leftTime, setLeftTime] = useState(0)
   const [isApprove, setIsApprove] = useState(false)
   const [approveLoadFlag, setApproveLoadFlag] = useState(false)
+  const [confirmDisableFlag, setConfirmDisableFlag] = useState(false)
+  const [claimDisableFlag, setClaimDisableFlag] = useState(false)
   const [loadFlag, setLoadFlag] = useState(false)
   const balance = useBalance(ifo.currency.address)
 
@@ -55,6 +57,59 @@ const IFOCard = (props) => {
     leftTime = (info.timeClose - now) * 1000
   } else if (info && info.time > now) {
     leftTime = (info.time - now) * 1000
+  }
+
+  useEffect(() => {
+    if ((info && info.startAt < now && info && info.timeClose > now) || (info && info.time < now)) {
+      setConfirmDisableFlag(true)
+    }
+    if ((info && info.settleable && info.settleable.volume < 0) && (info && info.startAt < now && info && info.timeClose > now) || (info && info.time < now)) {
+      setClaimDisableFlag(true)
+    }
+  }, [leftTime])
+
+  const renderStatus = (pool) => {
+    const { status, timeClose = 0 } = pool
+    switch (status) {
+      case 0:
+        return (
+          <p className="timer_text">
+            Will start in
+          </p>
+        )
+      case 1:
+        if (timeClose === 0 || timeClose > now) {
+          return (
+            <p className="timer_text">
+              Undergoing
+            </p>
+          )
+        }
+        return (
+          <p className="timer_text">
+            Waiting
+          </p>
+        )
+
+      case 2:
+        return (
+          <p className="timer_text">
+           Calculating
+          </p>
+        )
+      case 3:
+        return (
+          <p className="timer_text">
+           Finished
+          </p>
+        )
+      default:
+        return (
+          <p className="timer_text">
+            Will start in
+          </p>
+        )
+    }
   }
 
   const onChange = (e) => {
@@ -98,6 +153,7 @@ const IFOCard = (props) => {
       return
     }
 
+    if (confirmDisableFlag) return
     if (approveLoadFlag) return
     setApproveLoadFlag(true)
     stake(toWei(amount.toString()))
@@ -123,6 +179,7 @@ const IFOCard = (props) => {
     // 奖励 claim
     if (!(btnFlag && btnFlag.settleable && btnFlag.settleable.volume > 0 && btnFlag.status >= 2 && now > btnFlag.timeClose && now >= btnFlag.time)) return
 
+    if (claimDisableFlag) return
     if (loadFlag) return
     setLoadFlag(true)
     claim()
@@ -150,43 +207,22 @@ const IFOCard = (props) => {
               direction='backward'
             >
 
-            <div className="IFO_info_card_countdown_timer">
-              <p className="day">DAYS</p>
-              <p>
-                <span className="timer">
-                   <Timer.Consumer>
-                    {({ h, d }) =>
-                      parseInt((d / 10).toString()) * 1 > 0 ? parseInt((d / 10).toString()) : '0'
-                    }
-                  </Timer.Consumer>
-                </span>
-                <span className="timer">
-                   <Timer.Consumer>
-                    {({ h, d }) =>
-                      (d / 10).toString().split('.')[1]
-                        ? (d / 10).toString().split('.')[1]
-                        : '0'
-                    }
-                  </Timer.Consumer>
-                </span>
-              </p>
-            </div>
-            <span className="delimiter">:</span>
+
             <div className="IFO_info_card_countdown_timer">
               <p className="day">HOURS</p>
               <p>
                 <span className="timer">
                    <Timer.Consumer>
                     {({ h, d }) =>
-                      parseInt((h / 10).toString()) * 1 > 0 ? parseInt((h / 10).toString()) : '0'
+                      parseInt(((d * 24 + h) / 10).toString()) * 1 > 0 ? parseInt((((d * 24 + h) / 10).toString())) : '0'
                     }
                   </Timer.Consumer>
                 </span>
                 <span className="timer">
                    <Timer.Consumer>
                     {({ h, d }) =>
-                      (h / 10).toString().split('.')[1]
-                        ? (h / 10).toString().split('.')[1]
+                      ((d * 24 + h) / 10).toString().split('.')[1]
+                        ? ((d * 24 + h) / 10).toString().split('.')[1]
                         : '0'
                     }
                   </Timer.Consumer>
@@ -215,12 +251,31 @@ const IFOCard = (props) => {
                 </span>
               </p>
             </div>
+              <span className="delimiter">:</span>
+              <div className="IFO_info_card_countdown_timer">
+                <p className="day">SECONDS</p>
+                <p>
+                <span className="timer">
+                   <Timer.Consumer>
+                    {({ s, m, h }) =>
+                      parseInt((s / 10).toString()) * 1 > 0 ? parseInt((s / 10).toString()) : '0'
+                    }
+                  </Timer.Consumer>
+                </span>
+                  <span className="timer">
+                  <Timer.Consumer>
+                    {({ s, m, h }) =>
+                      (s / 10).toString().split('.')[1]
+                        ? (s / 10).toString().split('.')[1]
+                        : '0'
+                    }
+                  </Timer.Consumer>
+                </span>
+                </p>
+              </div>
               </Timer>
           </div>
-          {info && info.startAt > now &&  <p className="timer_text">后开始…</p>}
-          {info && info.startAt < now && info && info.time > now &&  <p className="timer_text">后结束…</p>}
-          {info && info.time < now &&  <p className="timer_text">已结束</p>}
-
+          {renderStatus(info)}
         </div>
         <div className="IFO_info_card_content">
           <div className="pureswap_link">
@@ -228,7 +283,7 @@ const IFOCard = (props) => {
               <img src={Pureswap} alt="" />
               <p>PureSwap(Pure)</p>
             </div>
-            <a href="https://www.pure.swap" className="pure_address">
+            <a href="https://www.pureswap.finance/" target='_blank' rel="noreferrer" className="pure_address">
               Learn more about PureSwap(Pure)
               <svg
                 className="icon"
@@ -245,7 +300,7 @@ const IFOCard = (props) => {
                 />
               </svg>
             </a>
-            <a href="https://www.pure.swap" className="pure_address">
+            <a href="https://www.pureswap.finance/" target='_blank' rel="noreferrer" className="pure_address">
               Check PureSwap(Pure) Contract Address{' '}
               <svg
                 className="icon"
@@ -266,7 +321,7 @@ const IFOCard = (props) => {
               Add to MetaMask
               <span className="metaMask_logo" />
             </p>
-            <a href="https://www.pure.swap" className="pure_address">
+            <a href="https://www.pureswap.finance/" target='_blank' rel="noreferrer" className="pure_address">
               Check PureSwap IFO Contract Address{' '}
               <svg
                 className="icon"
@@ -283,7 +338,7 @@ const IFOCard = (props) => {
                 />
               </svg>
             </a>
-            <a href="https://www.pure.swap" className="pure_address">
+            <a href="https://www.pureswap.finance/" target='_blank' rel="noreferrer" className="pure_address">
               Website: https://www.pure.swap{' '}
               <svg
                 className="icon"
@@ -302,7 +357,7 @@ const IFOCard = (props) => {
             </a>
             <ul>
               <li>
-                <a href="https://twitter.com/BlackHoleBurn" rel="noreferrer" target="_blank">
+                <a href="https://twitter.com/Pureswap1" rel="noreferrer" target="_blank">
                   <svg
                     className="icon"
                     viewBox="0 0 1024 1024"
@@ -321,7 +376,7 @@ const IFOCard = (props) => {
               </li>
 
               <li>
-                <a href="https://t.me/BlackholeProtocolOfficial" rel="noreferrer" target="_blank">
+                <a href="https://t.me/pureswap_en" rel="noreferrer" target="_blank">
                   <svg
                     className="icon"
                     viewBox="0 0 1024 1024"
@@ -348,7 +403,7 @@ const IFOCard = (props) => {
             </p>
             <p className="stake_content">
               <span className="stake_title">Ratio</span>
-              <span className="stake_value">{info && info.ratio}(≈ $10)</span>
+              <span className="stake_value">{info && info.ratio}</span>
             </p>
             <p className="stake_content">
               <span className="stake_title">progress</span>
@@ -360,18 +415,18 @@ const IFOCard = (props) => {
             </p>
             <p className="stake_content">
               <span className="stake_title">Available (LP Token)</span>
-              <span className="stake_value">{formatAmount(balance)}</span>
+              <span className="stake_value">{formatAmount(balance)} {info.currency.symbol}</span>
             </p>
-            <input value={amount} onChange={onChange} className="stake_input" />
-            <a className="stake_content" href="www.baidu.com">
-              <span className="stake_title get_lp_token">Get more LP Token</span>
+            <input value={amount} onChange={onChange} className="stake_input" placeholder='Input Amount' />
+            <a className="stake_content" rel="noreferrer" href="https://exchange.pureswap.finance/#/add/BNB/0x481F0557FB3BB5eE461FD47F287b1ca944aD89bc" target='_blank'>
+              <span className="stake_title get_lp_token">Get more LPT(Pure-BNB LP Token)</span>
               <span />
             </a>
             {!isApprove && (<Button type="primary" onClick={onApprove} loading={approveLoadFlag}>
               Approve
             </Button>)
             }
-            {isApprove && (<Button type="primary" onClick={onConfirm} loading={approveLoadFlag}>
+            {isApprove && (<Button type="primary" className={confirmDisableFlag ? 'disableBtn' : ''} onClick={onConfirm} loading={approveLoadFlag}>
               Confirm
             </Button>)
             }
@@ -379,7 +434,7 @@ const IFOCard = (props) => {
           <div className="IFO_info_card_stake">
             <h2>Claim</h2>
             <p className="stake_content">
-              <span className="stake_title">抵押 LP Token</span>
+              <span className="stake_title">My LPT</span>
               {
                 info && info.purchasedCurrencyOf.toString() > 0 && (<span className="stake_value">{fromWei(info.purchasedCurrencyOf).toFixed(6, 1)} {info.currency.symbol}</span>)
               }
@@ -388,7 +443,7 @@ const IFOCard = (props) => {
               }
             </p>
             <p className="stake_content">
-              <span className="stake_title">预计中签率</span>
+              <span className="stake_title">Winning Rate</span>
 
               {info && info.settleable && info.purchasedCurrencyOf.toString() > 0 &&
               <span className="stake_value">{fromWei(info.settleable.rate).multipliedBy(new BigNumber(100)).toFixed(2, 1).toString() }%</span>}
@@ -396,7 +451,7 @@ const IFOCard = (props) => {
               {info && !info.settleable && !(info.purchasedCurrencyOf.toString() > 0) && (<span className="stake_value">-</span>)}
             </p>
             <p className="stake_content">
-              <span className="stake_title">预计中签量</span>
+              <span className="stake_title">Token Get</span>
               {
                 (info && info.purchasedCurrencyOf.toString() > 0 &&  (
                   <span className="stake_value">{ new BigNumber(Web3.utils.fromWei(info.purchasedCurrencyOf, 'ether'))
@@ -417,11 +472,11 @@ const IFOCard = (props) => {
             </p>
             <p className="dividing_line" />
             <p className="stake_content">
-              <span className="stake_title">未中签 LP Token</span>
+              <span className="stake_title">Unused LPT</span>
               {
                 info && info.purchasedCurrencyOf.toString() > 0 && (
                   <span className="stake_value">
-                    {info.settleable && formatAmount(info.settleable.amount)}&nbsp;
+                    {info.settleable && formatAmount(info.settleable.amount) } {info.currency.symbol}&nbsp;
                     {
                       info.settleable && info.settleable.amount > 0 && now >= info.timeClose && now < info.time && (
                         <Button className="claim_btn" onClick={(e) => onClaim(e, info)}>claim</Button>
@@ -439,9 +494,9 @@ const IFOCard = (props) => {
             </p>
             <p className="stake_content claim_box">
               <span className="stake_title">Pure</span>
-              <span className="stake_value">{info && info.underlying.totalSupply}</span>
+              <span className="stake_value">{info && info.settleable && info.settleable.volume * 1 > 0 ? formatAmount(info.settleable.volume) : '-'}</span>
             </p>
-            <Button type="primary" onClick={(e) => onClaim(e, info)} loading={loadFlag}>
+            <Button type="primary" className={claimDisableFlag ? 'disableBtn' : ''} onClick={(e) => onClaim(e, info)} loading={loadFlag}>
               Claim
             </Button>
           </div>
