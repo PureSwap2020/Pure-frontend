@@ -32,7 +32,7 @@ const config: MenuEntry[] = [
   },
   {
     label: 'IFO',
-    icon: 'PoolIcon',
+    icon: 'NewIFOIcon',
     href: '/ifo',
   },
   // {
