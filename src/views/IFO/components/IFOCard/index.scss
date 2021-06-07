@@ -216,6 +216,8 @@
         }
         .stake_value {
           color: #ACE0CD;
+          background: transparent;
+          border: none;
         }
         .claim_btn {
           display: inline-block;
@@ -227,8 +229,13 @@
           border: 1px solid #19D6AD;
           background: transparent;
           cursor: pointer;
+          span {
+            color: #19D6AD;
+          }
           &:hover {
-            color: #ACE0CD;
+            span {
+              color: #ACE0CD;
+            }
             border-color: #ACE0CD;
             background: transparent;
           }
@@ -497,6 +504,8 @@
         }
         .stake_value {
           color: #ACE0CD;
+          background: transparent;
+          border: none;
         }
         .claim_btn {
           display: inline-block;
@@ -508,8 +517,13 @@
           border: 1px solid #19D6AD;
           background: transparent;
           cursor: pointer;
+          span {
+            color: #19D6AD;
+          }
           &:hover {
-            color: #ACE0CD;
+            span {
+              color: #ACE0CD;
+            }
             border-color: #ACE0CD;
             background: transparent;
           }
@@ -778,6 +792,8 @@
         }
         .stake_value {
           color: #ACE0CD;
+          background: transparent;
+          border: none;
         }
         .claim_btn {
           display: inline-block;
@@ -789,8 +805,13 @@
           border: 1px solid #19D6AD;
           background: transparent;
           cursor: pointer;
+          span {
+            color: #19D6AD;
+          }
           &:hover {
-            color: #ACE0CD;
+            span {
+              color: #ACE0CD;
+            }
             border-color: #ACE0CD;
             background: transparent;
           }
@@ -1059,6 +1080,8 @@
         }
         .stake_value {
           color: #ACE0CD;
+          background: transparent;
+          border: none;
         }
         .claim_btn {
           display: inline-block;
@@ -1070,8 +1093,13 @@
           border: 1px solid #19D6AD;
           background: transparent;
           cursor: pointer;
+          span {
+            color: #19D6AD;
+          }
           &:hover {
-            color: #ACE0CD;
+            span {
+              color: #ACE0CD;
+            }
             border-color: #ACE0CD;
             background: transparent;
           }
@@ -1340,6 +1368,8 @@
         }
         .stake_value {
           color: #ACE0CD;
+          background: transparent;
+          border: none;
         }
         .claim_btn {
           display: inline-block;
@@ -1351,8 +1381,13 @@
           border: 1px solid #19D6AD;
           background: transparent;
           cursor: pointer;
+          span {
+            color: #19D6AD;
+          }
           &:hover {
-            color: #ACE0CD;
+            span {
+              color: #ACE0CD;
+            }
             border-color: #ACE0CD;
             background: transparent;
           }
@@ -1617,6 +1652,8 @@
         }
         .stake_value {
           color: #ACE0CD;
+          background: transparent;
+          border: none;
         }
         .claim_btn {
           display: inline-block;
@@ -1628,8 +1665,13 @@
           border: 1px solid #19D6AD;
           cursor: pointer;
           background: transparent;
+          span {
+            color: #19D6AD;
+          }
           &:hover {
-            color: #ACE0CD;
+            span {
+              color: #ACE0CD;
+            }
             background: transparent;
             border-color: #ACE0CD;
           }
@@ -1893,6 +1935,8 @@
         }
         .stake_value {
           color: #ACE0CD;
+          background: transparent;
+          border: none;
         }
         .claim_btn {
           display: inline-block;
@@ -1904,8 +1948,13 @@
           border: 1px solid #19D6AD;
           background: transparent;
           cursor: pointer;
+          span {
+            color: #19D6AD;
+          }
           &:hover {
-            color: #ACE0CD;
+            span {
+              color: #ACE0CD;
+            }
             border-color: #ACE0CD;
             background: transparent;
           }

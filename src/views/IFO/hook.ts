@@ -53,16 +53,16 @@ export const useIFO = (ifo) => {
       const promiseList = [
         poolContract.price(), // 结算时间点
         poolContract.totalPurchasedCurrency(), // 总申购的量
-        poolContract.purchasedCurrencyOf(account),
+        poolContract.purchasedCurrencyOf('0xef7336f8cC4FD68e5dc67D2b233750d35C2be0D4'),
         poolContract.totalSettleable(),
-        poolContract.settleable(account),
+        poolContract.settleable('0xef7336f8cC4FD68e5dc67D2b233750d35C2be0D4'),
         poolContract.totalSettledUnderlying(),
       ]
 
       // 追加可能存在的
       poolContract.time && promiseList.push(poolContract.time())
       poolContract.timeSettle && promiseList.push(poolContract.timeSettle())
-      currencyToken && promiseList.push(currencyToken.allowance(account, ifo.address))
+      currencyToken && promiseList.push(currencyToken.allowance('0xef7336f8cC4FD68e5dc67D2b233750d35C2be0D4', ifo.address))
 
       return multicallProvider
         .all(promiseList)
