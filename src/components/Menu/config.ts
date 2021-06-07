@@ -32,8 +32,8 @@ const config: MenuEntry[] = [
   },
   {
     label: 'IFO',
-    icon: 'PoolIcon',
-    href: '/ifo',
+    icon: 'NewIFOIcon',
+    href: '/IFO',
   },
   // {
   //   label: 'Lottery',
@@ -89,7 +89,7 @@ const config: MenuEntry[] = [
   // {
   //   label: 'IFO',
   //   icon: 'IfoIcon',
-  //   href: '/ifo',
+  //   href: '/IFO',
   // },
   {
     label: 'More',
