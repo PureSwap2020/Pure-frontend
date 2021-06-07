@@ -62,7 +62,6 @@ const IFOCard = (props) => {
 
   useEffect(() => {
     if ((info && info.startAt * 1 > now) || (info && info.timeClose * 1 > 0 && info.timeClose * 1 < now)) {
-      console.log((info && info.startAt * 1 > now) || (info && info.timeClose * 1 < now), 'now')
       setConfirmDisableFlag(true)
     }
     if ((info && info.time * 1 > now) || (info && info.time * 1 > now) && (info && info.settleable && info.settleable.volume * 1 <= 0)) {
@@ -143,7 +142,7 @@ const IFOCard = (props) => {
       .on('receipt', (_, receipt) => {
         console.log('approve success')
         setApproveLoadFlag(false)
-        setIsApprove(false)
+        setIsApprove(true)
         message.success('approve success')
       })
       .on('error', (err, receipt) => {
