@@ -23,7 +23,6 @@ const IFOCard = (props) => {
   const [approveLoadFlag, setApproveLoadFlag] = useState(false)
   const [confirmDisableFlag, setConfirmDisableFlag] = useState(false)
   const [claimDisableFlag, setClaimDisableFlag] = useState(false)
-  const [smallClaimFlag, setSmallClaimFlag] = useState(false)
   const [loadFlag, setLoadFlag] = useState(false)
   const balance = useBalance(ifo.currency.address)
 
@@ -64,11 +63,8 @@ const IFOCard = (props) => {
     if ((info && info.startAt * 1 > now) || (info && info.timeClose * 1 > 0 && info.timeClose * 1 < now)) {
       setConfirmDisableFlag(true)
     }
-    if ((info && info.time * 1 > now) || (info && info.time * 1 > now) && (info && info.settleable && info.settleable.volume * 1 <= 0)) {
+    if ((info && info.time * 1 > now) || (info && info.settleable && info.settleable.volume * 1 <= 0)) {
       setClaimDisableFlag(true)
-    }
-    if (((info && info.timeClose * 1 > 0 && info.timeClose * 1 > now) || (info && info.time * 1 <= now)) && (info && info.settleable && info.settleable.amount * 1 <= 0)) {
-      setSmallClaimFlag(true)
     }
   }, [info, leftTime])
 
@@ -192,7 +188,7 @@ const IFOCard = (props) => {
 
     if (flag === 'rewardClaim' && claimDisableFlag) return
     if (loadFlag) return
-    setLoadFlag(true)
+    flag === 'rewardClaim' && setLoadFlag(true)
     claim()
       .on('receipt', (_, receipt) => {
         console.log('claim success')
@@ -485,11 +481,11 @@ const IFOCard = (props) => {
             <p className="stake_content">
               <span className="stake_title">Unused LPT</span>
               {
-                info && info.purchasedCurrencyOf.toString() > 0 && !smallClaimFlag && (
+                info && info.purchasedCurrencyOf.toString() > 0 && info.settleable && info.settleable.amount * 1 > 0 &&  (
                   <span className="stake_value">
                     {info.settleable && formatAmount(info.settleable.amount) } {info.currency.symbol}&nbsp;
                     {
-                      info.settleable && info.settleable.amount > 0 && now >= info.timeClose && now < info.time && (
+                      now >= info.timeClose && now < info.time && (
                         <Button className="claim_btn" onClick={(e) => onClaim(e, info, 'claim')}>claim</Button>
                       )
                     }
@@ -497,7 +493,7 @@ const IFOCard = (props) => {
                  </span>)
               }
               {
-                info && !(info.purchasedCurrencyOf.toString() > 0) && (
+                info && info.purchasedCurrencyOf.toString() * 1 <= 0 && info.settleable && info.settleable.amount * 1 <= 0 && (
                   <span className="stake_value">-</span>
                 )
               }
@@ -510,7 +506,7 @@ const IFOCard = (props) => {
                 )
               }
               {
-                info && !info.settleable || info.settleable && info.settleable.volume * 1 <= 0 && (<span className="stake_value">-</span>)
+                (info && !info.settleable || info.settleable && info.settleable.volume * 1 <= 0) && (<span className="stake_value">-</span>)
               }
 
             </p>
