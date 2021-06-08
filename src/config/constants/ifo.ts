@@ -6,7 +6,7 @@ const ifos: Ifo[] = [
   {
     name: 'TEST',
     abi: SrarterV3,
-    address: '0x389cEf08D83E72C574cb91E9E16b84C71169B57A',
+    address: '0x90F4417bBB2601697e3970d6fFEB6D8fff3344a1',
     type: 0,
     startAt: '1623124800',
     time: '1623135600',
