@@ -35,7 +35,7 @@ const IFOCard = (props) => {
   }, [balance])
 
   useEffect(() => {
-    if (info && info.currency.allowance > 0) {
+    if (info && info.currency.allowance * 1 > 0) {
       setIsApprove(true)
     }
   }, [info])
@@ -60,13 +60,13 @@ const IFOCard = (props) => {
   }
 
   useEffect(() => {
-    if ((info && info.startAt < now && info && info.timeClose > now) || (info && info.time < now)) {
+    if ((info && info.startAt * 1 > now) || (info && info.timeClose * 1 > 0 && info.timeClose * 1 < now)) {
       setConfirmDisableFlag(true)
     }
-    if ((info && info.settleable && info.settleable.volume < 0) && (info && info.startAt < now && info && info.timeClose > now) || (info && info.time < now)) {
+    if ((info && info.time * 1 > now) || (info && info.settleable && info.settleable.volume * 1 <= 0)) {
       setClaimDisableFlag(true)
     }
-  }, [leftTime])
+  }, [info, leftTime])
 
   const renderStatus = (pool) => {
     const { status, timeClose = 0 } = pool
@@ -109,6 +109,13 @@ const IFOCard = (props) => {
             Will start in
           </p>
         )
+    }
+  }
+
+  const onMax = (e) => {
+    if (balance) {
+      let max = balance
+      setAmount(formatAmount(max, info && info.currency.decimal, 6))
     }
   }
 
@@ -169,19 +176,19 @@ const IFOCard = (props) => {
 
   }
 
-  const onClaim = (e, btnFlag) => {
+  const onClaim = (e, btnFlag, flag) => {
     if (!account) {
       return
     }
     // 未中签 claim
-    if (!(btnFlag && btnFlag.settleable && btnFlag.settleable.amount > 0 && now >= btnFlag.timeClose && now < btnFlag.time)) return
+    if (flag === 'claim' && !(btnFlag && btnFlag.settleable && btnFlag.settleable.amount > 0 && now >= btnFlag.timeClose && now < btnFlag.time)) return
 
     // 奖励 claim
-    if (!(btnFlag && btnFlag.settleable && btnFlag.settleable.volume > 0 && btnFlag.status >= 2 && now > btnFlag.timeClose && now >= btnFlag.time)) return
+    if (flag === 'rewardClaim' && !(btnFlag && btnFlag.settleable && btnFlag.settleable.volume > 0 && btnFlag.status >= 2 && now > btnFlag.timeClose && now >= btnFlag.time)) return
 
-    if (claimDisableFlag) return
+    if (flag === 'rewardClaim' && claimDisableFlag) return
     if (loadFlag) return
-    setLoadFlag(true)
+    flag === 'rewardClaim' && setLoadFlag(true)
     claim()
       .on('receipt', (_, receipt) => {
         console.log('claim success')
@@ -415,7 +422,7 @@ const IFOCard = (props) => {
             </p>
             <p className="stake_content">
               <span className="stake_title">Available (LP Token)</span>
-              <span className="stake_value">{formatAmount(balance)} {info.currency.symbol}</span>
+              <button className="stake_value available_btn" type='button' onClick={(e) => onMax(e)}>{formatAmount(balance)} {info.currency.symbol}</button>
             </p>
             <input value={amount} onChange={onChange} className="stake_input" placeholder='Input Amount' />
             <a className="stake_content" rel="noreferrer" href="https://exchange.pureswap.finance/#/add/BNB/0x481F0557FB3BB5eE461FD47F287b1ca944aD89bc" target='_blank'>
@@ -451,7 +458,7 @@ const IFOCard = (props) => {
               {info && !info.settleable && !(info.purchasedCurrencyOf.toString() > 0) && (<span className="stake_value">-</span>)}
             </p>
             <p className="stake_content">
-              <span className="stake_title">Token Get</span>
+              <span className="stake_title">Token Get(EST)</span>
               {
                 (info && info.purchasedCurrencyOf.toString() > 0 &&  (
                   <span className="stake_value">{ new BigNumber(Web3.utils.fromWei(info.purchasedCurrencyOf, 'ether'))
@@ -462,7 +469,7 @@ const IFOCard = (props) => {
                   )
                   .dividedBy(new BigNumber(info.price))
                   .toFixed(6, 1)
-                  .toString()}</span>))
+                  .toString()}&nbsp;{info.currency.symbol}</span>))
               }
               {
                 (info && !(info.purchasedCurrencyOf.toString() > 0) &&  (
@@ -474,29 +481,36 @@ const IFOCard = (props) => {
             <p className="stake_content">
               <span className="stake_title">Unused LPT</span>
               {
-                info && info.purchasedCurrencyOf.toString() > 0 && (
+                info && info.purchasedCurrencyOf.toString() > 0 &&  (
                   <span className="stake_value">
                     {info.settleable && formatAmount(info.settleable.amount) } {info.currency.symbol}&nbsp;
                     {
-                      info.settleable && info.settleable.amount > 0 && now >= info.timeClose && now < info.time && (
-                        <Button className="claim_btn" onClick={(e) => onClaim(e, info)}>claim</Button>
+                      info.settleable && info.settleable.amount * 1 > 0 && now >= info.timeClose && now < info.time && (
+                        <Button className="claim_btn" onClick={(e) => onClaim(e, info, 'claim')}>claim</Button>
                       )
                     }
 
                  </span>)
               }
               {
-                info && !(info.purchasedCurrencyOf.toString() > 0) && (
+                info && info.purchasedCurrencyOf.toString() * 1 <= 0 && (
                   <span className="stake_value">-</span>
                 )
               }
-
             </p>
             <p className="stake_content claim_box">
-              <span className="stake_title">Pure</span>
-              <span className="stake_value">{info && info.settleable && info.settleable.volume * 1 > 0 ? formatAmount(info.settleable.volume) : '-'}</span>
+              <span className="stake_title">Token Get</span>
+              {
+                info && info.settleable && info.settleable.volume * 1 > 0 && (
+                  <span className="stake_value">{formatAmount(info.settleable.volume)}&nbsp;{info.currency.symbol}</span>
+                )
+              }
+              {
+                (info && !info.settleable || info.settleable && info.settleable.volume * 1 <= 0) && (<span className="stake_value">-</span>)
+              }
+
             </p>
-            <Button type="primary" className={claimDisableFlag ? 'disableBtn' : ''} onClick={(e) => onClaim(e, info)} loading={loadFlag}>
+            <Button type="primary" className={claimDisableFlag ? 'disableBtn' : ''} onClick={(e) => onClaim(e, info, 'rewardClaim')} loading={loadFlag}>
               Claim
             </Button>
           </div>

@@ -26,9 +26,9 @@ export const useIFO = (ifo) => {
   const [info, setInfo] = useState(ifo)
 
   if (ifo.status === 0) {
-    if (now < ifo.startAt) {
+    if (now < ifo.startAt * 1) {
       ifo.status = 0
-    } else if (now < ifo.time) {
+    } else if (now < ifo.time * 1) {
       ifo.status = 1
     } else {
       ifo.status = 2
@@ -89,15 +89,15 @@ export const useIFO = (ifo) => {
             // time 如果没有的话，使用timeSettle填充
             time = timeSettle
           }
-          if (ifo.start_at < now && status < 1) {
+          if (ifo && ifo.startAt * 1 < now && status < 1) {
             // 募集中
             status = 1
           }
-          if (time < now && status < 2) {
+          if (time * 1 < now && status < 2) {
             // 结算中
             status = 2
           }
-          if (totalVolume.toString() === totalSettledUnderlying.toString() && totalVolume > 0) {
+          if (totalVolume.toString() === totalSettledUnderlying.toString() && totalVolume * 1 > 0) {
             status = 3
           }
 
