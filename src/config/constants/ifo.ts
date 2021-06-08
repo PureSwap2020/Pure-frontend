@@ -8,8 +8,8 @@ const ifos: Ifo[] = [
     abi: SrarterV3,
     address: '0x389cEf08D83E72C574cb91E9E16b84C71169B57A',
     type: 0,
-    startAt: '1623052800',
-    time: '1623072600',
+    startAt: '1623124800',
+    time: '1623135600',
     timeClose: '0',
     currency: {
       isToken: true,
