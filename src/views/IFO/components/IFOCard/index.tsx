@@ -422,7 +422,7 @@ const IFOCard = (props) => {
             </p>
             <p className="stake_content">
               <span className="stake_title">Available (LP Token)</span>
-              <button className="stake_value" type='button' onClick={(e) => onMax(e)}>{formatAmount(balance)} {info.currency.symbol}</button>
+              <button className="stake_value available_btn" type='button' onClick={(e) => onMax(e)}>{formatAmount(balance)} {info.currency.symbol}</button>
             </p>
             <input value={amount} onChange={onChange} className="stake_input" placeholder='Input Amount' />
             <a className="stake_content" rel="noreferrer" href="https://exchange.pureswap.finance/#/add/BNB/0x481F0557FB3BB5eE461FD47F287b1ca944aD89bc" target='_blank'>
@@ -481,11 +481,11 @@ const IFOCard = (props) => {
             <p className="stake_content">
               <span className="stake_title">Unused LPT</span>
               {
-                info && info.purchasedCurrencyOf.toString() > 0 && info.settleable && info.settleable.amount * 1 > 0 &&  (
+                info && info.purchasedCurrencyOf.toString() > 0 &&  (
                   <span className="stake_value">
                     {info.settleable && formatAmount(info.settleable.amount) } {info.currency.symbol}&nbsp;
                     {
-                      now >= info.timeClose && now < info.time && (
+                      info.settleable && info.settleable.amount * 1 > 0 && now >= info.timeClose && now < info.time && (
                         <Button className="claim_btn" onClick={(e) => onClaim(e, info, 'claim')}>claim</Button>
                       )
                     }
@@ -493,7 +493,7 @@ const IFOCard = (props) => {
                  </span>)
               }
               {
-                info && info.purchasedCurrencyOf.toString() * 1 <= 0 && info.settleable && info.settleable.amount * 1 <= 0 && (
+                info && info.purchasedCurrencyOf.toString() * 1 <= 0 && (
                   <span className="stake_value">-</span>
                 )
               }
