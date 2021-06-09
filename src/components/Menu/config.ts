@@ -30,11 +30,11 @@ const config: MenuEntry[] = [
     icon: 'PoolIcon',
     href: '/pools',
   },
-  {
-    label: 'IFO',
-    icon: 'NewIFOIcon',
-    href: '/IFO',
-  },
+  // {
+  //   label: 'IFO',
+  //   icon: 'NewIFOIcon',
+  //   href: '/IFO',
+  // },
   // {
   //   label: 'Lottery',
   //   icon: 'TicketIcon',
