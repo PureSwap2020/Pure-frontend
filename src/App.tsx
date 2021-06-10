@@ -1,7 +1,7 @@
 import React, { useEffect, Suspense, lazy } from 'react'
 import { Router, Redirect, Route, Switch } from 'react-router-dom'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
-import { ResetCSS } from '@pancakeswap-libs/uikit'
+import { ResetCSS } from '@pureswap-libs/uikit'
 import BigNumber from 'bignumber.js'
 import { useFetchProfile, useFetchPublicData } from 'state/hooks'
 import GlobalStyle from './style/Global'
@@ -17,7 +17,7 @@ import history from './routerHistory'
 const Home = lazy(() => import('./views/Home'))
 const Farms = lazy(() => import('./views/Farms'))
 const Lottery = lazy(() => import('./views/Lottery'))
-const Ifos = lazy(() => import('./views/Ifos'))
+const IFO = lazy(() => import('./views/IFO'))
 const NotFound = lazy(() => import('./views/NotFound'))
 const Collectibles = lazy(() => import('./views/Collectibles'))
 const Teams = lazy(() => import('./views/Teams'))
@@ -68,7 +68,7 @@ const App: React.FC = () => {
               <Lottery />
             </Route>
             <Route path="/ifo">
-              <Ifos />
+              <IFO />
             </Route>
             <Route path="/collectibles">
               <Collectibles />

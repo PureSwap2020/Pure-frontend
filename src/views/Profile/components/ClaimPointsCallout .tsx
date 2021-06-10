@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { sumBy } from 'lodash'
 import { useDispatch } from 'react-redux'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
-import { Card, CardBody, CardHeader, Flex, Heading, PrizeIcon } from '@pancakeswap-libs/uikit'
+import { Card, CardBody, CardHeader, Flex, Heading, PrizeIcon } from '@pureswap-libs/uikit'
 import { useProfile } from 'state/hooks'
 import { Achievement } from 'state/types'
 import { addPoints } from 'state/profile'
@@ -20,13 +20,13 @@ const ClaimPointsCallout = () => {
 
   useEffect(() => {
     const fetchIfoClaims = async () => {
-      const ifoData = await getClaimableIfoData(account)
-      setClaimableAchievement(ifoData)
+      // const ifoData = await getClaimableIfoData(account)
+      // setClaimableAchievement({})
     }
 
-    if (account) {
-      fetchIfoClaims()
-    }
+    // if (account) {
+    //   fetchIfoClaims()
+    // }
   }, [account, dispatch, setClaimableAchievement])
 
   const handleCollectSuccess = (achievement: Achievement) => {

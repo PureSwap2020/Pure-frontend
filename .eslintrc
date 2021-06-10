@@ -17,6 +17,14 @@
     "no-plusplus": 0,
     "prefer-destructuring": ["warn", { "object": true, "array": false }],
     "no-underscore-dangle": 0,
+    "import/prefer-default-export": "off",
+    "eslint-disable-next-line": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "no-param-reassign": "off",
+    "no-unused-expressions": "off",
+    "prefer-const": "off",
+    "@typescript-eslint/no-shadow": "off",
     // Start temporary rules
     // These rules are here just to keep the lint error to 0 during the migration to the new rule set
     // They need to be removed and fixed as soon as possible

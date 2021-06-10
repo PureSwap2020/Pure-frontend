@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ThemeProvider as SCThemeProvider } from 'styled-components'
-import { light, dark } from '@pancakeswap-libs/uikit'
+import { light, dark } from '@pureswap-libs/uikit'
 
 window.localStorage.setItem('IS_DARK', 'true')
 

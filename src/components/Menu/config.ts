@@ -1,4 +1,4 @@
-import { MenuEntry } from '@pancakeswap-libs/uikit'
+import { MenuEntry } from '@pureswap-libs/uikit'
 
 const config: MenuEntry[] = [
   {
@@ -30,6 +30,11 @@ const config: MenuEntry[] = [
     icon: 'PoolIcon',
     href: '/pools',
   },
+  // {
+  //   label: 'IFO',
+  //   icon: 'NewIFOIcon',
+  //   href: '/IFO',
+  // },
   // {
   //   label: 'Lottery',
   //   icon: 'TicketIcon',
@@ -84,7 +89,7 @@ const config: MenuEntry[] = [
   // {
   //   label: 'IFO',
   //   icon: 'IfoIcon',
-  //   href: '/ifo',
+  //   href: '/IFO',
   // },
   {
     label: 'More',

@@ -28,6 +28,9 @@ import sousChefBnb from 'config/abi/sousChefBnb.json'
 import profile from 'config/abi/pancakeProfile.json'
 import pointCenterIfo from 'config/abi/pointCenterIfo.json'
 import bunnySpecial from 'config/abi/bunnySpecial.json'
+import { useWallet } from '@binance-chain/bsc-use-wallet'
+import useBlock from './useBlock'
+import { ADDRESS_NONE } from '../config'
 
 const useContract = (abi: AbiItem, address: string, contractOptions?: ContractOptions) => {
   const web3 = useWeb3()
@@ -53,6 +56,7 @@ export const useERC20 = (address: string) => {
   const erc20Abi = (erc20 as unknown) as AbiItem
   return useContract(erc20Abi, address)
 }
+
 
 export const useCake = () => {
   return useERC20(getCakeAddress())
@@ -103,6 +107,109 @@ export const usePointCenterIfoContract = () => {
 export const useBunnySpecialContract = () => {
   const abi = (bunnySpecial as unknown) as AbiItem
   return useContract(abi, getBunnySpecialAddress())
+}
+
+export const useBalance = (address) => {
+  const BNBBalance = useBNBBalance()
+  const tokenBalance = useTokenBalance(address)
+  const [balance, setBalance] = useState('0')
+  useEffect(() => {
+    if(address === ADDRESS_NONE){
+      setBalance(BNBBalance)
+    }else{
+      setBalance(tokenBalance)
+    }
+  }, [BNBBalance, tokenBalance])
+  return balance
+}
+
+
+export const useBNBBalance = () => {
+  const { account} = useWallet()
+  const web3 = useWeb3()
+  const blockHeight = useBlock()
+  const [balance, setBalance] = useState('0')
+  useEffect(() => {
+    if (account) {
+      web3
+        .eth
+        .getBalance(account)
+        .then((balance) => {
+          setBalance(balance.toString())
+        })
+        .catch((e) => {
+          return 0
+        })
+    }
+  }, [account, blockHeight])
+  return balance
+}
+
+export const useTokenBalance = (address) => {
+  const { account} = useWallet()
+  const blockHeight = useBlock()
+  const contract = useERC20(address)
+  const [balance, setBalance] = useState('0')
+  useEffect(() => {
+    if (account && contract && address) {
+      contract
+        .methods
+        .balanceOf(account)
+        .call()
+        .then((balance) => {
+          setBalance(balance.toString())
+        })
+        .catch((e) => {
+          return 0
+        })
+    }
+  }, [account, blockHeight, address])
+  return balance
+}
+
+export const useTokenAllowance = (address)  => {
+  const { account} = useWallet()
+  const blockHeight = useBlock()
+  const contract = useERC20(address)
+  const [allowance, setAllowancee] = useState('0')
+  useEffect(() => {
+    if (address && contract) {
+      contract
+        .methods
+        .allowance(account, address)
+        .call()
+        .then((allowance) => {
+          setAllowancee(allowance.toString())
+        })
+        .catch((e) => {
+          console.log(e)
+          return 0
+        })
+    }
+  }, [account, address, blockHeight])
+  return allowance
+}
+
+export const useTokenDecimals = (address) => {
+  const { account} = useWallet()
+  const blockHeight = useBlock()
+  const contract = useERC20(address)
+  const [decimals, setDecimals] = useState(18)
+  useEffect(() => {
+    if (account && contract && address) {
+      contract
+        .methods
+        .decimals()
+        .call()
+        .then((decimals) => {
+          setDecimals(decimals)
+        })
+        .catch((e) => {
+          return 18
+        })
+    }
+  }, [account, blockHeight, address])
+  return decimals
 }
 
 export default useContract
