@@ -43,7 +43,7 @@ const EarnAssetCard = () => {
         <Flex justifyContent="space-between">
           <Heading size="lg">
             <StyledHeadingSmallSpan>in Pools</StyledHeadingSmallSpan>
-            <NavLink exact activeClassName="active" to="/syrup" id="pool-cta">
+            <NavLink exact activeClassName="active" to="/pools" id="pool-cta">
               <ArrowForwardIcon
                 style={{ marginTop: '10px', position: 'relative', top: '4px', left: '10px' }}
                 mt={30}
